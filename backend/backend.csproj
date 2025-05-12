@@ -7,7 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="EntityFrameworkCore.Utils" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+      <Folder Include="Data\Entities\" />
+      <Folder Include="Middleware\SessionAuth\" />
+      <Folder Include="Migrations\" />
+      <Folder Include="Models\" />
+      <Folder Include="Services\" />
+      <Folder Include="Uploads\Shop\" />
+      <Folder Include="Uploads\User\" />
     </ItemGroup>
 
 </Project>
