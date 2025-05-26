@@ -46,15 +46,18 @@ function RouteComponent() {
             </select>
           </div>
         </div>
-        <div
-          className="flex flex-row gap-4 flex-wrap"
-          onClick={() => navigate({ to: '/items/$id', params: { id: '1' } })}
-        >
+        <div className="flex flex-row gap-4 flex-wrap">
           {[
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
             20,
           ].map((item) => (
-            <Item key={item} />
+            <div
+              onClick={() =>
+                navigate({ to: '/items/$id', params: { id: item.toString() } })
+              }
+            >
+              <Item key={item} />
+            </div>
           ))}
         </div>
         <div className="flex flex-row items-center justify-center mt-4">

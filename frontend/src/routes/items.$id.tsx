@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { convertTextToColor } from '@/lib/utils'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
@@ -12,7 +13,7 @@ function RouteComponent() {
 
   return (
     <div>
-      <div className="flex flex-row gap-8 container mx-auto p-4 md:p-6 lg:p-8">
+      <div className="flex flex-row items-center gap-8 container mx-auto p-4 md:p-6 lg:p-8">
         <img
           src="https://img.ltwebstatic.com/v4/j/pi/2025/04/24/c9/1745465159c456f4331f34f556672b6ca207f368f9_thumbnail_405x.jpg"
           alt="product"
@@ -24,19 +25,19 @@ function RouteComponent() {
             <p className="text-xl font-bold">200$</p>
             <p className="text-lg">Pick the size:</p>
             <ul className="flex flex-row gap-4">
-              <li className="p-2 border-1 border-black cursor-pointer hover:bg-black hover:text-white">
+              <li className="p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white">
                 S
               </li>
-              <li className="p-2 border-1 border-black cursor-pointer hover:bg-black hover:text-white">
+              <li className="p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white">
                 M
               </li>
-              <li className="p-2 border-1 border-black cursor-pointer hover:bg-black hover:text-white">
+              <li className="p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white">
                 L
               </li>
-              <li className="p-2 border-1 border-black cursor-pointer hover:bg-black hover:text-white">
+              <li className="p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white">
                 XL
               </li>
-              <li className="p-2 border-1 border-black cursor-pointer hover:bg-black hover:text-white">
+              <li className="p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white">
                 XXL
               </li>
             </ul>
@@ -74,6 +75,7 @@ function RouteComponent() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
