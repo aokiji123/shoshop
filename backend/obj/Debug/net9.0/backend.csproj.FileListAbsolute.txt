@@ -141,3 +141,8 @@ C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\M
 C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\backend.xml
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\obj\Debug\net9.0\backend.xml

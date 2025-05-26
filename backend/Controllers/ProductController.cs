@@ -55,6 +55,13 @@ public class ProductController : ControllerBase
         public string Image { get; set; }
     }
 
+    // GET: api/product
+    /// <summary>
+    /// Retrieves a list of all products.
+    /// </summary>
+    /// <returns>A list of products.</returns>
+    /// <response code="200">Returns the list of products.</response>
+    /// <response code="401">If the user is not authenticated.</response>
     [HttpGet]
     [Authorize]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
@@ -77,6 +84,15 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
+    // GET: api/product/{id}
+    /// <summary>
+    /// Retrieves a specific product by ID.
+    /// </summary>
+    /// <param name="id">The ID of the product.</param>
+    /// <returns>The product details.</returns>
+    /// <response code="200">Returns the product.</response>
+    /// <response code="401">If the user is not authenticated.</response>
+    /// <response code="404">If the product is not found.</response>
     [HttpGet("{id}")]
     [Authorize]
     public async Task<ActionResult<ProductDto>> GetProduct(Guid id)
@@ -102,6 +118,15 @@ public class ProductController : ControllerBase
         return Ok(product);
     }
 
+    // GET: api/product/popular
+    /// <summary>
+    /// Retrieves a list of the most popular products based on likes.
+    /// </summary>
+    /// <param name="limit">The maximum number of products to return (default: 10).</param>
+    /// <returns>A list of the most-liked products.</returns>
+    /// <response code="200">Returns the list of popular products.</response>
+    /// <response code="400">If the limit is less than 1.</response>
+    /// <response code="401">If the user is not authenticated.</response>
     [HttpGet("popular")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetPopularProduct([FromQuery] int limit = 10)
@@ -128,6 +153,16 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
+    // POST: api/product
+    /// <summary>
+    /// Creates a new product (admin only).
+    /// </summary>
+    /// <param name="createDto">The product details to create.</param>
+    /// <returns>The created product.</returns>
+    /// <response code="201">Returns the created product.</response>
+    /// <response code="400">If the input is invalid.</response>
+    /// <response code="401">If the user is not authenticated.</response>
+    /// <response code="403">If the user is not an admin.</response>
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateUpdateProductDto createDto)
@@ -165,6 +200,18 @@ public class ProductController : ControllerBase
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDto);
     }
 
+    // PUT: api/product/{id}
+    /// <summary>
+    /// Updates an existing product (admin only).
+    /// </summary>
+    /// <param name="id">The ID of the product to update.</param>
+    /// <param name="updateDto">The updated product details.</param>
+    /// <returns>The updated product.</returns>
+    /// <response code="200">Returns the updated product.</response>
+    /// <response code="400">If the input is invalid.</response>
+    /// <response code="401">If the user is not authenticated.</response>
+    /// <response code="403">If the user is not an admin.</response>
+    /// <response code="404">If the product is not found.</response>
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductDto>> UpdateProduct(Guid id, [FromBody] CreateUpdateProductDto updateDto)
@@ -202,6 +249,16 @@ public class ProductController : ControllerBase
         return Ok(productDto);
     }
 
+    // DELETE: api/product/{id}
+    /// <summary>
+    /// Deletes a product by ID (admin only).
+    /// </summary>
+    /// <param name="id">The ID of the product to delete.</param>
+    /// <returns>Confirmation of deletion.</returns>
+    /// <response code="200">Product deleted successfully.</response>
+    /// <response code="401">If the user is not authenticated.</response>
+    /// <response code="403">If the user is not an admin.</response>
+    /// <response code="404">If the product is not found.</response>
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteProduct(Guid id)
