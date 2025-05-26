@@ -1,13 +1,7 @@
+import { convertTextToColor } from '@/lib/utils'
 import { MdFavoriteBorder } from 'react-icons/md'
 
-function convertTextToColor(text: string) {
-  switch (text) {
-    case 'black':
-      return 'bg-black'
-  }
-}
-
-export const Item = () => {
+export const Item = ({ shortened }: { shortened?: boolean }) => {
   return (
     <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative">
       <div className="absolute top-2 right-2">
@@ -31,16 +25,20 @@ export const Item = () => {
             <div className={`w-3 h-3 ${convertTextToColor('black')}`}></div>
           </div>
         </div>
-        <ul className="flex flex-row justify-between gap-2">
-          <li className="text-sm hover:underline cursor-pointer">S</li>
-          <li className="text-sm hover:underline cursor-pointer">M</li>
-          <li className="text-sm hover:underline cursor-pointer">L</li>
-          <li className="text-sm hover:underline cursor-pointer">XL</li>
-          <li className="text-sm hover:underline cursor-pointer">XXL</li>
-        </ul>
-        <button className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
-          Add to Cart
-        </button>
+        {!shortened && (
+          <>
+            <ul className="flex flex-row justify-between gap-2">
+              <li className="text-sm hover:underline cursor-pointer">S</li>
+              <li className="text-sm hover:underline cursor-pointer">M</li>
+              <li className="text-sm hover:underline cursor-pointer">L</li>
+              <li className="text-sm hover:underline cursor-pointer">XL</li>
+              <li className="text-sm hover:underline cursor-pointer">XXL</li>
+            </ul>
+            <button className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
+              Add to Cart
+            </button>
+          </>
+        )}
       </div>
     </div>
   )

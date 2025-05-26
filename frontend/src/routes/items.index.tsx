@@ -1,12 +1,14 @@
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/items/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="container mx-auto flex flex-col justify-center p-4 md:p-6 lg:p-8">
@@ -44,7 +46,10 @@ function RouteComponent() {
             </select>
           </div>
         </div>
-        <div className="flex flex-row gap-4 flex-wrap">
+        <div
+          className="flex flex-row gap-4 flex-wrap"
+          onClick={() => navigate({ to: '/items/$id', params: { id: '1' } })}
+        >
           {[
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
             20,
