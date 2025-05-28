@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text;
 using backend.Data;
+using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +31,17 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), npgsqlOptions =>
+    {
+        npgsqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 3,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorCodesToAdd: null);
+        npgsqlOptions.CommandTimeout(30);
+    });
+});
 
 builder.Services.AddAuthentication(options =>
     {
@@ -53,6 +64,7 @@ builder.Services.AddAuthentication(options =>
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

@@ -32,7 +32,7 @@
             <response code="400">If the limit is less than 1.</response>
             <response code="401">If the user is not authenticated.</response>
         </member>
-        <member name="M:backend.Controllers.ProductController.CreateProduct(backend.Controllers.ProductController.CreateUpdateProductDto)">
+        <member name="M:backend.Controllers.ProductController.CreateProduct(backend.Controllers.ProductController.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Creates a new product (admin only).
             </summary>
@@ -43,7 +43,7 @@
             <response code="401">If the user is not authenticated.</response>
             <response code="403">If the user is not an admin.</response>
         </member>
-        <member name="M:backend.Controllers.ProductController.UpdateProduct(System.Guid,backend.Controllers.ProductController.CreateUpdateProductDto)">
+        <member name="M:backend.Controllers.ProductController.UpdateProduct(System.Guid,backend.Controllers.ProductController.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Updates an existing product (admin only).
             </summary>
@@ -89,6 +89,18 @@
             <inheritdoc />
         </member>
         <member name="M:backend.Migrations.AddSizeAndColorToProduct.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.MakeImageOptional">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.MakeImageOptional.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.MakeImageOptional.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.MakeImageOptional.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

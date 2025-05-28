@@ -28,8 +28,8 @@ public class Product
     [Range(0, int.MaxValue)] 
     public int Likes { get; set; } = 0;
     
-    [Required]
-    public string Image { get; set; } // URL or base64; use byte[] for BYTEA
+    [MaxLength(500)]
+    public string? Image { get; set; } // URL or local path
     
     // Size and Color db update
     

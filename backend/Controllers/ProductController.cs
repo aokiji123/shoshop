@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using backend.Data;
 using backend.Models;
+using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,13 @@ namespace backend.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly DataContext _context;
-    
-    public ProductController(DataContext context) => _context = context;
+    private readonly IImageService _imageService;
+
+    public ProductController(DataContext context, IImageService imageService)
+    {
+        _context = context;
+        _imageService = imageService;
+    }
     
     public class ProductDto
     {
@@ -53,8 +59,8 @@ public class ProductController : ControllerBase
         [Range(0, int.MaxValue)]
         public int Likes { get; set; } = 0;
 
-        [Required]
-        public string Image { get; set; }
+        [MaxLength(500)]
+        public string? Image { get; set; }
         
         [Required, MaxLength(100)]
         public string Size { get; set; }
@@ -179,10 +185,31 @@ public class ProductController : ControllerBase
     /// <response code="403">If the user is not an admin.</response>
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateUpdateProductDto createDto)
+    public async Task<ActionResult<ProductDto>> CreateProduct([FromForm] CreateUpdateProductDto createDto, IFormFile? imageFile)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
-
+        
+        string finalImagePath;
+        if (imageFile != null)
+        {
+            try
+            {
+                finalImagePath = await _imageService.SaveImageAsync(imageFile, "products");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Image upload failed: {ex.Message}");
+            }
+        }
+        else if (!string.IsNullOrEmpty(createDto.Image))
+        {
+            finalImagePath = createDto.Image;
+        }
+        else
+        {
+            return BadRequest("Either imageFile or Image URL must be provided");
+        }
+        
         var product = new Product
         {
             UaName = createDto.UaName,
@@ -192,14 +219,25 @@ public class ProductController : ControllerBase
             Category = createDto.Category,
             Count = createDto.Count,
             Likes = createDto.Likes,
-            Image = createDto.Image,
+            Image = finalImagePath,
             Size = createDto.Size,
             Color = createDto.Color
         };
 
-        _context.Products.Add(product);
-        await _context.SaveChangesAsync();
-
+        try
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            if (imageFile != null && !string.IsNullOrEmpty(finalImagePath))
+            {
+                await _imageService.DeleteImageAsync(finalImagePath);
+            }
+            return StatusCode(500, $"Database error: {ex.Message}");
+        }
+        
         var productDto = new ProductDto
         {
             Id = product.Id,
@@ -232,13 +270,41 @@ public class ProductController : ControllerBase
     /// <response code="404">If the product is not found.</response>
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<ProductDto>> UpdateProduct(Guid id, [FromBody] CreateUpdateProductDto updateDto)
+    public async Task<ActionResult<ProductDto>> UpdateProduct(Guid id, [FromForm] CreateUpdateProductDto updateDto, IFormFile? imageFile)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
         var product = await _context.Products.FindAsync(id);
         if (product == null) return NotFound("Product not found");
 
+        string? oldImagePath = product.Image;
+        
+        if (imageFile != null)
+        {
+            try
+            {
+                var newImagePath = await _imageService.SaveImageAsync(imageFile, "products");
+                
+                if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
+                {
+                    await _imageService.DeleteImageAsync(oldImagePath);
+                }
+                product.Image = newImagePath;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Image upload failed: {ex.Message}");
+            }
+        }
+        else if (!string.IsNullOrEmpty(updateDto.Image) && updateDto.Image != product.Image)
+        {
+            if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
+            {
+                await _imageService.DeleteImageAsync(oldImagePath);
+            }
+            product.Image = updateDto.Image;
+        }
+        
         product.UaName = updateDto.UaName;
         product.EnName = updateDto.EnName;
         product.Description = updateDto.Description;
@@ -246,7 +312,6 @@ public class ProductController : ControllerBase
         product.Category = updateDto.Category;
         product.Count = updateDto.Count;
         product.Likes = updateDto.Likes;
-        product.Image = updateDto.Image;
         product.Size = updateDto.Size;
         product.Color = updateDto.Color;
 
@@ -287,7 +352,12 @@ public class ProductController : ControllerBase
     {
         var product = await _context.Products.FindAsync(id);
         if (product == null) return NotFound("Product not found");
-
+        
+        if (!string.IsNullOrEmpty(product.Image))
+        {
+            await _imageService.DeleteImageAsync(product.Image);
+        }
+        
         _context.Products.Remove(product);
         await _context.SaveChangesAsync();
 
