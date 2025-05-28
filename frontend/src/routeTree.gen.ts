@@ -11,7 +11,9 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as RegisterImport } from './routes/register'
 import { Route as ProfileImport } from './routes/profile'
+import { Route as LoginImport } from './routes/login'
 import { Route as FavoritesImport } from './routes/favorites'
 import { Route as CartImport } from './routes/cart'
 import { Route as IndexImport } from './routes/index'
@@ -20,9 +22,21 @@ import { Route as ItemsIdImport } from './routes/items.$id'
 
 // Create/Update Routes
 
+const RegisterRoute = RegisterImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ProfileRoute = ProfileImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritesImport
       parentRoute: typeof rootRoute
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileImport
+      parentRoute: typeof rootRoute
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterImport
       parentRoute: typeof rootRoute
     }
     '/items/$id': {
@@ -111,7 +139,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/items/$id': typeof ItemsIdRoute
   '/items': typeof ItemsIndexRoute
 }
@@ -120,7 +150,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/items/$id': typeof ItemsIdRoute
   '/items': typeof ItemsIndexRoute
 }
@@ -130,22 +162,42 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/items/$id': typeof ItemsIdRoute
   '/items/': typeof ItemsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cart' | '/favorites' | '/profile' | '/items/$id' | '/items'
+  fullPaths:
+    | '/'
+    | '/cart'
+    | '/favorites'
+    | '/login'
+    | '/profile'
+    | '/register'
+    | '/items/$id'
+    | '/items'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cart' | '/favorites' | '/profile' | '/items/$id' | '/items'
+  to:
+    | '/'
+    | '/cart'
+    | '/favorites'
+    | '/login'
+    | '/profile'
+    | '/register'
+    | '/items/$id'
+    | '/items'
   id:
     | '__root__'
     | '/'
     | '/cart'
     | '/favorites'
+    | '/login'
     | '/profile'
+    | '/register'
     | '/items/$id'
     | '/items/'
   fileRoutesById: FileRoutesById
@@ -155,7 +207,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
   FavoritesRoute: typeof FavoritesRoute
+  LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
   ItemsIdRoute: typeof ItemsIdRoute
   ItemsIndexRoute: typeof ItemsIndexRoute
 }
@@ -164,7 +218,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
   FavoritesRoute: FavoritesRoute,
+  LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
   ItemsIdRoute: ItemsIdRoute,
   ItemsIndexRoute: ItemsIndexRoute,
 }
@@ -182,7 +238,9 @@ export const routeTree = rootRoute
         "/",
         "/cart",
         "/favorites",
+        "/login",
         "/profile",
+        "/register",
         "/items/$id",
         "/items/"
       ]
@@ -196,8 +254,14 @@ export const routeTree = rootRoute
     "/favorites": {
       "filePath": "favorites.tsx"
     },
+    "/login": {
+      "filePath": "login.tsx"
+    },
     "/profile": {
       "filePath": "profile.tsx"
+    },
+    "/register": {
+      "filePath": "register.tsx"
     },
     "/items/$id": {
       "filePath": "items.$id.tsx"

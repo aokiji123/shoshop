@@ -68,8 +68,10 @@ public class AuthController : ControllerBase
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
+        
+        var token = GenerateJwtToken(user);
 
-        return Ok(new { Message = "User registered successfully" });
+        return Ok(new { Token = token, UserId = user.Id, IsAdmin = user.IsAdmin });
     }
 
     [HttpPost("login")]
