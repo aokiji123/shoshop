@@ -77,7 +77,7 @@ public class ProductController : ControllerBase
     /// <response code="200">Returns the list of products.</response>
     /// <response code="401">If the user is not authenticated.</response>
     [HttpGet]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
     {
         var products = await _context.Products

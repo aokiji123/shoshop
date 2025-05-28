@@ -90,7 +90,7 @@ function RouteComponent() {
       <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8 items-center h-[90vh] justify-center">
         <div className="relative flex items-center justify-center">
           <img
-            src={user.image || 'https://github.com/shadcn.png'}
+            src={user.image || 'https://placehold.co/200x200'}
             className="rounded-full w-[200px] h-[200px]"
             alt="Profile"
           />
@@ -132,7 +132,7 @@ function RouteComponent() {
               <h2 className="text-xl font-bold">Edit Profile</h2>
               <button
                 onClick={() => setIsEditModalOpen(false)}
-                className="p-1 hover:bg-gray-100"
+                className="p-1 cursor-pointer transition-all duration-200 hover:scale-110"
               >
                 <MdClose />
               </button>
@@ -218,7 +218,7 @@ function RouteComponent() {
               <h2 className="text-xl font-bold text-red-600">Delete Account</h2>
               <button
                 onClick={() => setIsDeleteModalOpen(false)}
-                className="p-1 hover:bg-gray-100"
+                className="transition-all duration-200 hover:scale-110 p-1 cursor-pointer"
               >
                 <MdClose />
               </button>

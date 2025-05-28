@@ -14,7 +14,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as RegisterImport } from './routes/register'
 import { Route as ProfileImport } from './routes/profile'
 import { Route as LoginImport } from './routes/login'
-import { Route as FavoritesImport } from './routes/favorites'
 import { Route as CartImport } from './routes/cart'
 import { Route as IndexImport } from './routes/index'
 import { Route as ItemsIndexImport } from './routes/items.index'
@@ -37,12 +36,6 @@ const ProfileRoute = ProfileImport.update({
 const LoginRoute = LoginImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const FavoritesRoute = FavoritesImport.update({
-  id: '/favorites',
-  path: '/favorites',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,13 +81,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartImport
       parentRoute: typeof rootRoute
     }
-    '/favorites': {
-      id: '/favorites'
-      path: '/favorites'
-      fullPath: '/favorites'
-      preLoaderRoute: typeof FavoritesImport
-      parentRoute: typeof rootRoute
-    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -138,7 +124,6 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/favorites': typeof FavoritesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -149,7 +134,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/favorites': typeof FavoritesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -161,7 +145,6 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/favorites': typeof FavoritesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -174,7 +157,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cart'
-    | '/favorites'
     | '/login'
     | '/profile'
     | '/register'
@@ -184,7 +166,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cart'
-    | '/favorites'
     | '/login'
     | '/profile'
     | '/register'
@@ -194,7 +175,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cart'
-    | '/favorites'
     | '/login'
     | '/profile'
     | '/register'
@@ -206,7 +186,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
-  FavoritesRoute: typeof FavoritesRoute
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
@@ -217,7 +196,6 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
-  FavoritesRoute: FavoritesRoute,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
@@ -237,7 +215,6 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/cart",
-        "/favorites",
         "/login",
         "/profile",
         "/register",
@@ -250,9 +227,6 @@ export const routeTree = rootRoute
     },
     "/cart": {
       "filePath": "cart.tsx"
-    },
-    "/favorites": {
-      "filePath": "favorites.tsx"
     },
     "/login": {
       "filePath": "login.tsx"

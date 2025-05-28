@@ -6,7 +6,7 @@ export function requireAuth() {
   if (!token) {
     throw redirect({
       to: '/login',
-      search: { message: 'Please log in to access this page' },
+      search: { message: 'Please log in to access site' },
     })
   }
 }

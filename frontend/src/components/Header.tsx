@@ -45,34 +45,15 @@ export default function Header() {
               </div>
             </Link>
           </div>
-          <div className="px-2 font-bold">
-            <Link to="/favorites">
-              <div
-                onMouseEnter={() => setIsFavoritesHovered(true)}
-                onMouseLeave={() => setIsFavoritesHovered(false)}
-                className="transition-all duration-200 hover:scale-110"
-              >
-                {isFavoritesHovered ? (
-                  <MdFavorite size={28} />
-                ) : (
-                  <MdFavoriteBorder size={28} />
-                )}
-              </div>
+          <div className="px-2 font-bold transition-all duration-200 hover:scale-110">
+            <Link to="/profile">
+              <img
+                src={user?.image || 'https://placehold.co/40x40'}
+                alt=""
+                className="w-8 h-8 rounded-full"
+              />
             </Link>
           </div>
-          {isLoading ? (
-            <div className="w-8 h-8 border-1 border-t-black border-gray-300 rounded-full animate-spin"></div>
-          ) : (
-            <div className="px-2 font-bold transition-all duration-200 hover:scale-110">
-              <Link to="/profile">
-                <img
-                  src={user?.image || 'https://placehold.co/40x40'}
-                  alt="user"
-                  className="w-8 h-8 rounded-full"
-                />
-              </Link>
-            </div>
-          )}
         </div>
       </nav>
     </header>
