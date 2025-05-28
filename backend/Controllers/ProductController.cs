@@ -26,6 +26,8 @@ public class ProductController : ControllerBase
         public int Count { get; set; }
         public int Likes { get; set; }
         public string Image { get; set; }
+        public string Size { get; set; } 
+        public string Color { get; set; }
     }
 
     public class CreateUpdateProductDto
@@ -53,6 +55,12 @@ public class ProductController : ControllerBase
 
         [Required]
         public string Image { get; set; }
+        
+        [Required, MaxLength(100)]
+        public string Size { get; set; }
+    
+        [Required, MaxLength(100)]
+        public string Color { get; set; }
     }
 
     // GET: api/product
@@ -77,7 +85,9 @@ public class ProductController : ControllerBase
                 Category = p.Category,
                 Count = p.Count,
                 Likes = p.Likes,
-                Image = p.Image
+                Image = p.Image,
+                Size = p.Size,
+                Color = p.Color
             })
             .ToListAsync();
 
@@ -108,7 +118,9 @@ public class ProductController : ControllerBase
                 Category = p.Category,
                 Count = p.Count,
                 Likes = p.Likes,
-                Image = p.Image
+                Image = p.Image,
+                Size = p.Size,
+                Color = p.Color
             })
             .FirstOrDefaultAsync(p => p.Id == id);
 
@@ -146,7 +158,9 @@ public class ProductController : ControllerBase
                 Category = p.Category,
                 Count = p.Count,
                 Likes = p.Likes,
-                Image = p.Image
+                Image = p.Image,
+                Size = p.Size,
+                Color = p.Color
             })
             .ToListAsync();
 
@@ -178,7 +192,9 @@ public class ProductController : ControllerBase
             Category = createDto.Category,
             Count = createDto.Count,
             Likes = createDto.Likes,
-            Image = createDto.Image
+            Image = createDto.Image,
+            Size = createDto.Size,
+            Color = createDto.Color
         };
 
         _context.Products.Add(product);
@@ -194,7 +210,9 @@ public class ProductController : ControllerBase
             Category = product.Category,
             Count = product.Count,
             Likes = product.Likes,
-            Image = product.Image
+            Image = product.Image,
+            Size = product.Size,
+            Color = product.Color
         };
 
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDto);
@@ -229,6 +247,8 @@ public class ProductController : ControllerBase
         product.Count = updateDto.Count;
         product.Likes = updateDto.Likes;
         product.Image = updateDto.Image;
+        product.Size = updateDto.Size;
+        product.Color = updateDto.Color;
 
         _context.Products.Update(product);
         await _context.SaveChangesAsync();
@@ -243,7 +263,9 @@ public class ProductController : ControllerBase
             Category = product.Category,
             Count = product.Count,
             Likes = product.Likes,
-            Image = product.Image
+            Image = product.Image,
+            Size = product.Size,
+            Color = product.Color
         };
 
         return Ok(productDto);

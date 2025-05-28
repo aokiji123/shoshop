@@ -30,4 +30,12 @@ public class Product
     
     [Required]
     public string Image { get; set; } // URL or base64; use byte[] for BYTEA
+    
+    // Size and Color db update
+    
+    [Required, MaxLength(100)]
+    public string Size { get; set; }
+    
+    [Required, MaxLength(100)]
+    public string Color { get; set; }
 }
