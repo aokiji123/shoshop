@@ -1,10 +1,14 @@
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { MdFavorite } from 'react-icons/md'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { convertTextToColor } from '@/lib/utils'
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { MdFavorite } from 'react-icons/md'
+import { requireAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/items/$id')({
+  beforeLoad: () => {
+    requireAuth()
+  },
   component: RouteComponent,
 })
 

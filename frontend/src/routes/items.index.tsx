@@ -1,8 +1,12 @@
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { requireAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/items/')({
+  beforeLoad: () => {
+    requireAuth()
+  },
   component: RouteComponent,
 })
 

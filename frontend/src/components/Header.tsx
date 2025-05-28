@@ -6,10 +6,13 @@ import {
   MdOutlineShoppingCart,
   MdShoppingCart,
 } from 'react-icons/md'
+import { useCurrentUser } from '@/api/queries/useAuth'
 
 export default function Header() {
   const [isCartHovered, setIsCartHovered] = useState(false)
   const [isFavoritesHovered, setIsFavoritesHovered] = useState(false)
+
+  const { data: user, isLoading } = useCurrentUser()
 
   return (
     <header className="h-[55px] flex px-4 gap-2 bg-white/80 text-black items-center justify-between border-b-1 border-b-black">
@@ -57,17 +60,19 @@ export default function Header() {
               </div>
             </Link>
           </div>
-          <div className="px-2 font-bold transition-all duration-200 hover:scale-110">
-            <Link to="/profile">
-              <div>
+          {isLoading ? (
+            <div className="w-8 h-8 border-1 border-t-black border-gray-300 rounded-full animate-spin"></div>
+          ) : (
+            <div className="px-2 font-bold transition-all duration-200 hover:scale-110">
+              <Link to="/profile">
                 <img
-                  src="https://github.com/shadcn.png"
-                  alt="profile"
+                  src={user?.image || 'https://placehold.co/40x40'}
+                  alt="user"
                   className="w-8 h-8 rounded-full"
                 />
-              </div>
-            </Link>
-          </div>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </header>

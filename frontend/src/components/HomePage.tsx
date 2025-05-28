@@ -6,12 +6,8 @@ export function HomePage() {
 
   return (
     <div className="home-container text-center flex flex-col gap-[36px] items-center justify-center">
-      <h2 className="text-7xl font-bold">Modern Shopping Experience</h2>
-      <p className="text-lg w-[550px]">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-      </p>
+      <h2 className="text-7xl font-bold">ShoShop</h2>
+      <p className="text-lg w-[550px]">Modern Shopping Experience</p>
       <div
         className="flex flex-row gap-4"
         onClick={() => navigate({ to: '/items' })}

@@ -2,8 +2,12 @@ import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import Footer from '@/components/Footer'
 import { useRegister } from '@/api/queries/useAuth'
+import { requireNoAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/register')({
+  beforeLoad: () => {
+    requireNoAuth()
+  },
   component: RouteComponent,
 })
 

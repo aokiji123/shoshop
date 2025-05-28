@@ -1,8 +1,12 @@
+import { createFileRoute } from '@tanstack/react-router'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
-import { createFileRoute } from '@tanstack/react-router'
+import { requireAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/favorites')({
+  beforeLoad: () => {
+    requireAuth()
+  },
   component: RouteComponent,
 })
 

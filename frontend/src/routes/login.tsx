@@ -7,8 +7,12 @@ import {
 } from '@tanstack/react-router'
 import Footer from '@/components/Footer'
 import { useLogin } from '@/api/queries/useAuth'
+import { requireNoAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/login')({
+  beforeLoad: () => {
+    requireNoAuth()
+  },
   component: RouteComponent,
   validateSearch: (search: Record<string, unknown>) => ({
     message: search.message as string | undefined,

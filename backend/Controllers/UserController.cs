@@ -33,6 +33,9 @@ public class UserController : ControllerBase
 
         [MaxLength(255)]
         public string Image { get; set; }
+        
+        [Required, MaxLength(255), EmailAddress]
+        public string Email { get; set; }
     }
 
     [HttpGet]
@@ -89,6 +92,7 @@ public class UserController : ControllerBase
             return NotFound("User not found");
 
         user.Name = updateDto.Name;
+        user.Email = updateDto.Email;
         user.Image = updateDto.Image;
 
         _context.Users.Update(user);

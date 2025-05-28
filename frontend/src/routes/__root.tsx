@@ -1,15 +1,22 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { Outlet, createRootRoute, useLocation } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 import Header from '../components/Header'
 
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Header />
+function RootComponent() {
+  const location = useLocation()
+  const isAuthPage =
+    location.pathname === '/login' || location.pathname === '/register'
 
+  return (
+    <>
+      {!isAuthPage && <Header />}
       <Outlet />
       <TanStackRouterDevtools />
     </>
-  ),
+  )
+}
+
+export const Route = createRootRoute({
+  component: RootComponent,
 })

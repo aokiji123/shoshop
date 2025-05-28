@@ -8,7 +8,6 @@ import type {
   User,
 } from '../types/auth'
 
-// Token management functions
 export function saveAuthToken(token: string) {
   if (typeof window !== 'undefined') {
     localStorage.setItem('auth_token', token)
@@ -26,7 +25,6 @@ export function getAuthToken() {
   return localStorage.getItem('auth_token')
 }
 
-// API functions
 async function registerUser(
   userData: RegisterRequest,
 ): Promise<RegisterResponse> {
@@ -38,7 +36,6 @@ async function registerUser(
     image: userData.image || '',
   })
 
-  // Backend now returns { Token: string, UserId: string, IsAdmin: boolean }
   return {
     success: true,
     token: data.Token || data.token,
@@ -79,7 +76,6 @@ async function getCurrentUser(): Promise<User | null> {
       },
     })
 
-    // Backend returns UserDto: { Id, Name, Email, IsAdmin, Image }
     return {
       id: data.Id || data.id,
       name: data.Name || data.name,
@@ -100,10 +96,11 @@ export function useRegister() {
 
   return useMutation({
     mutationFn: registerUser,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (data.success && data.token) {
         saveAuthToken(data.token)
         queryClient.invalidateQueries({ queryKey: ['currentUser'] })
+        await queryClient.refetchQueries({ queryKey: ['currentUser'] })
       }
     },
     onError: (error) => {
@@ -117,10 +114,11 @@ export function useLogin() {
 
   return useMutation({
     mutationFn: loginUser,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (data.success && data.token) {
         saveAuthToken(data.token)
         queryClient.invalidateQueries({ queryKey: ['currentUser'] })
+        await queryClient.refetchQueries({ queryKey: ['currentUser'] })
       }
     },
     onError: (error) => {
@@ -135,6 +133,9 @@ export function useCurrentUser() {
     queryFn: getCurrentUser,
     staleTime: 1000 * 60 * 5,
     retry: false,
+    enabled: typeof window !== 'undefined' && !!getAuthToken(),
+    refetchOnWindowFocus: false,
+    refetchOnMount: true,
   })
 }
 

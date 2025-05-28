@@ -1,9 +1,13 @@
-import Footer from '@/components/Footer'
-import { convertTextToColor } from '@/lib/utils'
 import { createFileRoute } from '@tanstack/react-router'
 import { IoMdClose } from 'react-icons/io'
+import Footer from '@/components/Footer'
+import { convertTextToColor } from '@/lib/utils'
+import { requireAuth } from '@/lib/auth'
 
 export const Route = createFileRoute('/cart')({
+  beforeLoad: () => {
+    requireAuth()
+  },
   component: RouteComponent,
 })
 
