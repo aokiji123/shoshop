@@ -4,7 +4,8 @@ using backend.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.JsonWebTokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace backend.Controllers;
 
@@ -38,9 +39,16 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetCurrentUser()
     {
-        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-        if (!Guid.TryParse(userIdClaim, out var userId))
+       
+        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value 
+                         ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                         ?? User.FindFirst("sub")?.Value;
+                         
+        
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+        {
             return Unauthorized("Invalid user ID in token");
+        }
 
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.Id == userId);
@@ -67,8 +75,11 @@ public class UserController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-        if (!Guid.TryParse(userIdClaim, out var userId))
+        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value 
+                         ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                         ?? User.FindFirst("sub")?.Value;
+                         
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
             return Unauthorized("Invalid user ID in token");
 
         var user = await _context.Users
@@ -99,8 +110,11 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> DeleteCurrentUser()
     {
-        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-        if (!Guid.TryParse(userIdClaim, out var userId))
+        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value 
+                         ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                         ?? User.FindFirst("sub")?.Value;
+                         
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
             return Unauthorized("Invalid user ID in token");
 
         var user = await _context.Users
