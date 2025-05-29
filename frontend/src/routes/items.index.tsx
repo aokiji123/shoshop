@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { requireAuth } from '@/lib/auth'
+import { useProducts } from '@/api/queries/useProduct'
 
 export const Route = createFileRoute('/items/')({
   beforeLoad: () => {
@@ -12,6 +13,26 @@ export const Route = createFileRoute('/items/')({
 
 function RouteComponent() {
   const navigate = useNavigate()
+  const { data: products, isLoading, error } = useProducts()
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-[90vh]">
+        <div className="w-12 h-12 border-2 border-t-black border-gray-300 rounded-full animate-spin"></div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto flex flex-col justify-center p-4 md:p-6 lg:p-8">
+        <h2 className="text-2xl font-bold mb-6">Products</h2>
+        <div className="text-red-500 text-center">
+          Error loading products: {error.message}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -51,28 +72,32 @@ function RouteComponent() {
           </div>
         </div>
         <div className="flex flex-row gap-4 flex-wrap">
-          {[
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-            20,
-          ].map((item) => (
-            <div
-              onClick={() =>
-                navigate({ to: '/items/$id', params: { id: item.toString() } })
-              }
-            >
-              <Item key={item} />
-            </div>
-          ))}
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <div
+                key={product.id}
+                onClick={() =>
+                  navigate({ to: '/items/$id', params: { id: product.id } })
+                }
+              >
+                <Item product={product} />
+              </div>
+            ))
+          ) : (
+            <div className="text-center w-full">No products found</div>
+          )}
         </div>
-        <div className="flex flex-row items-center justify-center mt-4">
-          <ul className="flex flex-row gap-4">
-            <li className="text-lg hover:underline cursor-pointer">1</li>
-            <li className="text-lg hover:underline cursor-pointer">2</li>
-            <li className="text-lg hover:underline cursor-pointer">3</li>
-            <li className="text-lg hover:underline cursor-pointer">4</li>
-            <li className="text-lg hover:underline cursor-pointer">5</li>
-          </ul>
-        </div>
+        {products && products.length > 0 && (
+          <div className="flex flex-row items-center justify-center mt-4">
+            <ul className="flex flex-row gap-4">
+              <li className="text-lg hover:underline cursor-pointer">1</li>
+              <li className="text-lg hover:underline cursor-pointer">2</li>
+              <li className="text-lg hover:underline cursor-pointer">3</li>
+              <li className="text-lg hover:underline cursor-pointer">4</li>
+              <li className="text-lg hover:underline cursor-pointer">5</li>
+            </ul>
+          </div>
+        )}
       </div>
       <Footer />
     </>

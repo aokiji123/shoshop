@@ -1,7 +1,13 @@
-import { convertTextToColor } from '@/lib/utils'
 import { MdFavoriteBorder } from 'react-icons/md'
+import type { Product } from '@/api/types/product'
+import { convertTextToColor } from '@/lib/utils'
 
-export const Item = ({ shortened }: { shortened?: boolean }) => {
+type ItemProps = {
+  shortened?: boolean
+  product?: Product
+}
+
+export const Item = ({ shortened, product }: ItemProps) => {
   return (
     <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative">
       <div className="absolute top-2 right-2">
@@ -10,21 +16,24 @@ export const Item = ({ shortened }: { shortened?: boolean }) => {
         </div>
       </div>
       <img
-        src="https://img.ltwebstatic.com/v4/j/pi/2025/04/24/c9/1745465159c456f4331f34f556672b6ca207f368f9_thumbnail_405x.jpg"
-        alt="product"
+        src={`http://localhost:5077/${product?.image}`}
+        alt={product?.enName}
         className="w-full h-[280px] object-cover"
       />
       <div className="p-3 flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Product 1</h3>
+        <h3 className="text-lg font-bold">{product?.enName}</h3>
         <div className="flex flex-row items-center justify-between gap-2">
           <p className="text-sm">
-            Price: <span className="font-bold">$100</span>
+            Price: <span className="font-bold">${product?.price}</span>
           </p>
           <div className="flex flex-row items-center justify-between gap-2">
             <p className="text-sm">Color: </p>
-            <div className={`w-3 h-3 ${convertTextToColor('black')}`}></div>
+            <div
+              className={`w-3 h-3 ${convertTextToColor(product?.color || 'black')}`}
+            ></div>
           </div>
         </div>
+        <p className="text-sm">Likes: {product?.likes}</p>
         {!shortened && (
           <>
             <ul className="flex flex-row justify-between gap-2">
