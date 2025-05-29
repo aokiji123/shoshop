@@ -4,68 +4,123 @@
         <name>backend</name>
     </assembly>
     <members>
+        <member name="M:backend.Controllers.AuthController.Register(backend.Controllers.AuthController.RegisterDto)">
+            <summary>
+            Register a new user account
+            </summary>
+            <param name="registerDto">User registration data including name, email, password, and optional image</param>
+            <returns>Authentication token and user information</returns>
+            <response code="201">User registered successfully and returns authentication token</response>
+            <response code="400">Invalid input data or email already exists</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:backend.Controllers.AuthController.Login(backend.Controllers.AuthController.LoginDto)">
+            <summary>
+            Login with email and password
+            </summary>
+            <param name="loginDto">User login credentials</param>
+            <returns>Authentication token and user information</returns>
+            <response code="200">Login successful and returns authentication token</response>
+            <response code="400">Invalid input data</response>
+            <response code="401">Invalid email or password</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:backend.Controllers.AuthController.GenerateJwtToken(backend.Models.User)">
+            <summary>
+            Generate JWT token for authenticated user
+            </summary>
+            <param name="user">User object for which to generate the token</param>
+            <returns>JWT token string</returns>
+        </member>
         <member name="M:backend.Controllers.ProductController.GetProducts">
             <summary>
-            Retrieves a list of all products.
+            Retrieves a list of all products
             </summary>
-            <returns>A list of products.</returns>
-            <response code="200">Returns the list of products.</response>
-            <response code="401">If the user is not authenticated.</response>
+            <returns>A list of products</returns>
+            <response code="200">Returns the list of products</response>
+            <response code="401">If the user is not authenticated</response>
         </member>
         <member name="M:backend.Controllers.ProductController.GetProduct(System.Guid)">
             <summary>
-            Retrieves a specific product by ID.
+            Retrieves a specific product by ID
             </summary>
-            <param name="id">The ID of the product.</param>
-            <returns>The product details.</returns>
-            <response code="200">Returns the product.</response>
-            <response code="401">If the user is not authenticated.</response>
-            <response code="404">If the product is not found.</response>
+            <param name="id">The ID of the product</param>
+            <returns>The product details</returns>
+            <response code="200">Returns the product</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the product is not found</response>
         </member>
         <member name="M:backend.Controllers.ProductController.GetPopularProduct(System.Int32)">
             <summary>
-            Retrieves a list of the most popular products based on likes.
+            Retrieves a list of the most popular products based on likes
             </summary>
-            <param name="limit">The maximum number of products to return (default: 10).</param>
-            <returns>A list of the most-liked products.</returns>
-            <response code="200">Returns the list of popular products.</response>
-            <response code="400">If the limit is less than 1.</response>
-            <response code="401">If the user is not authenticated.</response>
+            <param name="limit">The maximum number of products to return (default: 10)</param>
+            <returns>A list of the most-liked products</returns>
+            <response code="200">Returns the list of popular products</response>
+            <response code="400">If the limit is less than 1</response>
+            <response code="401">If the user is not authenticated</response>
         </member>
         <member name="M:backend.Controllers.ProductController.CreateProduct(backend.Controllers.ProductController.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
-            Creates a new product (admin only).
+            Creates a new product (admin only)
             </summary>
-            <param name="createDto">The product details to create.</param>
-            <returns>The created product.</returns>
-            <response code="201">Returns the created product.</response>
-            <response code="400">If the input is invalid.</response>
-            <response code="401">If the user is not authenticated.</response>
-            <response code="403">If the user is not an admin.</response>
+            <param name="createDto">The product details to create</param>
+            <param name="imageFile">Optional image file</param>
+            <returns>The created product</returns>
+            <response code="201">Returns the created product</response>
+            <response code="400">If the input is invalid</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not an admin</response>
         </member>
         <member name="M:backend.Controllers.ProductController.UpdateProduct(System.Guid,backend.Controllers.ProductController.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
-            Updates an existing product (admin only).
+            Updates an existing product (admin only)
             </summary>
-            <param name="id">The ID of the product to update.</param>
-            <param name="updateDto">The updated product details.</param>
-            <returns>The updated product.</returns>
-            <response code="200">Returns the updated product.</response>
-            <response code="400">If the input is invalid.</response>
-            <response code="401">If the user is not authenticated.</response>
-            <response code="403">If the user is not an admin.</response>
-            <response code="404">If the product is not found.</response>
+            <param name="id">The ID of the product to update</param>
+            <param name="updateDto">The updated product details</param>
+            <param name="imageFile">Optional new image file</param>
+            <returns>The updated product</returns>
+            <response code="200">Returns the updated product</response>
+            <response code="400">If the input is invalid</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not an admin</response>
+            <response code="404">If the product is not found</response>
         </member>
         <member name="M:backend.Controllers.ProductController.DeleteProduct(System.Guid)">
             <summary>
-            Deletes a product by ID (admin only).
+            Deletes a product by ID (admin only)
             </summary>
-            <param name="id">The ID of the product to delete.</param>
-            <returns>Confirmation of deletion.</returns>
-            <response code="200">Product deleted successfully.</response>
-            <response code="401">If the user is not authenticated.</response>
-            <response code="403">If the user is not an admin.</response>
-            <response code="404">If the product is not found.</response>
+            <param name="id">The ID of the product to delete</param>
+            <returns>Confirmation of deletion</returns>
+            <response code="200">Product deleted successfully</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not an admin</response>
+            <response code="404">If the product is not found</response>
+        </member>
+        <member name="M:backend.Controllers.UserController.GetCurrentUser">
+            <summary>
+            Get current user profile
+            </summary>
+            <returns>Current user data</returns>
+        </member>
+        <member name="M:backend.Controllers.UserController.UpdateCurrentUser(backend.Controllers.UserController.UpdateUserDto)">
+            <summary>
+            Update current user profile
+            </summary>
+            <param name="updateDto">Data to update</param>
+            <returns>Updated user data</returns>
+        </member>
+        <member name="M:backend.Controllers.UserController.DeleteCurrentUser">
+            <summary>
+            Delete current user account
+            </summary>
+            <returns>Deletion confirmation</returns>
+        </member>
+        <member name="M:backend.Controllers.UserController.GetCurrentUserId">
+            <summary>
+            Extract current user ID from JWT token
+            </summary>
+            <returns>User ID or null if token is invalid</returns>
         </member>
         <member name="T:backend.Migrations.InitialCreate">
             <inheritdoc />

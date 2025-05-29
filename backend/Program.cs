@@ -71,9 +71,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Your API",
+        Title = "Shoshop API",
         Version = "v1",
-        Description = "API for managing users and products with JWT authentication"
+        Description = "API Documentation for Shoshop project"
     });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -119,7 +119,7 @@ else
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API v1");
-        options.RoutePrefix = string.Empty; // Serve Swagger UI at root (e.g., /)
+        options.RoutePrefix = string.Empty;
     });
 }
 

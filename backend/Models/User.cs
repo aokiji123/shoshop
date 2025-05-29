@@ -19,5 +19,6 @@ public class User
     [Required]
     public bool IsAdmin { get; set; } = false;
     
-    public string Image { get; set; } // URL or base64; use byte[] for BYTEA
+    [MaxLength(500)]
+    public string? Image { get; set; } // URL or local path
 }
