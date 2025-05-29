@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axiosInstance from '../axios'
 import { clearAuthToken, getAuthToken } from './useAuth'
 import type { User } from '../types/auth'
+import { clearCartFromStorage } from '@/lib/cart'
 
 export type UpdateUserRequest = {
   name?: string
@@ -117,6 +118,9 @@ export function useDeleteUser() {
         clearAuthToken()
         queryClient.setQueryData(['currentUser'], null)
         queryClient.invalidateQueries({ queryKey: ['currentUser'] })
+
+        // Clear cart on account deletion with immediate UI update
+        clearCartFromStorage()
       }
     },
     onError: (error) => {

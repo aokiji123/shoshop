@@ -219,3 +219,12 @@ export function updateCartItemQuantity(
 export function clearCart(): Cart {
   return { items: [], total: 0, itemCount: 0 }
 }
+
+// Clear cart from storage and trigger immediate UI update
+export function clearCartFromStorage(): void {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(CART_STORAGE_KEY)
+    // Dispatch custom event for immediate cart clearing in same tab
+    window.dispatchEvent(new CustomEvent('cart-clear'))
+  }
+}

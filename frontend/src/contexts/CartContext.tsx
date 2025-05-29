@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import type { Product } from '@/api/types/product'
-import type { Cart, CartItem } from '@/lib/cart'
+import type { Cart } from '@/lib/cart'
 import {
   addToCart as addToCartUtil,
   canAddToCart,
@@ -48,6 +48,29 @@ export function CartProvider({ children }: CartProviderProps) {
     const storedCart = getCartFromStorage()
     setCart(storedCart)
     setIsLoading(false)
+  }, [])
+
+  // Listen for storage changes (when cart is cleared externally)
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'shoshop-cart' && e.newValue === null) {
+        // Cart was cleared externally (e.g., on logout)
+        setCart({ items: [], total: 0, itemCount: 0 })
+      }
+    }
+
+    // Listen for custom cart clear event (for same-tab clearing)
+    const handleCartClear = () => {
+      setCart({ items: [], total: 0, itemCount: 0 })
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+    window.addEventListener('cart-clear', handleCartClear)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('cart-clear', handleCartClear)
+    }
   }, [])
 
   // Save cart to localStorage whenever cart changes

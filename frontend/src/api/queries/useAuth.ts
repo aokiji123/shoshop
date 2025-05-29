@@ -7,6 +7,7 @@ import type {
   RegisterResponse,
   User,
 } from '../types/auth'
+import { clearCartFromStorage } from '@/lib/cart'
 
 export function saveAuthToken(token: string) {
   if (typeof window !== 'undefined') {
@@ -150,6 +151,9 @@ export function useLogout() {
     onSuccess: () => {
       queryClient.setQueryData(['currentUser'], null)
       queryClient.invalidateQueries({ queryKey: ['currentUser'] })
+
+      // Clear cart on logout with immediate UI update
+      clearCartFromStorage()
     },
   })
 }
