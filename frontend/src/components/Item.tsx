@@ -1,6 +1,11 @@
-import { MdFavoriteBorder } from 'react-icons/md'
+import {
+  MdFavoriteBorder,
+  MdOutlineDelete,
+  MdOutlineEdit,
+} from 'react-icons/md'
 import type { Product } from '@/api/types/product'
 import { convertTextToColor } from '@/lib/utils'
+import { useCurrentUser } from '@/api/queries/useAuth'
 
 type ItemProps = {
   shortened?: boolean
@@ -8,12 +13,24 @@ type ItemProps = {
 }
 
 export const Item = ({ shortened, product }: ItemProps) => {
+  const { data: user } = useCurrentUser()
+
   return (
     <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative">
-      <div className="absolute top-2 right-2">
-        <div className="bg-white rounded-full p-1 cursor-pointer">
+      <div className="absolute top-2 right-2 flex items-center gap-2">
+        <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
           <MdFavoriteBorder size={24} />
         </div>
+        {user?.isAdmin && (
+          <>
+            <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
+              <MdOutlineEdit size={24} />
+            </div>
+            <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
+              <MdOutlineDelete size={24} />
+            </div>
+          </>
+        )}
       </div>
       <img
         src={`http://localhost:5077/${product?.image}`}
