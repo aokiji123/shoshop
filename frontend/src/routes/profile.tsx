@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { MdClose, MdEdit } from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
 import Footer from '@/components/Footer'
-import { Input } from '@/components/ui/input'
-import { getAuthToken, useCurrentUser, useLogout } from '@/api/queries/useAuth'
+import { useCurrentUser, useLogout } from '@/api/queries/useAuth'
 import { useDeleteUser, useUpdateUser } from '@/api/queries/useUser'
 import { requireAuth } from '@/lib/auth'
 

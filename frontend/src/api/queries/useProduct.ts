@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axiosInstance from '../axios'
 import { getAuthToken } from './useAuth'
-import type { Product, ProductsResponse } from '../types/product'
+import type { Product } from '../types/product'
 
 async function getAllProducts(): Promise<Array<Product>> {
   try {
@@ -114,6 +114,106 @@ async function getPopularProducts(limit = 10): Promise<Array<Product>> {
   }
 }
 
+// Product creation/update/delete functions
+async function createProduct(productData: FormData): Promise<Product> {
+  try {
+    const token = getAuthToken()
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+
+    const { data } = await axiosInstance.post('/product', productData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+
+    return {
+      id: data.Id || data.id,
+      uaName: data.UaName || data.uaName,
+      enName: data.EnName || data.enName,
+      description: data.Description || data.description,
+      price: data.Price || data.price,
+      category: data.Category || data.category,
+      count: data.Count || data.count,
+      likes: data.Likes || data.likes,
+      image: data.Image || data.image,
+      size: data.Size || data.size,
+      color: data.Color || data.color,
+    }
+  } catch (error: any) {
+    console.error('Error creating product:', error)
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        'Failed to create product',
+    )
+  }
+}
+
+async function updateProduct(
+  id: string,
+  productData: FormData,
+): Promise<Product> {
+  try {
+    const token = getAuthToken()
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+
+    const { data } = await axiosInstance.put(`/product/${id}`, productData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+
+    return {
+      id: data.Id || data.id,
+      uaName: data.UaName || data.uaName,
+      enName: data.EnName || data.enName,
+      description: data.Description || data.description,
+      price: data.Price || data.price,
+      category: data.Category || data.category,
+      count: data.Count || data.count,
+      likes: data.Likes || data.likes,
+      image: data.Image || data.image,
+      size: data.Size || data.size,
+      color: data.Color || data.color,
+    }
+  } catch (error: any) {
+    console.error('Error updating product:', error)
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        'Failed to update product',
+    )
+  }
+}
+
+async function deleteProduct(id: string): Promise<void> {
+  try {
+    const token = getAuthToken()
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+
+    await axiosInstance.delete(`/product/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  } catch (error: any) {
+    console.error('Error deleting product:', error)
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        'Failed to delete product',
+    )
+  }
+}
+
 // React Query hooks
 export function useProducts() {
   return useQuery({
@@ -145,5 +245,44 @@ export function usePopularProducts(limit = 10) {
     retry: 3,
     enabled: typeof window !== 'undefined' && !!getAuthToken(),
     refetchOnWindowFocus: false,
+  })
+}
+
+// Mutation hooks
+export function useCreateProduct() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: createProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
+    },
+  })
+}
+
+export function useUpdateProduct() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: ({ id, data }: { id: string; data: FormData }) =>
+      updateProduct(id, data),
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['product', id] })
+      queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
+    },
+  })
+}
+
+export function useDeleteProduct() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
+    },
   })
 }

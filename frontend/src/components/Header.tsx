@@ -7,12 +7,14 @@ import {
   MdShoppingCart,
 } from 'react-icons/md'
 import { useCurrentUser } from '@/api/queries/useAuth'
+import { useCart } from '@/contexts/CartContext'
 
 export default function Header() {
   const [isCartHovered, setIsCartHovered] = useState(false)
   const [isFavoritesHovered, setIsFavoritesHovered] = useState(false)
 
   const { data: user, isLoading } = useCurrentUser()
+  const { cart } = useCart()
 
   return (
     <header className="h-[55px] flex px-4 gap-2 bg-white/80 text-black items-center justify-between border-b-1 border-b-black">
@@ -30,17 +32,22 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex flex-row items-center justify-between">
-          <div className="px-2 font-bold">
+          <div className="px-2 font-bold relative">
             <Link to="/cart">
               <div
                 onMouseEnter={() => setIsCartHovered(true)}
                 onMouseLeave={() => setIsCartHovered(false)}
-                className="transition-all duration-200 hover:scale-110"
+                className="transition-all duration-200 hover:scale-110 relative"
               >
                 {isCartHovered ? (
                   <MdShoppingCart size={28} />
                 ) : (
                   <MdOutlineShoppingCart size={28} />
+                )}
+                {cart.itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {cart.itemCount > 99 ? '99+' : cart.itemCount}
+                  </span>
                 )}
               </div>
             </Link>

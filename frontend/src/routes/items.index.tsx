@@ -1,8 +1,11 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useState } from 'react'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
+import { ProductForm } from '@/components/ProductForm'
+import { Toast, useToast } from '@/components/Toast'
 import { requireAuth } from '@/lib/auth'
-import { useProducts } from '@/api/queries/useProduct'
+import { useCreateProduct, useProducts } from '@/api/queries/useProduct'
 import { useCurrentUser } from '@/api/queries/useAuth'
 
 export const Route = createFileRoute('/items/')({
@@ -16,6 +19,22 @@ function RouteComponent() {
   const navigate = useNavigate()
   const { data: products, isLoading, error } = useProducts()
   const { data: user } = useCurrentUser()
+  const createProductMutation = useCreateProduct()
+  const { toast, showToast, hideToast } = useToast()
+
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+
+  const handleCreateProduct = (data: FormData) => {
+    createProductMutation.mutate(data, {
+      onSuccess: () => {
+        setIsCreateModalOpen(false)
+        showToast('Product created successfully!', 'success')
+      },
+      onError: (error) => {
+        showToast(`Failed to create product: ${error.message}`, 'error')
+      },
+    })
+  }
 
   if (isLoading) {
     return (
@@ -42,7 +61,10 @@ function RouteComponent() {
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-2xl font-bold">Products</h2>
           {user?.isAdmin && (
-            <button className="bg-black text-white text-md px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
+            <button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="bg-black text-white text-md px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
+            >
               Create product
             </button>
           )}
@@ -83,12 +105,7 @@ function RouteComponent() {
         <div className="flex flex-row gap-4 flex-wrap">
           {products && products.length > 0 ? (
             products.map((product) => (
-              <div
-                key={product.id}
-                onClick={() =>
-                  navigate({ to: '/items/$id', params: { id: product.id } })
-                }
-              >
+              <div key={product.id}>
                 <Item product={product} />
               </div>
             ))
@@ -108,7 +125,23 @@ function RouteComponent() {
           </div>
         )}
       </div>
+
+      <ProductForm
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSubmit={handleCreateProduct}
+        isLoading={createProductMutation.isPending}
+        title="Create New Product"
+      />
+
       <Footer />
+
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
     </>
   )
 }
