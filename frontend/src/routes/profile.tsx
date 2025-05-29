@@ -27,6 +27,8 @@ function RouteComponent() {
     email: '',
     image: '',
   })
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [fileError, setFileError] = useState<string>('')
 
   useEffect(() => {
     if (user) {
@@ -52,6 +54,8 @@ function RouteComponent() {
       onSuccess: (data) => {
         if (data.success) {
           setIsEditModalOpen(false)
+          setSelectedFile(null)
+          setFileError('')
         }
       },
     })
@@ -70,6 +74,54 @@ function RouteComponent() {
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    setFileError('')
+
+    if (!file) {
+      setSelectedFile(null)
+      return
+    }
+
+    // Validate file type
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/webp',
+      'image/gif',
+    ]
+    if (!allowedTypes.includes(file.type)) {
+      setFileError(
+        'Please select a valid image file (JPG, JPEG, PNG, WebP, or GIF)',
+      )
+      setSelectedFile(null)
+      return
+    }
+
+    // Validate file size (optional - limit to 5MB)
+    const maxSize = 5 * 1024 * 1024 // 5MB
+    if (file.size > maxSize) {
+      setFileError('File size must be less than 5MB')
+      setSelectedFile(null)
+      return
+    }
+
+    setSelectedFile(file)
+
+    // Convert file to base64 data URL
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const result = event.target?.result as string
+      setFormData((prev) => ({ ...prev, image: result }))
+    }
+    reader.onerror = () => {
+      setFileError('Error reading file')
+      setSelectedFile(null)
+    }
+    reader.readAsDataURL(file)
   }
 
   if (isLoading || isFetching) {
@@ -174,17 +226,33 @@ function RouteComponent() {
                   htmlFor="image"
                   className="block text-sm font-medium mb-1"
                 >
-                  Profile Image URL
+                  Profile Image
                 </label>
                 <input
                   id="image"
                   name="image"
-                  type="url"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                  placeholder="https://example.com/image.jpg"
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                  onChange={handleFileChange}
                   className="px-3 py-2 border-1 border-black focus:outline-none w-full"
                 />
+                {fileError && (
+                  <p className="text-red-500 text-sm mt-1">{fileError}</p>
+                )}
+                {selectedFile && (
+                  <p className="text-green-600 text-sm mt-1">
+                    Selected: {selectedFile.name}
+                  </p>
+                )}
+                {formData.image && !selectedFile && (
+                  <div className="mt-2">
+                    <img
+                      src={formData.image}
+                      alt="Current profile"
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex gap-2 pt-4">
                 <button
