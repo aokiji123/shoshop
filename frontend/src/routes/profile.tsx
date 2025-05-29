@@ -88,6 +88,7 @@ function RouteComponent() {
   return (
     <div>
       <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8 items-center h-[90vh] justify-center">
+        {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
         <div className="relative flex items-center justify-center">
           <img
             src={user.image || 'https://placehold.co/200x200'}
@@ -98,9 +99,6 @@ function RouteComponent() {
         <div className="flex flex-col gap-2 text-center">
           <p className="text-2xl font-bold">{user.name}</p>
           <p className="text-lg">{user.email}</p>
-          {user.isAdmin && (
-            <p className="text-sm bg-blue-100 text-blue-800 px-2 py-1">Admin</p>
-          )}
         </div>
         <div className="w-[300px] flex flex-col gap-2">
           <button

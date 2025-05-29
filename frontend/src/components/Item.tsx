@@ -18,10 +18,12 @@ export const Item = ({ shortened, product }: ItemProps) => {
   return (
     <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative">
       <div className="absolute top-2 right-2 flex items-center gap-2">
-        <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
-          <MdFavoriteBorder size={24} />
-        </div>
-        {user?.isAdmin && (
+        {!shortened && (
+          <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
+            <MdFavoriteBorder size={24} />
+          </div>
+        )}
+        {user?.isAdmin && !shortened && (
           <>
             <div className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300">
               <MdOutlineEdit size={24} />
@@ -50,16 +52,12 @@ export const Item = ({ shortened, product }: ItemProps) => {
             ></div>
           </div>
         </div>
-        <p className="text-sm">Likes: {product?.likes}</p>
         {!shortened && (
           <>
-            <ul className="flex flex-row justify-between gap-2">
-              <li className="text-sm hover:underline cursor-pointer">S</li>
-              <li className="text-sm hover:underline cursor-pointer">M</li>
-              <li className="text-sm hover:underline cursor-pointer">L</li>
-              <li className="text-sm hover:underline cursor-pointer">XL</li>
-              <li className="text-sm hover:underline cursor-pointer">XXL</li>
-            </ul>
+            <div className="flex flex-row items-center justify-between gap-2">
+              <p className="text-sm">Size: {product?.size}</p>
+              <p className="text-sm">Likes: {product?.likes}</p>
+            </div>
             <button className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
               Add to Cart
             </button>

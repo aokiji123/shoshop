@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { requireAuth } from '@/lib/auth'
 import { useProducts } from '@/api/queries/useProduct'
+import { useCurrentUser } from '@/api/queries/useAuth'
 
 export const Route = createFileRoute('/items/')({
   beforeLoad: () => {
@@ -14,6 +15,7 @@ export const Route = createFileRoute('/items/')({
 function RouteComponent() {
   const navigate = useNavigate()
   const { data: products, isLoading, error } = useProducts()
+  const { data: user } = useCurrentUser()
 
   if (isLoading) {
     return (
@@ -37,7 +39,14 @@ function RouteComponent() {
   return (
     <>
       <div className="container mx-auto flex flex-col justify-center p-4 md:p-6 lg:p-8">
-        <h2 className="text-2xl font-bold mb-6">Products</h2>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-2xl font-bold">Products</h2>
+          {user?.isAdmin && (
+            <button className="bg-black text-white text-md px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
+              Create product
+            </button>
+          )}
+        </div>
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
           <input
             type="text"
