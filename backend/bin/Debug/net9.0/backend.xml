@@ -103,7 +103,7 @@
             </summary>
             <returns>Current user data</returns>
         </member>
-        <member name="M:backend.Controllers.UserController.UpdateCurrentUser(backend.Controllers.UserController.UpdateUserDto)">
+        <member name="M:backend.Controllers.UserController.UpdateCurrentUser(backend.Controllers.UserController.UpdateUserDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Update current user profile
             </summary>

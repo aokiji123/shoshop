@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using backend.Services;
 
 namespace backend.Controllers;
 
@@ -15,11 +16,13 @@ namespace backend.Controllers;
 public class UserController : ControllerBase
 {
     private readonly DataContext _context;
+    private readonly IImageService _imageService;
     private readonly ILogger<UserController> _logger;
 
-    public UserController(DataContext context, ILogger<UserController> logger)
+    public UserController(DataContext context, IImageService imageService, ILogger<UserController> logger)
     {
         _context = context;
+        _imageService = imageService;
         _logger = logger;
     }
 
@@ -37,7 +40,7 @@ public class UserController : ControllerBase
         [Required, MaxLength(255)]
         public string Name { get; set; }
 
-        [MaxLength(500)]
+        [MaxLength(3000)]
         public string? Image { get; set; }
         
         [Required, MaxLength(255), EmailAddress]
@@ -105,7 +108,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
-    public async Task<IActionResult> UpdateCurrentUser([FromBody] UpdateUserDto updateDto)
+    public async Task<IActionResult> UpdateCurrentUser([FromForm] UpdateUserDto updateDto, IFormFile? imageFile)
     {
         try
         {
@@ -160,9 +163,45 @@ public class UserController : ControllerBase
                 }
             }
 
+            string? oldImagePath = user.Image;
+            
+            if (imageFile != null)
+            {
+                try
+                {
+                    var newImagePath = await _imageService.SaveImageAsync(imageFile, "users");
+                    _logger.LogInformation("New image uploaded for user {UserId}: {ImagePath}", userId, newImagePath);
+                    
+                    if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
+                    {
+                        await _imageService.DeleteImageAsync(oldImagePath);
+                        _logger.LogInformation("Old image deleted for user {UserId}: {ImagePath}", userId, oldImagePath);
+                    }
+                    user.Image = newImagePath;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Image upload failed for user {UserId} update", userId);
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Image upload failed",
+                        errors = new[] { ex.Message }
+                    });
+                }
+            }
+            else if (!string.IsNullOrEmpty(updateDto.Image) && updateDto.Image != user.Image)
+            {
+                if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
+                {
+                    await _imageService.DeleteImageAsync(oldImagePath);
+                    _logger.LogInformation("Old image deleted for user {UserId}: {ImagePath}", userId, oldImagePath);
+                }
+                user.Image = updateDto.Image;
+            }
+
             user.Name = updateDto.Name;
             user.Email = updateDto.Email;
-            user.Image = updateDto.Image;
 
             _context.Users.Update(user);
             await _context.SaveChangesAsync();

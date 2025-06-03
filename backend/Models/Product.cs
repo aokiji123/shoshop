@@ -28,7 +28,7 @@ public class Product
     [Range(0, int.MaxValue)] 
     public int Likes { get; set; } = 0;
     
-    [MaxLength(500)]
+    [MaxLength(3000)]
     public string? Image { get; set; } // URL or local path
     
     // Size and Color db update
