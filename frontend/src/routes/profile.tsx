@@ -25,9 +25,9 @@ function RouteComponent() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    image: '',
   })
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [fileError, setFileError] = useState<string>('')
 
   useEffect(() => {
@@ -35,7 +35,6 @@ function RouteComponent() {
       setFormData({
         name: user.name || '',
         email: user.email || '',
-        image: user.image || '',
       })
     }
   }, [user])
@@ -50,11 +49,19 @@ function RouteComponent() {
 
   function handleEditSubmit(e: React.FormEvent) {
     e.preventDefault()
-    updateUser(formData, {
+    const userData: { name: string; email: string; imageFile?: File } = {
+      name: formData.name,
+      email: formData.email,
+    }
+    if (selectedFile) {
+      userData.imageFile = selectedFile
+    }
+    updateUser(userData, {
       onSuccess: (data) => {
         if (data.success) {
           setIsEditModalOpen(false)
           setSelectedFile(null)
+          setPreviewImage(null)
           setFileError('')
         }
       },
@@ -79,6 +86,7 @@ function RouteComponent() {
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     setFileError('')
+    setPreviewImage(null)
 
     if (!file) {
       setSelectedFile(null)
@@ -101,7 +109,7 @@ function RouteComponent() {
       return
     }
 
-    // Validate file size (optional - limit to 5MB)
+    // Validate file size (limit to 5MB)
     const maxSize = 5 * 1024 * 1024 // 5MB
     if (file.size > maxSize) {
       setFileError('File size must be less than 5MB')
@@ -111,11 +119,10 @@ function RouteComponent() {
 
     setSelectedFile(file)
 
-    // Convert file to base64 data URL
+    // Generate preview
     const reader = new FileReader()
     reader.onload = (event) => {
-      const result = event.target?.result as string
-      setFormData((prev) => ({ ...prev, image: result }))
+      setPreviewImage(event.target?.result as string)
     }
     reader.onerror = () => {
       setFileError('Error reading file')
@@ -142,7 +149,7 @@ function RouteComponent() {
         {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
         <div className="relative flex items-center justify-center">
           <img
-            src={user.image || 'https://placehold.co/200x200'}
+            src={`http://localhost:5077/${user.image}` || 'https://placehold.co/200x200'}
             className="rounded-full w-[200px] h-[200px]"
             alt="Profile"
           />
@@ -230,7 +237,6 @@ function RouteComponent() {
                 </label>
                 <input
                   id="image"
-                  name="image"
                   type="file"
                   accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
                   onChange={handleFileChange}
@@ -239,20 +245,19 @@ function RouteComponent() {
                 {fileError && (
                   <p className="text-red-500 text-sm mt-1">{fileError}</p>
                 )}
-                {selectedFile && (
-                  <p className="text-green-600 text-sm mt-1">
-                    Selected: {selectedFile.name}
-                  </p>
-                )}
-                {formData.image && !selectedFile && (
-                  <div className="mt-2">
-                    <img
-                      src={formData.image}
-                      alt="Current profile"
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                  </div>
-                )}
+                {previewImage ? (
+                  <img
+                    src={previewImage}
+                    alt="Preview"
+                    className="w-16 h-16 rounded-full object-cover mt-2"
+                  />
+                ) : user.image ? (
+                  <img
+                    src={`http://localhost:5077/${user?.image}` || 'https://placehold.co/40x40'}
+                    alt="Current profile"
+                    className="w-16 h-16 rounded-full object-cover mt-2"
+                  />
+                ) : null}
               </div>
               <div className="flex gap-2 pt-4">
                 <button
@@ -275,7 +280,6 @@ function RouteComponent() {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white p-6 w-full max-w-md">

@@ -55,7 +55,7 @@ export default function Header() {
           <div className="px-2 font-bold transition-all duration-200 hover:scale-110">
             <Link to="/profile">
               <img
-                src={user?.image || 'https://placehold.co/40x40'}
+                src={`http://localhost:5077/${user?.image}` || 'https://placehold.co/40x40'}
                 alt=""
                 className="w-8 h-8 rounded-full"
               />

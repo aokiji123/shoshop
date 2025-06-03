@@ -8,12 +8,14 @@ export type UpdateUserRequest = {
   name?: string
   email?: string
   image?: string
+  imageFile?: File
 }
 
 export type UpdateUserResponse = {
   success: boolean
   user?: User
   error?: string
+  errors?: string[]
   message?: string
 }
 
@@ -32,9 +34,35 @@ async function updateUser(
       throw new Error('No authentication token found')
     }
 
-    const { data } = await axiosInstance.put('/user', userData, {
+    const formData = new FormData()
+    
+    if (userData.name) {
+      formData.append('Name', userData.name)
+    }
+    
+    if (userData.email) {
+      formData.append('Email', userData.email)
+    }
+    
+    if (userData.image) {
+      formData.append('Image', userData.image)
+    }
+    
+    if (userData.imageFile) {
+      formData.append('imageFile', userData.imageFile)
+    }
+
+    console.log('Sending FormData with:', {
+      name: userData.name,
+      email: userData.email,
+      image: userData.image,
+      hasFile: !!userData.imageFile
+    })
+
+    const { data } = await axiosInstance.put('/user', formData, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
       },
     })
 
@@ -50,12 +78,23 @@ async function updateUser(
     }
   } catch (error: any) {
     console.error('Error updating user:', error)
+
+    if (error.response) {
+      console.error('Response status:', error.response.status)
+      console.error('Response data:', error.response.data)
+      console.error('Response headers:', error.response.headers)
+      
+      const responseData = error.response.data
+      return {
+        success: false,
+        error: responseData.message || 'Failed to update user',
+        errors: responseData.errors || [],
+      }
+    }
+
     return {
       success: false,
-      error:
-        error.response?.data?.message ||
-        error.message ||
-        'Failed to update user',
+      error: error.message || 'Failed to update user',
     }
   }
 }
