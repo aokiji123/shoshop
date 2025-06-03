@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 using backend.Data;
 using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,7 +22,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });;
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -75,6 +79,8 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Description = "API Documentation for Shoshop project"
     });
+    
+    options.UseInlineDefinitionsForEnums();
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {

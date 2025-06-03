@@ -32,7 +32,7 @@
             <param name="user">User object for which to generate the token</param>
             <returns>JWT token string</returns>
         </member>
-        <member name="M:backend.Controllers.ProductController.GetProducts">
+        <member name="M:backend.Controllers.ProductController.GetProducts(backend.QueryObjects.ProductFilter,backend.QueryObjects.SortParams,backend.QueryObjects.PageParams)">
             <summary>
             Retrieves a list of all products
             </summary>

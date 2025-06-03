@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using backend.Data;
 using backend.Models;
+using backend.QueryObjects;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -79,34 +80,44 @@ public class ProductController : ControllerBase
     /// <response code="401">If the user is not authenticated</response>
     [HttpGet]
     [Authorize]
-    [ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
+    [ProducesResponseType(typeof(PagedResult<ProductDto>), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
+    public async Task<ActionResult<PagedResult<ProductDto>>> GetProducts(
+        [FromQuery] ProductFilter productFilter, 
+        [FromQuery] SortParams sortParams,
+        [FromQuery] PageParams pageParams)
     {
         try
         {
             _logger.LogInformation("Request to get all products");
 
-            var products = await _context.Products
-                .Select(p => new ProductDto
-                {
-                    Id = p.Id,
-                    UaName = p.UaName,
-                    EnName = p.EnName,
-                    Description = p.Description,
-                    Price = p.Price,
-                    Category = p.Category,
-                    Count = p.Count,
-                    Likes = p.Likes,
-                    Image = p.Image,
-                    Size = p.Size,
-                    Color = p.Color
-                })
-                .ToListAsync();
+            var pagedProducts = await _context.Products
+                .Filter(productFilter)
+                .Sort(sortParams)
+                .ToPagedAsync(pageParams);
 
-            _logger.LogInformation("Successfully retrieved {Count} products", products.Count);
-            return Ok(products);
+            var productDtos = pagedProducts.Data.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                UaName = p.UaName,
+                EnName = p.EnName,
+                Description = p.Description,
+                Price = p.Price,
+                Category = p.Category,
+                Count = p.Count,
+                Likes = p.Likes,
+                Image = p.Image,
+                Size = p.Size,
+                Color = p.Color
+            }).ToArray();
+
+            var result = new PagedResult<ProductDto>(productDtos, pagedProducts.TotalCount);
+
+            _logger.LogInformation("Successfully retrieved {Count} products out of {TotalCount} total", 
+                productDtos.Length, pagedProducts.TotalCount);
+        
+            return Ok(result);
         }
         catch (Exception ex)
         {
@@ -164,66 +175,6 @@ public class ProductController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving product {ProductId}", id);
-            return StatusCode(500, "Internal server error");
-        }
-    }
-
-    /// <summary>
-    /// Retrieves a list of the most popular products based on likes
-    /// </summary>
-    /// <param name="limit">The maximum number of products to return (default: 10)</param>
-    /// <returns>A list of the most-liked products</returns>
-    /// <response code="200">Returns the list of popular products</response>
-    /// <response code="400">If the limit is less than 1</response>
-    /// <response code="401">If the user is not authenticated</response>
-    [HttpGet("popular")]
-    [Authorize]
-    [ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
-    [ProducesResponseType(typeof(object), 400)]
-    [ProducesResponseType(typeof(string), 401)]
-    [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> GetPopularProduct([FromQuery] int limit = 10)
-    {
-        try
-        {
-            if (limit < 1)
-            {
-                _logger.LogWarning("Invalid limit parameter: {Limit}", limit);
-                return BadRequest(new
-                {
-                    success = false,
-                    message = "Invalid limit parameter",
-                    errors = new[] { "Limit must be greater than 0" }
-                });
-            }
-
-            _logger.LogInformation("Request to get {Limit} popular products", limit);
-            
-            var products = await _context.Products
-                .OrderByDescending(p => p.Likes)
-                .Take(limit)
-                .Select(p => new ProductDto
-                {
-                    Id = p.Id,
-                    UaName = p.UaName,
-                    EnName = p.EnName,
-                    Description = p.Description,
-                    Price = p.Price,
-                    Category = p.Category,
-                    Count = p.Count,
-                    Likes = p.Likes,
-                    Image = p.Image,
-                    Size = p.Size,
-                    Color = p.Color
-                })
-                .ToListAsync();
-
-            _logger.LogInformation("Successfully retrieved {Count} popular products", products.Count);
-            return Ok(products);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error retrieving popular products");
             return StatusCode(500, "Internal server error");
         }
     }
