@@ -24,8 +24,8 @@ public static class ProductQueryExtensions
         if (filter.MaxPrice.HasValue)
             query = query.Where(p => p.Price <= filter.MaxPrice.Value);
         
-        if (!string.IsNullOrEmpty(filter.Category))
-            query = query.Where(p => p.Category.ToLower() == filter.Category.ToLower());
+        if (filter.Category.HasValue)
+            query = query.Where(p => p.Category == filter.Category.Value);
         
         if (filter.Count.HasValue)
             query = query.Where(p => p.Count >= filter.Count.Value);
@@ -33,11 +33,11 @@ public static class ProductQueryExtensions
         if (filter.Likes.HasValue)
             query = query.Where(p => p.Likes >= filter.Likes.Value);
         
-        if (!string.IsNullOrEmpty(filter.Size))
-            query = query.Where(p => p.Size.ToLower() == filter.Size.ToLower());
+        if (filter.Size.HasValue)
+            query = query.Where(p => p.Size == filter.Size.Value);
         
-        if (!string.IsNullOrEmpty(filter.Color))
-            query = query.Where(p => p.Color.ToLower() == filter.Color.ToLower());
+        if (filter.Color.HasValue)
+            query = query.Where(p => p.Color == filter.Color.Value);
 
         return query;
     }

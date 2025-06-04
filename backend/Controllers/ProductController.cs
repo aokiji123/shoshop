@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using backend.Data;
 using backend.Models;
+using backend.Models.Enums;
 using backend.QueryObjects;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -30,13 +31,13 @@ public class ProductController : ControllerBase
         public string UaName { get; set; }
         public string EnName { get; set; }
         public string Description { get; set; }
-        public double Price { get; set; }
-        public string Category { get; set; }
+        public decimal Price { get; set; }
+        public ProductCategory Category { get; set; }
         public int Count { get; set; }
         public int Likes { get; set; }
         public string Image { get; set; }
-        public string Size { get; set; } 
-        public string Color { get; set; }
+        public ProductSize Size { get; set; } 
+        public ProductColor Color { get; set; }
     }
 
     public class CreateUpdateProductDto
@@ -51,10 +52,10 @@ public class ProductController : ControllerBase
         public string Description { get; set; }
 
         [Required, Range(0, double.MaxValue)]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
-        [Required, MaxLength(100)]
-        public string Category { get; set; }
+        [Required]
+        public ProductCategory Category { get; set; }
 
         [Required, Range(0, int.MaxValue)]
         public int Count { get; set; }
@@ -65,11 +66,11 @@ public class ProductController : ControllerBase
         [MaxLength(3000)]
         public string? Image { get; set; }
         
-        [Required, MaxLength(100)]
-        public string Size { get; set; }
+        [Required]
+        public ProductSize Size { get; set; }
     
-        [Required, MaxLength(100)]
-        public string Color { get; set; }
+        [Required]
+        public ProductColor Color { get; set; }
     }
 
     /// <summary>
@@ -179,6 +180,48 @@ public class ProductController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Get all available categories
+    /// </summary>
+    [HttpGet("categories")]
+    public IActionResult GetCategories()
+    {
+        var categories = Enum.GetValues<ProductCategory>()
+            .Select(c => new { 
+                Value = (int)c, 
+                Name = c.ToString()
+            });
+        return Ok(categories);
+    }
+
+    /// <summary>
+    /// Get all available sizes
+    /// </summary>
+    [HttpGet("sizes")]
+    public IActionResult GetSizes()
+    {
+        var sizes = Enum.GetValues<ProductSize>()
+            .Select(s => new { 
+                Value = (int)s, 
+                Name = s.ToString()
+            });
+        return Ok(sizes);
+    }
+
+    /// <summary>
+    /// Get all available colors
+    /// </summary>
+    [HttpGet("colors")]
+    public IActionResult GetColors()
+    {
+        var colors = Enum.GetValues<ProductColor>()
+            .Select(c => new { 
+                Value = (int)c, 
+                Name = c.ToString()
+            });
+        return Ok(colors);
+    }
+    
     /// <summary>
     /// Creates a new product (admin only)
     /// </summary>

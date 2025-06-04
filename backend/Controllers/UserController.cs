@@ -33,6 +33,7 @@ public class UserController : ControllerBase
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
         public string Image { get; set; }
+        public string? TgTag { get; set; }
     }
 
     public class UpdateUserDto
@@ -45,6 +46,9 @@ public class UserController : ControllerBase
         
         [Required, MaxLength(255), EmailAddress]
         public string Email { get; set; }
+        
+        [MaxLength(100)]
+        public string? TgTag { get; set; }
     }
 
     /// <summary>

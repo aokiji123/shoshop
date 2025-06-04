@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using backend.Models.Enums;
 
 namespace backend.Models;
 
@@ -17,10 +18,10 @@ public class Product
     public string Description { get; set; }
     
     [Required] 
-    public double Price { get; set; }
+    public decimal Price { get; set; }
     
-    [Required, MaxLength(100)] 
-    public string Category { get; set; }
+    [Required] 
+    public ProductCategory Category { get; set; }
     
     [Required, Range(0, int.MaxValue)] 
     public int Count { get; set; }
@@ -33,9 +34,13 @@ public class Product
     
     // Size and Color db update
     
-    [Required, MaxLength(100)]
-    public string Size { get; set; }
+    [Required]
+    public ProductSize Size { get; set; }
     
-    [Required, MaxLength(100)]
-    public string Color { get; set; }
+    [Required]
+    public ProductColor Color { get; set; }
+    
+    // TgTag and Orders db update
+    
+    public ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
 }

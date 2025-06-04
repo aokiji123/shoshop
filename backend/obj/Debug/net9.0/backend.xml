@@ -32,6 +32,11 @@
             <param name="user">User object for which to generate the token</param>
             <returns>JWT token string</returns>
         </member>
+        <member name="M:backend.Controllers.OrderController.GetDefaultOrderData">
+            <summary>
+            Get default order data for the current user (with pre-filled TgTag)
+            </summary>
+        </member>
         <member name="M:backend.Controllers.ProductController.GetProducts(backend.QueryObjects.ProductFilter,backend.QueryObjects.SortParams,backend.QueryObjects.PageParams)">
             <summary>
             Retrieves a list of all products
@@ -50,15 +55,20 @@
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the product is not found</response>
         </member>
-        <member name="M:backend.Controllers.ProductController.GetPopularProduct(System.Int32)">
+        <member name="M:backend.Controllers.ProductController.GetCategories">
             <summary>
-            Retrieves a list of the most popular products based on likes
+            Get all available categories
             </summary>
-            <param name="limit">The maximum number of products to return (default: 10)</param>
-            <returns>A list of the most-liked products</returns>
-            <response code="200">Returns the list of popular products</response>
-            <response code="400">If the limit is less than 1</response>
-            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:backend.Controllers.ProductController.GetSizes">
+            <summary>
+            Get all available sizes
+            </summary>
+        </member>
+        <member name="M:backend.Controllers.ProductController.GetColors">
+            <summary>
+            Get all available colors
+            </summary>
         </member>
         <member name="M:backend.Controllers.ProductController.CreateProduct(backend.Controllers.ProductController.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
@@ -156,6 +166,18 @@
             <inheritdoc />
         </member>
         <member name="M:backend.Migrations.MakeImageOptional.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.OrdersAndConvertToEnum">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.OrdersAndConvertToEnum.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.OrdersAndConvertToEnum.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.OrdersAndConvertToEnum.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

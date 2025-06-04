@@ -21,4 +21,11 @@ public class User
     
     [MaxLength(3000)]
     public string? Image { get; set; } // URL or local path
+    
+    // TgTag and Orders db update
+    
+    [MaxLength(100)]
+    public string? TgTag { get; set; }
+    
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
