@@ -32,11 +32,6 @@
             <param name="user">User object for which to generate the token</param>
             <returns>JWT token string</returns>
         </member>
-        <member name="M:backend.Controllers.OrderController.GetDefaultOrderData">
-            <summary>
-            Get default order data for the current user (with pre-filled TgTag)
-            </summary>
-        </member>
         <member name="M:backend.Controllers.ProductController.GetProducts(backend.QueryObjects.ProductFilter,backend.QueryObjects.SortParams,backend.QueryObjects.PageParams)">
             <summary>
             Retrieves a list of all products
@@ -178,6 +173,18 @@
             <inheritdoc />
         </member>
         <member name="M:backend.Migrations.OrdersAndConvertToEnum.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddAdminsChatsTable">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAdminsChatsTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAdminsChatsTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAdminsChatsTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

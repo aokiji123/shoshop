@@ -289,3 +289,6 @@ D:\source\Course-Projects\shoshop\backend\obj\Debug\net9.0\backend.genruntimecon
 D:\source\Course-Projects\shoshop\backend\obj\Debug\net9.0\ref\backend.dll
 D:\source\Course-Projects\shoshop\backend\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\source\Course-Projects\shoshop\backend\bin\Debug\net9.0\backend.staticwebassets.runtime.json
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\backend.staticwebassets.runtime.json
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Telegram.Bot.dll
+C:\Users\nikit\Desktop\Programming\courseSTEP\shoshop\backend\bin\Debug\net9.0\Newtonsoft.Json.dll

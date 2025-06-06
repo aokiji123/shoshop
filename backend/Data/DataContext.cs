@@ -12,6 +12,8 @@ public class DataContext : DbContext
     
     public DbSet<OrderProduct> OrderProducts { get; set; }
     
+    public DbSet<AdminsChats> AdminsChats { get; set; }
+    
     public DataContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

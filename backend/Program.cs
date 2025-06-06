@@ -70,6 +70,9 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IImageService, ImageService>();
 
+builder.Services.AddSingleton<TelegramBotService>();
+builder.Services.AddHostedService<TelegramBotHostedService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
