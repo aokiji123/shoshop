@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MdClose } from 'react-icons/md'
 import type { Product } from '@/api/types/product'
+import { useCategories, useColors, useSizes } from '@/api/queries/useProduct'
 
 type ProductFormData = {
   uaName: string
@@ -32,6 +33,11 @@ export function ProductForm({
   isLoading = false,
   title,
 }: ProductFormProps) {
+  // Fetch dynamic options
+  const { data: categories = [] } = useCategories()
+  const { data: sizes = [] } = useSizes()
+  const { data: colors = [] } = useColors()
+
   const [formData, setFormData] = useState<ProductFormData>({
     uaName: product?.uaName || '',
     enName: product?.enName || '',
@@ -188,13 +194,11 @@ export function ProductForm({
                 className="w-full p-2 border border-gray-300 outline-none focus:border-black"
               >
                 <option value="">Select category</option>
-                <option value="t-shirt">T-shirt</option>
-                <option value="shirt">Shirt</option>
-                <option value="pants">Pants</option>
-                <option value="shorts">Shorts</option>
-                <option value="dress">Dress</option>
-                <option value="jacket">Jacket</option>
-                <option value="coat">Coat</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -208,24 +212,30 @@ export function ProductForm({
                 className="w-full p-2 border border-gray-300 outline-none focus:border-black"
               >
                 <option value="">Select size</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
+                {sizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">Color *</label>
-              <input
-                type="text"
+              <select
                 name="color"
                 value={formData.color}
                 onChange={handleInputChange}
                 required
                 className="w-full p-2 border border-gray-300 outline-none focus:border-black"
-              />
+              >
+                <option value="">Select color</option>
+                {colors.map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 

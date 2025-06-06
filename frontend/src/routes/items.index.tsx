@@ -1,12 +1,19 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useState } from 'react'
+import { createFileRoute } from '@tanstack/react-router'
+import { useEffect, useMemo, useState } from 'react'
+import type { Category, Color, ProductFilters, Size } from '@/api/types/product'
+import {
+  useCategories,
+  useColors,
+  useCreateProduct,
+  useProducts,
+  useSizes,
+} from '@/api/queries/useProduct'
+import { useCurrentUser } from '@/api/queries/useAuth'
 import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { ProductForm } from '@/components/ProductForm'
 import { Toast, useToast } from '@/components/Toast'
 import { requireAuth } from '@/lib/auth'
-import { useCreateProduct, useProducts } from '@/api/queries/useProduct'
-import { useCurrentUser } from '@/api/queries/useAuth'
 
 export const Route = createFileRoute('/items/')({
   beforeLoad: () => {
@@ -16,13 +23,78 @@ export const Route = createFileRoute('/items/')({
 })
 
 function RouteComponent() {
-  const navigate = useNavigate()
-  const { data: products, isLoading, error } = useProducts()
   const { data: user } = useCurrentUser()
   const createProductMutation = useCreateProduct()
   const { toast, showToast, hideToast } = useToast()
 
+  const { data: categories = [] } = useCategories()
+  const { data: sizes = [] } = useSizes()
+  const { data: colors = [] } = useColors()
+
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>(
+    'all',
+  )
+  const [selectedSize, setSelectedSize] = useState<Size | 'all'>('all')
+  const [selectedColor, setSelectedColor] = useState<Color | 'all'>('all')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [sortBy, setSortBy] = useState<string>('enName')
+  const [sortDirection, setSortDirection] = useState<
+    'Ascending' | 'Descending'
+  >('Ascending')
+
+  const pageSize = 12
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [searchTerm])
+
+  const filters = useMemo<ProductFilters>(() => {
+    const filterObj: ProductFilters = {
+      page: currentPage,
+      pageSize,
+      orderBy: sortBy,
+      sortDirection,
+    }
+
+    if (debouncedSearchTerm.trim()) {
+      filterObj.enName = debouncedSearchTerm.trim()
+    }
+
+    if (selectedCategory !== 'all') {
+      filterObj.category = selectedCategory
+    }
+
+    if (selectedSize !== 'all') {
+      filterObj.size = selectedSize
+    }
+
+    if (selectedColor !== 'all') {
+      filterObj.color = selectedColor
+    }
+
+    return filterObj
+  }, [
+    debouncedSearchTerm,
+    selectedCategory,
+    selectedSize,
+    selectedColor,
+    currentPage,
+    sortBy,
+    sortDirection,
+  ])
+
+  const { data: productsResponse, isLoading, error } = useProducts(filters)
+
+  const products = productsResponse?.data || []
+  const totalCount = productsResponse?.totalCount || 0
+  const totalPages = Math.ceil(totalCount / pageSize)
 
   const handleCreateProduct = (data: FormData) => {
     createProductMutation.mutate(data, {
@@ -34,6 +106,60 @@ function RouteComponent() {
         showToast(`Failed to create product: ${error.message}`, 'error')
       },
     })
+  }
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value)
+    setCurrentPage(1)
+  }
+
+  const handleCategoryChange = (category: Category | 'all') => {
+    setSelectedCategory(category)
+    setCurrentPage(1)
+  }
+
+  const handleSizeChange = (size: Size | 'all') => {
+    setSelectedSize(size)
+    setCurrentPage(1)
+  }
+
+  const handleColorChange = (color: Color | 'all') => {
+    setSelectedColor(color)
+    setCurrentPage(1)
+  }
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
+
+  const getPaginationNumbers = () => {
+    const delta = 2
+    const range = []
+    const rangeWithDots = []
+
+    for (
+      let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++
+    ) {
+      range.push(i)
+    }
+
+    if (currentPage - delta > 2) {
+      rangeWithDots.push(1, '...')
+    } else {
+      rangeWithDots.push(1)
+    }
+
+    rangeWithDots.push(...range)
+
+    if (currentPage + delta < totalPages - 1) {
+      rangeWithDots.push('...', totalPages)
+    } else if (totalPages > 1) {
+      rangeWithDots.push(totalPages)
+    }
+
+    return rangeWithDots
   }
 
   if (isLoading) {
@@ -59,7 +185,7 @@ function RouteComponent() {
     <>
       <div className="container mx-auto flex flex-col justify-center p-4 md:p-6 lg:p-8">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-2xl font-bold">Products</h2>
+          <h2 className="text-2xl font-bold">Products ({totalCount})</h2>
           {user?.isAdmin && (
             <button
               onClick={() => setIsCreateModalOpen(true)}
@@ -69,41 +195,76 @@ function RouteComponent() {
             </button>
           )}
         </div>
+
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => handleSearchChange(e.target.value)}
             className="w-[70%] p-2 border-1 border-black outline-none"
           />
           <div className="flex flex-row gap-4">
-            <select name="" id="" className="p-2 border-1 border-black">
-              <option value="all">All</option>
-              <option value="men">Men</option>
-              <option value="women">Women</option>
-              <option value="kids">Kids</option>
+            <select
+              value={selectedCategory}
+              onChange={(e) =>
+                handleCategoryChange(e.target.value as Category | 'all')
+              }
+              className="p-2 border-1 border-black"
+            >
+              <option value="all">All Categories</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
             </select>
-            <select name="" id="" className="p-2 border-1 border-black">
-              <option value="all">Size</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
+            <select
+              value={selectedSize}
+              onChange={(e) => handleSizeChange(e.target.value as Size | 'all')}
+              className="p-2 border-1 border-black"
+            >
+              <option value="all">All Sizes</option>
+              {sizes.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
             </select>
-            <select name="" id="" className="p-2 border-1 border-black">
-              <option value="all">Category</option>
-              <option value="t-shirt">T-shirt</option>
-              <option value="shirt">Shirt</option>
-              <option value="pants">Pants</option>
-              <option value="shorts">Shorts</option>
-              <option value="dress">Dress</option>
-              <option value="jacket">Jacket</option>
-              <option value="coat">Coat</option>
+            <select
+              value={selectedColor}
+              onChange={(e) =>
+                handleColorChange(e.target.value as Color | 'all')
+              }
+              className="p-2 border-1 border-black"
+            >
+              <option value="all">All Colors</option>
+              {colors.map((color) => (
+                <option key={color} value={color}>
+                  {color}
+                </option>
+              ))}
+            </select>
+            <select
+              value={`${sortBy}-${sortDirection}`}
+              onChange={(e) => {
+                const [field, direction] = e.target.value.split('-')
+                setSortBy(field)
+                setSortDirection(direction as 'Ascending' | 'Descending')
+              }}
+              className="p-2 border-1 border-black"
+            >
+              <option value="enName-Ascending">Name A-Z</option>
+              <option value="enName-Descending">Name Z-A</option>
+              <option value="price-Ascending">Price Low-High</option>
+              <option value="price-Descending">Price High-Low</option>
+              <option value="likes-Descending">Most Popular</option>
             </select>
           </div>
         </div>
+
         <div className="flex flex-row gap-4 flex-wrap">
-          {products && products.length > 0 ? (
+          {products.length > 0 ? (
             products.map((product) => (
               <div key={product.id}>
                 <Item product={product} />
@@ -113,14 +274,47 @@ function RouteComponent() {
             <div className="text-center w-full">No products found</div>
           )}
         </div>
-        {products && products.length > 0 && (
+
+        {totalPages > 1 && (
           <div className="flex flex-row items-center justify-center mt-4">
             <ul className="flex flex-row gap-4">
-              <li className="text-lg hover:underline cursor-pointer">1</li>
-              <li className="text-lg hover:underline cursor-pointer">2</li>
-              <li className="text-lg hover:underline cursor-pointer">3</li>
-              <li className="text-lg hover:underline cursor-pointer">4</li>
-              <li className="text-lg hover:underline cursor-pointer">5</li>
+              {currentPage > 1 && (
+                <li
+                  className="text-lg hover:underline cursor-pointer px-2 py-1"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                >
+                  ← Previous
+                </li>
+              )}
+
+              {getPaginationNumbers().map((page, index) => (
+                <li
+                  key={index}
+                  className={`text-lg cursor-pointer px-2 py-1 ${
+                    page === currentPage
+                      ? 'font-bold bg-black text-white'
+                      : page === '...'
+                        ? 'cursor-default'
+                        : 'hover:underline'
+                  }`}
+                  onClick={() => {
+                    if (typeof page === 'number' && page !== currentPage) {
+                      handlePageChange(page)
+                    }
+                  }}
+                >
+                  {page}
+                </li>
+              ))}
+
+              {currentPage < totalPages && (
+                <li
+                  className="text-lg hover:underline cursor-pointer px-2 py-1"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                >
+                  Next →
+                </li>
+              )}
             </ul>
           </div>
         )}

@@ -100,7 +100,7 @@ function RouteComponent() {
                           <p className="flex items-center flex-row gap-2">
                             Color:{' '}
                             <div
-                              className={`w-3 h-3 ${convertTextToColor(item.product.color)}`}
+                              className={`w-3 h-3 ${convertTextToColor(item.product.color.toLowerCase())} border-1 border-black`}
                             ></div>
                           </p>
                         </div>

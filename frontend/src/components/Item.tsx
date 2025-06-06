@@ -146,7 +146,7 @@ export const Item = ({ shortened, product }: ItemProps) => {
               <div className="flex flex-row items-center justify-between gap-2">
                 <p className="text-sm">Color: </p>
                 <div
-                  className={`w-3 h-3 ${convertTextToColor(product?.color || 'black')}`}
+                  className={`w-3 h-3 ${convertTextToColor(product?.color.toLowerCase() || '')} border-1 border-black`}
                 ></div>
               </div>
             </div>

@@ -25,7 +25,8 @@ function RouteComponent() {
   const [selectedSize, setSelectedSize] = useState('M')
 
   const { data: product, isLoading, error } = useProduct(id)
-  const { data: popularProducts } = usePopularProducts(10)
+  const { data: popularProductsResponse } = usePopularProducts(10)
+  const popularProducts = popularProductsResponse?.data || []
 
   const handleAddToCart = () => {
     if (!product) return
@@ -121,7 +122,7 @@ function RouteComponent() {
               <p className="text-lg flex flex-row items-center gap-2">
                 Color:{' '}
                 <div
-                  className={`w-5 h-5 ${convertTextToColor(product.color)}`}
+                  className={`w-5 h-5 ${convertTextToColor(product.color.toLowerCase())} border-1 border-black`}
                 ></div>
               </p>
               <p className="text-lg">
@@ -154,7 +155,7 @@ function RouteComponent() {
         <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8">
           <h2 className="text-2xl font-bold">Popular Items</h2>
           <div className="flex flex-row w-full gap-4 overflow-x-auto">
-            {popularProducts && popularProducts.length > 0 ? (
+            {popularProducts.length > 0 ? (
               popularProducts.map((popularProduct) => (
                 <div
                   key={popularProduct.id}
