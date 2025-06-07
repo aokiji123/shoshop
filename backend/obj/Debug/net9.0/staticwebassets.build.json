@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "X+okcByvKHXYSfawyYda126MpZFNSnp3Jz72Nyj4FL8=",
+  "Hash": "BihcAZO5irOEcMrgVliVFNGhDcafS6yzeLE6BWFKz+w=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg",
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\baseball-cap.jpg",
       "SourceId": "backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
       "BasePath": "_content/backend",
-      "RelativePath": "uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe#[.{fingerprint}]?.jpg",
+      "RelativePath": "uploads/products/baseball-cap#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,19 +31,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "sgdtw4ki1m",
-      "Integrity": "bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A=",
+      "Fingerprint": "7fnjbikl0d",
+      "Integrity": "rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\products\\201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\baseball-cap.jpg"
     },
     {
-      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\pexels-pixabay-104827_1748449072_dbd8ef7d.jpg",
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\belt.jpg",
       "SourceId": "backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
       "BasePath": "_content/backend",
-      "RelativePath": "uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d#[.{fingerprint}]?.jpg",
+      "RelativePath": "uploads/products/belt#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,19 +52,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "l9lza2i6y0",
-      "Integrity": "aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q=",
+      "Fingerprint": "sx15g7mm59",
+      "Integrity": "8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\products\\pexels-pixabay-104827_1748449072_dbd8ef7d.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\belt.jpg"
     },
     {
-      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518770_c5845114.jpg",
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\bomber-jacket.jpg",
       "SourceId": "backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
       "BasePath": "_content/backend",
-      "RelativePath": "uploads/products/product_1748518770_c5845114#[.{fingerprint}]?.jpg",
+      "RelativePath": "uploads/products/bomber-jacket#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -73,11 +73,242 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "bjgxtmq6ly",
-      "Integrity": "CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=",
+      "Fingerprint": "4xle08pgau",
+      "Integrity": "iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\products\\product_1748518770_c5845114.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\bomber-jacket.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-hoodie.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/classic-hoodie#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dnnffyenth",
+      "Integrity": "hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\classic-hoodie.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-jeans.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/classic-jeans#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tgmbvozbtl",
+      "Integrity": "g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\classic-jeans.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\crop-hoodie.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/crop-hoodie#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ru8ao6kdwi",
+      "Integrity": "rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\crop-hoodie.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\denim-jacket.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/denim-jacket#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "72zvxzol2o",
+      "Integrity": "P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\denim-jacket.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\gloves.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/gloves#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0fmxr8g3kh",
+      "Integrity": "RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\gloves.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\graphic-tshirt.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/graphic-tshirt#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l6d3snfn22",
+      "Integrity": "g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\graphic-tshirt.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\highwaist-jeans.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/highwaist-jeans#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k2od0hgnh2",
+      "Integrity": "HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\highwaist-jeans.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519197_679bb65d.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/image_1748519197_679bb65d#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hzqwvkf507",
+      "Integrity": "YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\image_1748519197_679bb65d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519204_f22e674f.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/image_1748519204_f22e674f#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "escbod45e1",
+      "Integrity": "fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\image_1748519204_f22e674f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\knit-beanie.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/knit-beanie#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "49ufexl33v",
+      "Integrity": "GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\knit-beanie.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\oversized-hoodie.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/oversized-hoodie#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3rem1nw05h",
+      "Integrity": "0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\oversized-hoodie.jpg"
     },
     {
       "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518823_96d1a4b8.jpg",
@@ -94,11 +325,179 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "bjgxtmq6ly",
-      "Integrity": "CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=",
+      "Fingerprint": "khz9uck05q",
+      "Integrity": "GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\products\\product_1748518823_96d1a4b8.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\ripped-jeans.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/ripped-jeans#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1dz09qyt4g",
+      "Integrity": "BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\ripped-jeans.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\scarf.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/scarf#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b50rlop1gv",
+      "Integrity": "gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\scarf.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\snapback.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/snapback#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lhmuxo8lch",
+      "Integrity": "p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\snapback.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\windbreaker.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/windbreaker#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mn7nabzoyx",
+      "Integrity": "ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\windbreaker.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-hat.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/winter-hat#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rhart6wx73",
+      "Integrity": "IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\winter-hat.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-jacket.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/winter-jacket#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uhvqhhffrf",
+      "Integrity": "Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\winter-jacket.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\zip-hoodie.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/products/zip-hoodie#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3erqcpg7co",
+      "Integrity": "1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\zip-hoodie.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\users\\_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "t2zb8hzxm1",
+      "Integrity": "VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\users\\_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg"
     },
     {
       "Identity": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\users\\9703596_1748969978_b1102744.png",
@@ -145,8 +544,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg",
+      "Route": "uploads/products/baseball-cap.7fnjbikl0d.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\baseball-cap.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -155,7 +554,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "331053"
+          "Value": "114594"
         },
         {
           "Name": "Content-Type",
@@ -163,11 +562,56 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A=\""
+          "Value": "\"rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 19:17:22 GMT"
+          "Value": "Sat, 07 Jun 2025 17:29:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7fnjbikl0d"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/baseball-cap.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/baseball-cap.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\baseball-cap.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "114594"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:29:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -177,13 +621,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A="
+          "Value": "sha256-rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c="
         }
       ]
     },
     {
-      "Route": "uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.sgdtw4ki1m.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg",
+      "Route": "uploads/products/belt.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\belt.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -192,7 +636,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "331053"
+          "Value": "173322"
         },
         {
           "Name": "Content-Type",
@@ -200,56 +644,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A=\""
+          "Value": "\"8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 19:17:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "sgdtw4ki1m"
-        },
-        {
-          "Name": "label",
-          "Value": "uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\pexels-pixabay-104827_1748449072_dbd8ef7d.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "764047"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 19:17:22 GMT"
+          "Value": "Sat, 07 Jun 2025 17:29:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -259,13 +658,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q="
+          "Value": "sha256-8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok="
         }
       ]
     },
     {
-      "Route": "uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.l9lza2i6y0.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\pexels-pixabay-104827_1748449072_dbd8ef7d.jpg",
+      "Route": "uploads/products/belt.sx15g7mm59.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\belt.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -274,7 +673,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "764047"
+          "Value": "173322"
         },
         {
           "Name": "Content-Type",
@@ -282,11 +681,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q=\""
+          "Value": "\"8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 19:17:22 GMT"
+          "Value": "Sat, 07 Jun 2025 17:29:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -296,21 +695,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "l9lza2i6y0"
+          "Value": "sx15g7mm59"
         },
         {
           "Name": "label",
-          "Value": "uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg"
+          "Value": "uploads/products/belt.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q="
+          "Value": "sha256-8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok="
         }
       ]
     },
     {
-      "Route": "uploads/products/product_1748518770_c5845114.bjgxtmq6ly.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518770_c5845114.jpg",
+      "Route": "uploads/products/bomber-jacket.4xle08pgau.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\bomber-jacket.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -319,7 +718,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "235852"
+          "Value": "136723"
         },
         {
           "Name": "Content-Type",
@@ -327,11 +726,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""
+          "Value": "\"iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+          "Value": "Sat, 07 Jun 2025 17:30:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -341,21 +740,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bjgxtmq6ly"
+          "Value": "4xle08pgau"
         },
         {
           "Name": "label",
-          "Value": "uploads/products/product_1748518770_c5845114.jpg"
+          "Value": "uploads/products/bomber-jacket.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="
+          "Value": "sha256-iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k="
         }
       ]
     },
     {
-      "Route": "uploads/products/product_1748518770_c5845114.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518770_c5845114.jpg",
+      "Route": "uploads/products/bomber-jacket.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\bomber-jacket.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -364,7 +763,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "235852"
+          "Value": "136723"
         },
         {
           "Name": "Content-Type",
@@ -372,11 +771,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""
+          "Value": "\"iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+          "Value": "Sat, 07 Jun 2025 17:30:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -386,13 +785,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="
+          "Value": "sha256-iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k="
         }
       ]
     },
     {
-      "Route": "uploads/products/product_1748518823_96d1a4b8.bjgxtmq6ly.jpg",
-      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518823_96d1a4b8.jpg",
+      "Route": "uploads/products/classic-hoodie.dnnffyenth.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-hoodie.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -401,7 +800,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "235852"
+          "Value": "193628"
         },
         {
           "Name": "Content-Type",
@@ -409,11 +808,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""
+          "Value": "\"hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+          "Value": "Sat, 07 Jun 2025 17:32:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -423,15 +822,872 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bjgxtmq6ly"
+          "Value": "dnnffyenth"
         },
         {
           "Name": "label",
-          "Value": "uploads/products/product_1748518823_96d1a4b8.jpg"
+          "Value": "uploads/products/classic-hoodie.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="
+          "Value": "sha256-hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-hoodie.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "193628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-jeans.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-jeans.tgmbvozbtl.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\classic-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tgmbvozbtl"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/classic-jeans.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/crop-hoodie.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\crop-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "129501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:33:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/crop-hoodie.ru8ao6kdwi.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\crop-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "129501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:33:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ru8ao6kdwi"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/crop-hoodie.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/denim-jacket.72zvxzol2o.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\denim-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:34:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "72zvxzol2o"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/denim-jacket.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/denim-jacket.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\denim-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:34:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/gloves.0fmxr8g3kh.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\gloves.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "127961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0fmxr8g3kh"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/gloves.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/gloves.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\gloves.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "127961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/graphic-tshirt.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\graphic-tshirt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "199589"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/graphic-tshirt.l6d3snfn22.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\graphic-tshirt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "199589"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l6d3snfn22"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/graphic-tshirt.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/highwaist-jeans.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\highwaist-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:46:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/highwaist-jeans.k2od0hgnh2.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\highwaist-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:46:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k2od0hgnh2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/highwaist-jeans.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519197_679bb65d.hzqwvkf507.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519197_679bb65d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "237970"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hzqwvkf507"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/image_1748519197_679bb65d.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519197_679bb65d.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519197_679bb65d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "237970"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519204_f22e674f.escbod45e1.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519204_f22e674f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "197856"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "escbod45e1"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/image_1748519204_f22e674f.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519204_f22e674f.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\image_1748519204_f22e674f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "197856"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/knit-beanie.49ufexl33v.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\knit-beanie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139052"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:52:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "49ufexl33v"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/knit-beanie.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/knit-beanie.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\knit-beanie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139052"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:52:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/oversized-hoodie.3rem1nw05h.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\oversized-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3rem1nw05h"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/oversized-hoodie.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/oversized-hoodie.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\oversized-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw="
         }
       ]
     },
@@ -446,7 +1702,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "235852"
+          "Value": "128362"
         },
         {
           "Name": "Content-Type",
@@ -454,11 +1710,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""
+          "Value": "\"GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+          "Value": "Sat, 07 Jun 2025 17:53:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -468,7 +1724,708 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="
+          "Value": "sha256-GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/product_1748518823_96d1a4b8.khz9uck05q.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\product_1748518823_96d1a4b8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "128362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "khz9uck05q"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/product_1748518823_96d1a4b8.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/ripped-jeans.1dz09qyt4g.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\ripped-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "259007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1dz09qyt4g"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/ripped-jeans.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/ripped-jeans.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\ripped-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "259007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/scarf.b50rlop1gv.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\scarf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "220796"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b50rlop1gv"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/scarf.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/scarf.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\scarf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "220796"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/snapback.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\snapback.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130957"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/snapback.lhmuxo8lch.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\snapback.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130957"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lhmuxo8lch"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/snapback.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/windbreaker.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\windbreaker.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/windbreaker.mn7nabzoyx.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\windbreaker.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mn7nabzoyx"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/windbreaker.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-hat.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-hat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-hat.rhart6wx73.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-hat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rhart6wx73"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/winter-hat.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-jacket.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109680"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:56:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-jacket.uhvqhhffrf.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\winter-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109680"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:56:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhvqhhffrf"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/winter-jacket.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/zip-hoodie.3erqcpg7co.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\zip-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122006"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:28:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3erqcpg7co"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/zip-hoodie.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/zip-hoodie.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\products\\zip-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122006"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:28:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\users\\_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51291"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 16:31:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.t2zb8hzxm1.jpg",
+      "AssetFile": "C:\\Users\\nikit\\Desktop\\Programming\\courseSTEP\\shoshop\\backend\\wwwroot\\uploads\\users\\_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51291"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 16:31:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t2zb8hzxm1"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc="
         }
       ]
     },

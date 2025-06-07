@@ -135,7 +135,7 @@ export const Item = ({ shortened, product }: ItemProps) => {
           <img
             src={`http://localhost:5077/${product?.image}`}
             alt={product?.enName}
-            className="w-full h-[280px] object-cover"
+            className="w-full h-[280px] object-cover bg-gray-200 rounded-t-md"
           />
           <div className="p-3 flex flex-col gap-2">
             <h3 className="text-lg font-bold">{product?.enName}</h3>

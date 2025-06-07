@@ -1,1 +1,2056 @@
-{"Version":1,"ManifestType":"Build","Endpoints":[{"Route":"uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg","AssetFile":"uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"331053"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A=\""},{"Name":"Last-Modified","Value":"Wed, 28 May 2025 15:53:30 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A="}]},{"Route":"uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.sgdtw4ki1m.jpg","AssetFile":"uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"331053"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A=\""},{"Name":"Last-Modified","Value":"Wed, 28 May 2025 15:53:30 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"sgdtw4ki1m"},{"Name":"integrity","Value":"sha256-bFn6p/HdeGM+klCyi7ECBP2u1oSjIgy67vqPXcZE06A="},{"Name":"label","Value":"uploads/products/201030094143-stock-rhodesian-ridgeback_1748447610_f894cbfe.jpg"}]},{"Route":"uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg","AssetFile":"uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"764047"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q=\""},{"Name":"Last-Modified","Value":"Wed, 28 May 2025 16:17:52 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q="}]},{"Route":"uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.l9lza2i6y0.jpg","AssetFile":"uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"764047"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q=\""},{"Name":"Last-Modified","Value":"Wed, 28 May 2025 16:17:52 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"l9lza2i6y0"},{"Name":"integrity","Value":"sha256-aYhVExyDaQgQ7NsgieyFrFyffV8ydEbmek1iZxjUt9Q="},{"Name":"label","Value":"uploads/products/pexels-pixabay-104827_1748449072_dbd8ef7d.jpg"}]},{"Route":"uploads/products/product_1748518770_c5845114.bjgxtmq6ly.jpg","AssetFile":"uploads/products/product_1748518770_c5845114.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"235852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 11:39:30 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"bjgxtmq6ly"},{"Name":"integrity","Value":"sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="},{"Name":"label","Value":"uploads/products/product_1748518770_c5845114.jpg"}]},{"Route":"uploads/products/product_1748518770_c5845114.jpg","AssetFile":"uploads/products/product_1748518770_c5845114.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"235852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 11:39:30 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="}]},{"Route":"uploads/products/product_1748518823_96d1a4b8.bjgxtmq6ly.jpg","AssetFile":"uploads/products/product_1748518823_96d1a4b8.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"235852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 11:40:23 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"bjgxtmq6ly"},{"Name":"integrity","Value":"sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="},{"Name":"label","Value":"uploads/products/product_1748518823_96d1a4b8.jpg"}]},{"Route":"uploads/products/product_1748518823_96d1a4b8.jpg","AssetFile":"uploads/products/product_1748518823_96d1a4b8.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"235852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4=\""},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 11:40:23 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-CbnsFe49M8vnLwE8kBG3NGxjAKbpNexD/exy4jJnUY4="}]},{"Route":"uploads/users/9703596_1748969978_b1102744.dnmltf9kzx.png","AssetFile":"uploads/users/9703596_1748969978_b1102744.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"21013"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4=\""},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 16:59:38 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"dnmltf9kzx"},{"Name":"integrity","Value":"sha256-6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4="},{"Name":"label","Value":"uploads/users/9703596_1748969978_b1102744.png"}]},{"Route":"uploads/users/9703596_1748969978_b1102744.png","AssetFile":"uploads/users/9703596_1748969978_b1102744.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"21013"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4=\""},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 16:59:38 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4="}]},{"Route":"uploads/users/admin_1748969027_bc6edcc5.iqr9y3oscy.png","AssetFile":"uploads/users/admin_1748969027_bc6edcc5.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"60492"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg=\""},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 16:43:47 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"iqr9y3oscy"},{"Name":"integrity","Value":"sha256-qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg="},{"Name":"label","Value":"uploads/users/admin_1748969027_bc6edcc5.png"}]},{"Route":"uploads/users/admin_1748969027_bc6edcc5.png","AssetFile":"uploads/users/admin_1748969027_bc6edcc5.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"60492"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg=\""},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 16:43:47 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg="}]}]}
+{
+  "Version": 1,
+  "ManifestType": "Build",
+  "Endpoints": [
+    {
+      "Route": "uploads/products/baseball-cap.7fnjbikl0d.jpg",
+      "AssetFile": "uploads/products/baseball-cap.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "114594"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:29:42 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7fnjbikl0d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/baseball-cap.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/baseball-cap.jpg",
+      "AssetFile": "uploads/products/baseball-cap.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "114594"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:29:42 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rQ+M1YqmPIbXnw2C6IQmnJq4qlQNpEBjldXmcVB9n4c="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/belt.jpg",
+      "AssetFile": "uploads/products/belt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "173322"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:29:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/belt.sx15g7mm59.jpg",
+      "AssetFile": "uploads/products/belt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "173322"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:29:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sx15g7mm59"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Po51jPI5JSsnpsieHQYA2dltpHGxzZkVSmBnh4/Gok="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/belt.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/bomber-jacket.4xle08pgau.jpg",
+      "AssetFile": "uploads/products/bomber-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:30:28 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4xle08pgau"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/bomber-jacket.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/bomber-jacket.jpg",
+      "AssetFile": "uploads/products/bomber-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:30:28 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iOnhfFNSK2742G9QQ8ZM/jTMyj/VddOHlCl4Fj6ZA7k="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-hoodie.dnnffyenth.jpg",
+      "AssetFile": "uploads/products/classic-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "193628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dnnffyenth"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/classic-hoodie.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-hoodie.jpg",
+      "AssetFile": "uploads/products/classic-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "193628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hwOPKKCdLU+Kcr+1x8LBqSYp5m+eMSjhBsocVb3djII="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-jeans.jpg",
+      "AssetFile": "uploads/products/classic-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/classic-jeans.tgmbvozbtl.jpg",
+      "AssetFile": "uploads/products/classic-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:32:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tgmbvozbtl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g+rg0jCAhoSBK8sKL1qPdw5yg16YSLc1rTecD88XFtU="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/classic-jeans.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/crop-hoodie.jpg",
+      "AssetFile": "uploads/products/crop-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "129501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:33:12 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/crop-hoodie.ru8ao6kdwi.jpg",
+      "AssetFile": "uploads/products/crop-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "129501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:33:12 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ru8ao6kdwi"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rUTzG9QeJ6eSQfgj4wyQ9S35PAW352vuz77G9jsY8Lg="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/crop-hoodie.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/denim-jacket.72zvxzol2o.jpg",
+      "AssetFile": "uploads/products/denim-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:34:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "72zvxzol2o"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/denim-jacket.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/denim-jacket.jpg",
+      "AssetFile": "uploads/products/denim-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:34:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-P7Bf0QFizOty17XPgGw1KRkkBMIJyvJCj8qGYBGZg8Q="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/gloves.0fmxr8g3kh.jpg",
+      "AssetFile": "uploads/products/gloves.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "127961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0fmxr8g3kh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/gloves.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/gloves.jpg",
+      "AssetFile": "uploads/products/gloves.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "127961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDVLc13F7jbmIixYdo7tsQO76KQzfTyg18/xkgYiz8g="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/graphic-tshirt.jpg",
+      "AssetFile": "uploads/products/graphic-tshirt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "199589"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:44 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/graphic-tshirt.l6d3snfn22.jpg",
+      "AssetFile": "uploads/products/graphic-tshirt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "199589"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:35:44 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l6d3snfn22"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g5JHW/XHCaynwbd7Hnsi8ScCfVF+lDD6Fpg/orJ7uAA="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/graphic-tshirt.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/highwaist-jeans.jpg",
+      "AssetFile": "uploads/products/highwaist-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:46:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/highwaist-jeans.k2od0hgnh2.jpg",
+      "AssetFile": "uploads/products/highwaist-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:46:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k2od0hgnh2"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HF+gq47vH2YGQEz9LSKVIZv+tl/xoWYF4B042SR/Kt4="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/highwaist-jeans.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519197_679bb65d.hzqwvkf507.jpg",
+      "AssetFile": "uploads/products/image_1748519197_679bb65d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "237970"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hzqwvkf507"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/image_1748519197_679bb65d.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519197_679bb65d.jpg",
+      "AssetFile": "uploads/products/image_1748519197_679bb65d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "237970"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YzBk8+OBMwuuK0JyqQa/STrpnmWptYMxmS/j8WTgD9Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519204_f22e674f.escbod45e1.jpg",
+      "AssetFile": "uploads/products/image_1748519204_f22e674f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "197856"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "escbod45e1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/image_1748519204_f22e674f.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/image_1748519204_f22e674f.jpg",
+      "AssetFile": "uploads/products/image_1748519204_f22e674f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "197856"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:47:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fgHv4SDrgiM+ofgxviMVnLYlYvwXRdvuS14/bQnckQs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/knit-beanie.49ufexl33v.jpg",
+      "AssetFile": "uploads/products/knit-beanie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139052"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:52:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "49ufexl33v"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/knit-beanie.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/knit-beanie.jpg",
+      "AssetFile": "uploads/products/knit-beanie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139052"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:52:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GLeYbomPmCyxPzF300Fym98w7/yCbJNRizlcahE1QOo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/oversized-hoodie.3rem1nw05h.jpg",
+      "AssetFile": "uploads/products/oversized-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3rem1nw05h"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/oversized-hoodie.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/oversized-hoodie.jpg",
+      "AssetFile": "uploads/products/oversized-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "115185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0a4mDW/UruncqPdeFwX0xo6/OusUsXBUVyvFDsHLdIw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/product_1748518823_96d1a4b8.jpg",
+      "AssetFile": "uploads/products/product_1748518823_96d1a4b8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "128362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/product_1748518823_96d1a4b8.khz9uck05q.jpg",
+      "AssetFile": "uploads/products/product_1748518823_96d1a4b8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "128362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:53:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "khz9uck05q"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GBZOKjPwzW7lw1KEecd8LMNFFOzFba6BrZH9+DKGutU="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/product_1748518823_96d1a4b8.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/ripped-jeans.1dz09qyt4g.jpg",
+      "AssetFile": "uploads/products/ripped-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "259007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1dz09qyt4g"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/ripped-jeans.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/ripped-jeans.jpg",
+      "AssetFile": "uploads/products/ripped-jeans.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "259007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BWT9Vq68rSEeqgEpT7ZNro7XEbim4x8p9h5XzG5HVMw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/scarf.b50rlop1gv.jpg",
+      "AssetFile": "uploads/products/scarf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "220796"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b50rlop1gv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/scarf.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/scarf.jpg",
+      "AssetFile": "uploads/products/scarf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "220796"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:54:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWGgsCmnMQCV21BvFhyHJ0GntNX1I//VhOHQcl+mqsk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/snapback.jpg",
+      "AssetFile": "uploads/products/snapback.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130957"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:00 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/snapback.lhmuxo8lch.jpg",
+      "AssetFile": "uploads/products/snapback.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130957"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:00 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lhmuxo8lch"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p1FJ1w4um7Sc4UIGy93fpiQisNwKvqJ0Wi1iP78RDOc="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/snapback.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/windbreaker.jpg",
+      "AssetFile": "uploads/products/windbreaker.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/windbreaker.mn7nabzoyx.jpg",
+      "AssetFile": "uploads/products/windbreaker.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mn7nabzoyx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ggyBHD9dBegsRUax9khRY34UxiWoSQJ2XA/eJtlHX1k="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/windbreaker.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-hat.jpg",
+      "AssetFile": "uploads/products/winter-hat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-hat.rhart6wx73.jpg",
+      "AssetFile": "uploads/products/winter-hat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:55:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rhart6wx73"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IT1K49Xjkaib5roiqD9hjMd9KThIdCnmFyZ7edkWhdA="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/winter-hat.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-jacket.jpg",
+      "AssetFile": "uploads/products/winter-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109680"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:56:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/winter-jacket.uhvqhhffrf.jpg",
+      "AssetFile": "uploads/products/winter-jacket.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109680"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:56:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhvqhhffrf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dpn1FMXxy2uuzit2muScJAwM5WOyJHW95ABAUKtx3HQ="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/winter-jacket.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/zip-hoodie.3erqcpg7co.jpg",
+      "AssetFile": "uploads/products/zip-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122006"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:28:12 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3erqcpg7co"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/zip-hoodie.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/zip-hoodie.jpg",
+      "AssetFile": "uploads/products/zip-hoodie.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122006"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 17:28:12 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1aLOHxGNEeLCcmCp4RMCFYoezphxZDEA5EAq3LFM3CE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/9703596_1748969978_b1102744.dnmltf9kzx.png",
+      "AssetFile": "uploads/users/9703596_1748969978_b1102744.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21013"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dnmltf9kzx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/users/9703596_1748969978_b1102744.png"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/9703596_1748969978_b1102744.png",
+      "AssetFile": "uploads/users/9703596_1748969978_b1102744.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21013"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6c6hSutI+GsSQsUTGsLtjJVd7oXgF0XtiD4SiV6PqN4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "AssetFile": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51291"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 16:31:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.t2zb8hzxm1.jpg",
+      "AssetFile": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51291"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 16:31:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t2zb8hzxm1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VeL5corV/SZj9ul9H5/Ve5b7iKlSmF3pXHeElnZfcNc="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/users/_8de5537c-0b0a-45bd-985f-5f1b3fa969af_1749313886_381a3d96.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/admin_1748969027_bc6edcc5.iqr9y3oscy.png",
+      "AssetFile": "uploads/users/admin_1748969027_bc6edcc5.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iqr9y3oscy"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/users/admin_1748969027_bc6edcc5.png"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/users/admin_1748969027_bc6edcc5.png",
+      "AssetFile": "uploads/users/admin_1748969027_bc6edcc5.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Jun 2025 22:46:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qsLqwpplltocvM5Uc6Bbo5aHpCVK0Chy8VXt8ZVNmRg="
+        }
+      ]
+    }
+  ]
+}
