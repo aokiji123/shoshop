@@ -5,62 +5,29 @@ using backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using AutoMapper;
+using backend.DTOs.Orders;
 using backend.Services;
 
 namespace backend.Controllers;
 
 [ApiController]
 [Route("api/order")]
-public class OrderController : ControllerBase
+public class OrderController : BaseController
 {
     private readonly DataContext _context;
     private readonly ILogger<OrderController> _logger;
     private readonly TelegramBotService _telegramBotService;
+    private readonly IMapper _mapper;
 
-    public OrderController(DataContext context, ILogger<OrderController> logger, TelegramBotService telegramBotService)
+    public OrderController(DataContext context, ILogger<OrderController> logger, TelegramBotService telegramBotService, IMapper mapper)
     {
         _context = context;
         _logger = logger;
         _telegramBotService = telegramBotService;
-    }
-    
-    public class DefaultOrderDto
-    {
-        public string TgTag { get; set; } = string.Empty;
-        public Guid UserId { get; set; }
+        _mapper = mapper;
     }
 
-    public class CreateOrderDto
-    {
-        public string? TgTag { get; set; }
-        public decimal Price { get; set; }
-        public List<OrderProductDto> Products { get; set; } = new();
-    }
-
-    public class OrderProductDto
-    {
-        public Guid ProductId { get; set; }
-        public int Quantity { get; set; }
-    }
-    
-    public class OrderProductResponseDto
-    {
-        public Guid ProductId { get; set; }
-        public string ProductName { get; set; } = string.Empty;
-        public int Quantity { get; set; }
-        public decimal PriceAtTime { get; set; }
-    }
-    
-    public class OrderResponseDto
-    {
-        public Guid Id { get; set; }
-        public string TgTag { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public Guid UserId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public List<OrderProductResponseDto> OrderProducts { get; set; } = new();
-    }
-    
     [HttpGet]
     public async Task<ActionResult<IEnumerable<OrderResponseDto>>> GetOrders()
     {
@@ -69,22 +36,7 @@ public class OrderController : ControllerBase
             .ThenInclude(op => op.Product)
             .ToListAsync();
 
-        var orderDtos = orders.Select(o => new OrderResponseDto
-        {
-            Id = o.Id,
-            TgTag = o.TgTag,
-            Price = o.Price,
-            UserId = o.UserId,
-            CreatedAt = o.CreatedAt,
-            OrderProducts = o.OrderProducts.Select(op => new OrderProductResponseDto
-            {
-                ProductId = op.ProductId,
-                ProductName = op.Product.EnName,
-                Quantity = op.Quantity,
-                PriceAtTime = op.PriceAtTime
-            }).ToList()
-        }).ToList();
-
+        var orderDtos = _mapper.Map<List<OrderResponseDto>>(orders);
         return Ok(orderDtos);
     }
 
@@ -98,21 +50,7 @@ public class OrderController : ControllerBase
 
         if (order == null) return NotFound();
 
-        var orderDto = new OrderResponseDto
-        {
-            Id = order.Id,
-            TgTag = order.TgTag,
-            Price = order.Price,
-            UserId = order.UserId,
-            CreatedAt = order.CreatedAt,
-            OrderProducts = order.OrderProducts.Select(op => new OrderProductResponseDto
-            {
-                ProductId = op.ProductId,
-                ProductName = op.Product.EnName,
-                Quantity = op.Quantity,
-                PriceAtTime = op.PriceAtTime
-            }).ToList()
-        };
+        var orderDto = _mapper.Map<OrderResponseDto>(order);
 
         return Ok(orderDto);
     }
@@ -127,21 +65,7 @@ public class OrderController : ControllerBase
             .OrderByDescending(o => o.CreatedAt)
             .ToListAsync();
 
-        var orderDtos = orders.Select(o => new OrderResponseDto
-        {
-            Id = o.Id,
-            TgTag = o.TgTag,
-            Price = o.Price,
-            UserId = o.UserId,
-            CreatedAt = o.CreatedAt,
-            OrderProducts = o.OrderProducts.Select(op => new OrderProductResponseDto
-            {
-                ProductId = op.ProductId,
-                ProductName = op.Product.EnName,
-                Quantity = op.Quantity,
-                PriceAtTime = op.PriceAtTime
-            }).ToList()
-        }).ToList();
+        var orderDtos = _mapper.Map<List<OrderResponseDto>>(orders);
 
         return Ok(orderDtos);
     }
@@ -150,75 +74,66 @@ public class OrderController : ControllerBase
     [Authorize]
     public async Task<ActionResult<OrderResponseDto>> CreateOrder(CreateOrderDto newOrderDto)
     {
-        var userId = GetCurrentUserId();
-        if (userId == null) return Unauthorized("Invalid user ID in token");
-
-        var user = await _context.Users.FindAsync(userId);
-        if (user == null) return BadRequest("User not found");
-
-        var tgTagToUse = !string.IsNullOrWhiteSpace(newOrderDto.TgTag)
-            ? newOrderDto.TgTag
-            : user.TgTag ?? "";
-
-        if (string.IsNullOrWhiteSpace(tgTagToUse)) return BadRequest("TgTag is required for order. Please provide it or set it in your profile");
-
-        var order = new Order
+        using var transaction = await _context.Database.BeginTransactionAsync();
+        try
         {
-            TgTag = tgTagToUse,
-            Price = newOrderDto.Price,
-            UserId = userId.Value,
-            CreatedAt = DateTime.UtcNow
-        };
-
-        _context.Orders.Add(order);
-        await _context.SaveChangesAsync();
-
-        foreach (var productOrder in newOrderDto.Products)
-        {
-            var product = await _context.Products.FindAsync(productOrder.ProductId);
-            if (product != null)
+            var userId = GetCurrentUserId();
+            if (userId == null) return Unauthorized("Invalid user ID in token");
+            
+            var productIds = newOrderDto.Products.Select(p => p.ProductId).ToList();
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.Id))
+                .ToDictionaryAsync(p => p.Id, p => p);
+            
+            if (products.Count != productIds.Count)
             {
-                var orderProduct = new OrderProduct
-                {
-                    OrderId = order.Id,
-                    ProductId = productOrder.ProductId,
-                    Quantity = productOrder.Quantity,
-                    PriceAtTime = product.Price
-                };
-                _context.OrderProducts.Add(orderProduct);
+                return BadRequest("Some products not found");
             }
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return BadRequest("User not found");
+            
+            var order = _mapper.Map<Order>(newOrderDto);
+            order.UserId = userId.Value;
+            order.TgTag = !string.IsNullOrWhiteSpace(newOrderDto.TgTag) 
+                ? newOrderDto.TgTag 
+                : user.TgTag ?? "";
+
+            if (string.IsNullOrWhiteSpace(order.TgTag)) 
+                return BadRequest("TgTag is required for order. Please provide it or set it in your profile");
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            
+            var orderProducts = newOrderDto.Products.Select(po => {
+                var orderProduct = _mapper.Map<OrderProduct>(po);
+                orderProduct.OrderId = order.Id;
+                orderProduct.PriceAtTime = products[po.ProductId].Price;
+                return orderProduct;
+            }).ToList();
+
+            _context.OrderProducts.AddRange(orderProducts);
+            await _context.SaveChangesAsync();
+
+            await transaction.CommitAsync();
+            
+            order = await _context.Orders
+                .Include(o => o.OrderProducts)
+                .ThenInclude(op => op.Product)
+                .FirstAsync(o => o.Id == order.Id);
+
+            await _telegramBotService.NotifyAdminsOfNewOrderAsync(order);
+
+            _logger.LogInformation("Order {OrderId} created for user {UserId} with TgTag {TgTag}", 
+                order.Id, userId, order.TgTag);
+            
+            var orderDto = _mapper.Map<OrderResponseDto>(order);
+            return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDto);
         }
-
-        await _context.SaveChangesAsync();
-        await _telegramBotService.NotifyAdminsOfNewOrderAsync(order);
-
-        _logger.LogInformation("Order {OrderId} created for user {UserId} with TgTag {TgTag}", order.Id, userId, tgTagToUse);
-
-        var orderDto = new OrderResponseDto
+        catch (Exception ex)
         {
-            Id = order.Id,
-            TgTag = order.TgTag,
-            Price = order.Price,
-            UserId = order.UserId,
-            CreatedAt = order.CreatedAt,
-            OrderProducts = order.OrderProducts.Select(op => new OrderProductResponseDto
-            {
-                ProductId = op.ProductId,
-                ProductName = op.Product?.EnName ?? "Unknown",
-                Quantity = op.Quantity,
-                PriceAtTime = op.PriceAtTime
-            }).ToList()
-        };
-
-        return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDto);
-    }
-
-    private Guid? GetCurrentUserId()
-    {
-        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value
-                         ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                         ?? User.FindFirst("sub")?.Value;
-
-        return Guid.TryParse(userIdClaim, out var userId) ? userId : null;
+            await transaction.RollbackAsync();
+            return HandleException<OrderResponseDto>(ex, _logger, "CreateOrder");
+        }
     }
 }

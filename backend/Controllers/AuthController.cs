@@ -1,60 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using AutoMapper;
 using backend.Data;
+using backend.DTOs.Auth;
 using backend.Models;
 
 namespace backend.Controllers;
 
 [Route("api/auth")]
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController : BaseController
 {
     private readonly DataContext _context;
     private readonly IConfiguration _configuration;
     private readonly ILogger<AuthController> _logger;
+    private readonly IMapper _mapper;
     
-    public AuthController(DataContext context, IConfiguration configuration, ILogger<AuthController> logger)
+    public AuthController(DataContext context, IConfiguration configuration, ILogger<AuthController> logger, IMapper mapper)
     {
         _context = context;
         _configuration = configuration;
         _logger = logger;
-    }
-    
-    public class RegisterDto
-    {
-        [Required, MaxLength(255)]
-        public string Name { get; set; }
-
-        [Required, MaxLength(255), EmailAddress]
-        public string Email { get; set; }
-
-        [Required, MinLength(6), MaxLength(255)]
-        public string Password { get; set; }
-
-        public string? Image { get; set; }
-    }
-    
-    public class LoginDto
-    {
-        [Required, EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-    }
-
-    public class AuthResponseDto
-    {
-        public string Token { get; set; }
-        public Guid UserId { get; set; }
-        public bool IsAdmin { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -69,7 +40,7 @@ public class AuthController : ControllerBase
     [ProducesResponseType(typeof(AuthResponseDto), 201)]
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+    public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterDto registerDto)
     {
         try
         {
@@ -103,36 +74,23 @@ public class AuthController : ControllerBase
                 });
             }
 
-            var user = new User
-            {
-                Name = registerDto.Name,
-                Email = registerDto.Email.ToLower(),
-                Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
-                IsAdmin = false,
-                Image = registerDto.Image
-            };
+            var user = _mapper.Map<User>(registerDto);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             
             var token = GenerateJwtToken(user);
 
-            var response = new AuthResponseDto
-            {
-                Token = token,
-                UserId = user.Id,
-                IsAdmin = user.IsAdmin,
-                Name = user.Name,
-                Email = user.Email
-            };
+            var response = _mapper.Map<AuthResponseDto>(user);
+            response.Token = token;
 
             _logger.LogInformation("User {UserId} registered successfully with email: {Email}", user.Id, user.Email);
             return StatusCode(201, response);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error during user registration for email: {Email}", registerDto.Email);
-            return StatusCode(500, "Internal server error");
+            return HandleException<AuthResponseDto>(ex, _logger, "Register");
         }
     }
 
@@ -150,7 +108,7 @@ public class AuthController : ControllerBase
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    public async Task<ActionResult<AuthResponseDto>> Login([FromBody] LoginDto loginDto)
     {
         try
         {
@@ -184,22 +142,15 @@ public class AuthController : ControllerBase
 
             var token = GenerateJwtToken(user);
 
-            var response = new AuthResponseDto
-            {
-                Token = token,
-                UserId = user.Id,
-                IsAdmin = user.IsAdmin,
-                Name = user.Name,
-                Email = user.Email
-            };
+            var response = _mapper.Map<AuthResponseDto>(user);
+            response.Token = token;
 
             _logger.LogInformation("User {UserId} logged in successfully", user.Id);
             return Ok(response);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error during login for email: {Email}", loginDto.Email);
-            return StatusCode(500, "Internal server error");
+            return HandleException<AuthResponseDto>(ex, _logger, "Login");
         }
     }
     

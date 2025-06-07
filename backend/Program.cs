@@ -70,6 +70,8 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IImageService, ImageService>();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddSingleton<TelegramBotService>();
 builder.Services.AddHostedService<TelegramBotHostedService>();
 

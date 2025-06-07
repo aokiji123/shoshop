@@ -1,5 +1,3 @@
-
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using backend.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -7,48 +5,28 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using AutoMapper;
+using backend.DTOs.Users;
 using backend.Services;
 
 namespace backend.Controllers;
 
 [Route("api/user")]
 [ApiController]
-public class UserController : ControllerBase
+public class UserController : BaseController
 {
     private readonly DataContext _context;
     private readonly IImageService _imageService;
     private readonly ILogger<UserController> _logger;
+    private readonly IMapper _mapper;
 
-    public UserController(DataContext context, IImageService imageService, ILogger<UserController> logger)
+    public UserController(DataContext context, IImageService imageService, ILogger<UserController> logger,
+        IMapper mapper)
     {
         _context = context;
         _imageService = imageService;
         _logger = logger;
-    }
-
-    public class UserDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public bool IsAdmin { get; set; }
-        public string Image { get; set; }
-        public string? TgTag { get; set; }
-    }
-
-    public class UpdateUserDto
-    {
-        [Required, MaxLength(255)]
-        public string Name { get; set; }
-
-        [MaxLength(3000)]
-        public string? Image { get; set; }
-        
-        [Required, MaxLength(255), EmailAddress]
-        public string Email { get; set; }
-        
-        [MaxLength(100)]
-        public string? TgTag { get; set; }
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -60,7 +38,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(UserDto), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
-    public async Task<IActionResult> GetCurrentUser()
+    public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
         try
         {
@@ -82,22 +60,14 @@ public class UserController : ControllerBase
                 return NotFound("User not found");
             }
 
-            var userDto = new UserDto
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                IsAdmin = user.IsAdmin,
-                Image = user.Image
-            };
+            var userDto = _mapper.Map<UserDto>(user);
 
             _logger.LogInformation("User {UserId} data successfully retrieved", userId);
             return Ok(userDto);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving user data");
-            return StatusCode(500, "Internal server error");
+            return HandleException<UserDto>(ex, _logger, "GetCurrentUser");
         }
     }
 
@@ -112,7 +82,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
-    public async Task<IActionResult> UpdateCurrentUser([FromForm] UpdateUserDto updateDto, IFormFile? imageFile)
+    public async Task<ActionResult<UserDto>> UpdateCurrentUser([FromForm] UpdateUserDto updateDto, IFormFile? imageFile)
     {
         try
         {
@@ -121,9 +91,9 @@ public class UserController : ControllerBase
                 var errors = ModelState
                     .SelectMany(x => x.Value.Errors.Select(e => e.ErrorMessage))
                     .ToList();
-                
+
                 _logger.LogWarning("Validation error when updating user: {Errors}", string.Join(", ", errors));
-                
+
                 return BadRequest(new
                 {
                     success = false,
@@ -149,12 +119,12 @@ public class UserController : ControllerBase
                 _logger.LogWarning("User {UserId} not found when updating", userId);
                 return NotFound("User not found");
             }
-            
+
             if (user.Email != updateDto.Email)
             {
                 var existingUser = await _context.Users
                     .FirstOrDefaultAsync(u => u.Email == updateDto.Email && u.Id != userId);
-                
+
                 if (existingUser != null)
                 {
                     _logger.LogWarning("Attempt to use existing email {Email}", updateDto.Email);
@@ -168,19 +138,21 @@ public class UserController : ControllerBase
             }
 
             string? oldImagePath = user.Image;
-            
+
             if (imageFile != null)
             {
                 try
                 {
                     var newImagePath = await _imageService.SaveImageAsync(imageFile, "users");
                     _logger.LogInformation("New image uploaded for user {UserId}: {ImagePath}", userId, newImagePath);
-                    
+
                     if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
                     {
                         await _imageService.DeleteImageAsync(oldImagePath);
-                        _logger.LogInformation("Old image deleted for user {UserId}: {ImagePath}", userId, oldImagePath);
+                        _logger.LogInformation("Old image deleted for user {UserId}: {ImagePath}", userId,
+                            oldImagePath);
                     }
+
                     user.Image = newImagePath;
                 }
                 catch (Exception ex)
@@ -201,31 +173,23 @@ public class UserController : ControllerBase
                     await _imageService.DeleteImageAsync(oldImagePath);
                     _logger.LogInformation("Old image deleted for user {UserId}: {ImagePath}", userId, oldImagePath);
                 }
+
                 user.Image = updateDto.Image;
             }
 
-            user.Name = updateDto.Name;
-            user.Email = updateDto.Email;
+            _mapper.Map(updateDto, user);
 
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
 
-            var userDto = new UserDto
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                IsAdmin = user.IsAdmin,
-                Image = user.Image
-            };
+            var userDto = _mapper.Map<UserDto>(user);
 
             _logger.LogInformation("User {UserId} successfully updated profile", userId);
             return Ok(userDto);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error updating user");
-            return StatusCode(500, "Internal server error");
+            return HandleException<UserDto>(ex, _logger, "UpdateCurrentUser");
         }
     }
 
@@ -238,7 +202,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(object), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
-    public async Task<IActionResult> DeleteCurrentUser()
+    public async Task<ActionResult<object>> DeleteCurrentUser()
     {
         try
         {
@@ -268,21 +232,7 @@ public class UserController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error deleting user {UserId}", GetCurrentUserId());
-            return StatusCode(500, "Internal server error");
+            return HandleException<object>(ex, _logger, "DeleteCurrentUser");
         }
-    }
-
-    /// <summary>
-    /// Extract current user ID from JWT token
-    /// </summary>
-    /// <returns>User ID or null if token is invalid</returns>
-    private Guid? GetCurrentUserId()
-    {
-        var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value 
-                         ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                         ?? User.FindFirst("sub")?.Value;
-                         
-        return Guid.TryParse(userIdClaim, out var userId) ? userId : null;
     }
 }

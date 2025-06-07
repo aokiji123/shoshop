@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using backend.Data;
+using backend.DTOs.Products;
 using backend.Models;
 using backend.Models.Enums;
 using backend.QueryObjects;
@@ -12,65 +13,19 @@ namespace backend.Controllers;
 
 [Route("api/product")]
 [ApiController]
-public class ProductController : ControllerBase
+public class ProductController : BaseController
 {
     private readonly DataContext _context;
     private readonly IImageService _imageService;
     private readonly ILogger<ProductController> _logger;
+    private readonly IMapper _mapper;
 
-    public ProductController(DataContext context, IImageService imageService, ILogger<ProductController> logger)
+    public ProductController(DataContext context, IImageService imageService, ILogger<ProductController> logger, IMapper mapper)
     {
         _context = context;
         _imageService = imageService;
         _logger = logger;
-    }
-    
-    public class ProductDto
-    {
-        public Guid Id { get; set; }
-        public string UaName { get; set; }
-        public string EnName { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public ProductCategory Category { get; set; }
-        public int Count { get; set; }
-        public int Likes { get; set; }
-        public string Image { get; set; }
-        public ProductSize Size { get; set; } 
-        public ProductColor Color { get; set; }
-    }
-
-    public class CreateUpdateProductDto
-    {
-        [Required, MaxLength(255)]
-        public string UaName { get; set; }
-
-        [Required, MaxLength(255)]
-        public string EnName { get; set; }
-
-        [Required]
-        public string Description { get; set; }
-
-        [Required, Range(0, double.MaxValue)]
-        public decimal Price { get; set; }
-
-        [Required]
-        public ProductCategory Category { get; set; }
-
-        [Required, Range(0, int.MaxValue)]
-        public int Count { get; set; }
-
-        [Range(0, int.MaxValue)]
-        public int Likes { get; set; } = 0;
-
-        [MaxLength(3000)]
-        public string? Image { get; set; }
-        
-        [Required]
-        public ProductSize Size { get; set; }
-    
-        [Required]
-        public ProductColor Color { get; set; }
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -98,21 +53,7 @@ public class ProductController : ControllerBase
                 .Sort(sortParams)
                 .ToPagedAsync(pageParams);
 
-            var productDtos = pagedProducts.Data.Select(p => new ProductDto
-            {
-                Id = p.Id,
-                UaName = p.UaName,
-                EnName = p.EnName,
-                Description = p.Description,
-                Price = p.Price,
-                Category = p.Category,
-                Count = p.Count,
-                Likes = p.Likes,
-                Image = p.Image,
-                Size = p.Size,
-                Color = p.Color
-            }).ToArray();
-
+            var productDtos = _mapper.Map<ProductDto[]>(pagedProducts.Data);
             var result = new PagedResult<ProductDto>(productDtos, pagedProducts.TotalCount);
 
             _logger.LogInformation("Successfully retrieved {Count} products out of {TotalCount} total", 
@@ -122,8 +63,7 @@ public class ProductController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving products");
-            return StatusCode(500, "Internal server error");
+            return HandleException<PagedResult<ProductDto>>(ex, _logger, "GetProducts");
         }
     }
 
@@ -147,36 +87,22 @@ public class ProductController : ControllerBase
         {
             _logger.LogInformation("Request to get product {ProductId}", id);
 
-            var product = await _context.Products
-                .Select(p => new ProductDto
-                {
-                    Id = p.Id,
-                    UaName = p.UaName,
-                    EnName = p.EnName,
-                    Description = p.Description,
-                    Price = p.Price,
-                    Category = p.Category,
-                    Count = p.Count,
-                    Likes = p.Likes,
-                    Image = p.Image,
-                    Size = p.Size,
-                    Color = p.Color
-                })
-                .FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
                 _logger.LogWarning("Product {ProductId} not found", id);
                 return NotFound("Product not found");
             }
+            
+            var productDto = _mapper.Map<ProductDto>(product);
 
             _logger.LogInformation("Successfully retrieved product {ProductId}", id);
-            return Ok(product);
+            return Ok(productDto);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving product {ProductId}", id);
-            return StatusCode(500, "Internal server error");
+            return HandleException<ProductDto>(ex, _logger, "GetProduct");
         }
     }
 
@@ -261,11 +187,50 @@ public class ProductController : ControllerBase
 
             _logger.LogInformation("Admin attempting to create new product: {ProductName}", createDto.EnName);
             
+            var existingProduct = await _context.Products
+                .FirstOrDefaultAsync(p => p.EnName.ToLower() == createDto.EnName.ToLower() || 
+                                         p.UaName.ToLower() == createDto.UaName.ToLower());
+            
+            if (existingProduct != null)
+            {
+                _logger.LogWarning("Product with name {ProductName} already exists", createDto.EnName);
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Product already exists",
+                    errors = new[] { "Product with this name already exists" }
+                });
+            }
+            
             string finalImagePath;
+            
             if (imageFile != null)
             {
                 try
                 {
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
+                    var fileExtension = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
+                    
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        return BadRequest(new
+                        {
+                            success = false,
+                            message = "Invalid file type",
+                            errors = new[] { "Only image files (jpg, jpeg, png, gif, webp) are allowed" }
+                        });
+                    }
+                    
+                    if (imageFile.Length > 5 * 1024 * 1024)
+                    {
+                        return BadRequest(new
+                        {
+                            success = false,
+                            message = "File too large",
+                            errors = new[] { "Image file size must be less than 5MB" }
+                        });
+                    }
+
                     finalImagePath = await _imageService.SaveImageAsync(imageFile, "products");
                     _logger.LogInformation("Image uploaded successfully: {ImagePath}", finalImagePath);
                 }
@@ -282,7 +247,20 @@ public class ProductController : ControllerBase
             }
             else if (!string.IsNullOrEmpty(createDto.Image))
             {
-                finalImagePath = createDto.Image;
+                if (Uri.TryCreate(createDto.Image, UriKind.Absolute, out var uri) && 
+                    (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps))
+                {
+                    finalImagePath = createDto.Image;
+                }
+                else
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Invalid image URL",
+                        errors = new[] { "Please provide a valid image URL" }
+                    });
+                }
             }
             else
             {
@@ -295,58 +273,22 @@ public class ProductController : ControllerBase
                 });
             }
             
-            var product = new Product
-            {
-                UaName = createDto.UaName,
-                EnName = createDto.EnName,
-                Description = createDto.Description,
-                Price = createDto.Price,
-                Category = createDto.Category,
-                Count = createDto.Count,
-                Likes = createDto.Likes,
-                Image = finalImagePath,
-                Size = createDto.Size,
-                Color = createDto.Color
-            };
+            var product = _mapper.Map<Product>(createDto);
+            product.Image = finalImagePath;
 
-            try
-            {
-                _context.Products.Add(product);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("Product {ProductId} created successfully", product.Id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Database error when creating product");
-                
-                if (imageFile != null && !string.IsNullOrEmpty(finalImagePath))
-                {
-                    await _imageService.DeleteImageAsync(finalImagePath);
-                }
-                return StatusCode(500, "Internal server error");
-            }
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
             
-            var productDto = new ProductDto
-            {
-                Id = product.Id,
-                UaName = product.UaName,
-                EnName = product.EnName,
-                Description = product.Description,
-                Price = product.Price,
-                Category = product.Category,
-                Count = product.Count,
-                Likes = product.Likes,
-                Image = product.Image,
-                Size = product.Size,
-                Color = product.Color
-            };
+            var productDto = _mapper.Map<ProductDto>(product);
+
+            _logger.LogInformation("Product {ProductId} ({ProductName}) created successfully by admin", 
+                product.Id, product.EnName);
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDto);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error when creating product");
-            return StatusCode(500, "Internal server error");
+            return HandleException<ProductDto>(ex, _logger, "CreateProduct");
         }
     }
 
@@ -399,12 +341,41 @@ public class ProductController : ControllerBase
                 return NotFound("Product not found");
             }
 
+            var existingProduct = await _context.Products
+                .FirstOrDefaultAsync(p => p.Id != id && 
+                                         (p.EnName.ToLower() == updateDto.EnName.ToLower() || 
+                                          p.UaName.ToLower() == updateDto.UaName.ToLower()));
+            
+            if (existingProduct != null)
+            {
+                _logger.LogWarning("Product with name {ProductName} already exists", updateDto.EnName);
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Product already exists",
+                    errors = new[] { "Product with this name already exists" }
+                });
+            }
+
             string? oldImagePath = product.Image;
             
             if (imageFile != null)
             {
                 try
                 {
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
+                    var fileExtension = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
+                    
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        return BadRequest(new
+                        {
+                            success = false,
+                            message = "Invalid file type",
+                            errors = new[] { "Only image files (jpg, jpeg, png, gif, webp) are allowed" }
+                        });
+                    }
+
                     var newImagePath = await _imageService.SaveImageAsync(imageFile, "products");
                     _logger.LogInformation("New image uploaded for product {ProductId}: {ImagePath}", id, newImagePath);
                     
@@ -413,6 +384,7 @@ public class ProductController : ControllerBase
                         await _imageService.DeleteImageAsync(oldImagePath);
                         _logger.LogInformation("Old image deleted for product {ProductId}: {ImagePath}", id, oldImagePath);
                     }
+                    
                     product.Image = newImagePath;
                 }
                 catch (Exception ex)
@@ -428,50 +400,40 @@ public class ProductController : ControllerBase
             }
             else if (!string.IsNullOrEmpty(updateDto.Image) && updateDto.Image != product.Image)
             {
+                if (!updateDto.Image.StartsWith("/uploads/") && 
+                    !Uri.TryCreate(updateDto.Image, UriKind.Absolute, out var uri))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Invalid image URL",
+                        errors = new[] { "Please provide a valid image URL" }
+                    });
+                }
+                
                 if (!string.IsNullOrEmpty(oldImagePath) && oldImagePath.StartsWith("/uploads/"))
                 {
                     await _imageService.DeleteImageAsync(oldImagePath);
                     _logger.LogInformation("Old image deleted for product {ProductId}: {ImagePath}", id, oldImagePath);
                 }
+                
                 product.Image = updateDto.Image;
             }
             
-            product.UaName = updateDto.UaName;
-            product.EnName = updateDto.EnName;
-            product.Description = updateDto.Description;
-            product.Price = updateDto.Price;
-            product.Category = updateDto.Category;
-            product.Count = updateDto.Count;
-            product.Likes = updateDto.Likes;
-            product.Size = updateDto.Size;
-            product.Color = updateDto.Color;
+            _mapper.Map(updateDto, product);
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Product {ProductId} updated successfully", id);
-
-            var productDto = new ProductDto
-            {
-                Id = product.Id,
-                UaName = product.UaName,
-                EnName = product.EnName,
-                Description = product.Description,
-                Price = product.Price,
-                Category = product.Category,
-                Count = product.Count,
-                Likes = product.Likes,
-                Image = product.Image,
-                Size = product.Size,
-                Color = product.Color
-            };
+            
+            var productDto = _mapper.Map<ProductDto>(product);
 
             return Ok(productDto);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error updating product {ProductId}", id);
-            return StatusCode(500, "Internal server error");
+            return HandleException<ProductDto>(ex, _logger, "UpdateProduct");
         }
     }
 
@@ -491,35 +453,61 @@ public class ProductController : ControllerBase
     [ProducesResponseType(typeof(string), 403)]
     [ProducesResponseType(typeof(string), 404)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<IActionResult> DeleteProduct(Guid id)
+    public async Task<ActionResult<object>> DeleteProduct(Guid id)
     {
         try
         {
             _logger.LogInformation("Admin attempting to delete product {ProductId}", id);
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products
+                .Include(p => p.OrderProducts)
+                .FirstOrDefaultAsync(p => p.Id == id);
+                
             if (product == null)
             {
                 _logger.LogWarning("Product {ProductId} not found for deletion", id);
                 return NotFound("Product not found");
             }
             
-            if (!string.IsNullOrEmpty(product.Image))
+            if (product.OrderProducts.Any())
             {
-                await _imageService.DeleteImageAsync(product.Image);
-                _logger.LogInformation("Image deleted for product {ProductId}: {ImagePath}", id, product.Image);
+                _logger.LogWarning("Cannot delete product {ProductId} - it has associated orders", id);
+                return Conflict(new
+                {
+                    success = false,
+                    message = "Cannot delete product",
+                    errors = new[] { "This product cannot be deleted because it is associated with existing orders" }
+                });
+            }
+            
+            if (!string.IsNullOrEmpty(product.Image) && product.Image.StartsWith("/uploads/"))
+            {
+                try
+                {
+                    await _imageService.DeleteImageAsync(product.Image);
+                    _logger.LogInformation("Image deleted for product {ProductId}: {ImagePath}", id, product.Image);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to delete image for product {ProductId}: {ImagePath}", id, product.Image);
+                }
             }
             
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Product {ProductId} deleted successfully", id);
-            return Ok(new { Message = "Product deleted successfully" });
+            
+            return Ok(new 
+            { 
+                success = true,
+                message = "Product deleted successfully",
+                productId = id
+            });
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error deleting product {ProductId}", id);
-            return StatusCode(500, "Internal server error");
+            return HandleException<object>(ex, _logger, "DeleteProduct");
         }
     }
 }
