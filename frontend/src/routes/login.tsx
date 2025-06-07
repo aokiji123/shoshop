@@ -5,7 +5,6 @@ import {
   useNavigate,
   useSearch,
 } from '@tanstack/react-router'
-import Footer from '@/components/Footer'
 import { useLogin } from '@/api/queries/useAuth'
 import { requireNoAuth } from '@/lib/auth'
 
@@ -103,7 +102,7 @@ function RouteComponent() {
                 Email
               </label>
               <input
-                className={`px-3 py-2 border-1 ${
+                className={`px-3 py-2 border-1 rounded-md ${
                   errors.email ? 'border-red-500' : 'border-black'
                 } focus:outline-none`}
                 type="email"
@@ -123,7 +122,7 @@ function RouteComponent() {
             <div className="flex flex-col">
               <label htmlFor="password">Password</label>
               <input
-                className={`px-3 py-2 border-1 ${
+                className={`px-3 py-2 border-1 rounded-md ${
                   errors.password ? 'border-red-500' : 'border-black'
                 } focus:outline-none`}
                 type="password"
@@ -141,7 +140,7 @@ function RouteComponent() {
             </div>
 
             <button
-              className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-md"
               type="submit"
               disabled={loginMutation.isPending}
             >
@@ -149,7 +148,7 @@ function RouteComponent() {
             </button>
 
             {successMessage && (
-              <div className="text-green-600 text-sm text-center bg-green-50 p-2 rounded">
+              <div className="text-green-600 text-sm text-center bg-green-50 p-2 rounded-md">
                 {successMessage}
               </div>
             )}
@@ -169,7 +168,6 @@ function RouteComponent() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

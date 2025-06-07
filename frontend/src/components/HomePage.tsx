@@ -12,7 +12,7 @@ export function HomePage() {
         className="flex flex-row gap-4"
         onClick={() => navigate({ to: '/items' })}
       >
-        <button className="bg-white text-black text-[24px] px-4 py-2 w-[300px] cursor-pointer hover:scale-105 transition-all duration-300">
+        <button className="bg-white text-black text-[24px] px-4 py-2 w-[300px] cursor-pointer hover:scale-105 transition-all duration-300 rounded-md">
           See Products
         </button>
       </div>

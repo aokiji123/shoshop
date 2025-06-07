@@ -23,7 +23,7 @@ export function Toast({
       const timer = setTimeout(onClose, duration)
       return () => clearTimeout(timer)
     }
-  }, [isVisible, duration, onClose])
+  }, [isVisible, duration, onClose, message])
 
   if (!isVisible) return null
 
@@ -32,7 +32,7 @@ export function Toast({
 
   return (
     <div
-      className={`fixed top-4 right-4 ${bgColor} text-white p-4 shadow-lg z-50 flex items-center gap-3 max-w-md`}
+      className={`fixed top-16 right-4 ${bgColor} text-white p-4 shadow-lg z-50 flex items-center gap-3 max-w-md rounded-md`}
     >
       <Icon size={20} />
       <span className="flex-1">{message}</span>
@@ -52,14 +52,18 @@ export function useToast() {
     message: string
     type: ToastType
     isVisible: boolean
+    id: number
   }>({
     message: '',
     type: 'success',
     isVisible: false,
+    id: 0,
   })
 
   const showToast = (message: string, type: ToastType = 'success') => {
-    setToast({ message, type, isVisible: true })
+    // Generate a unique ID for this toast to ensure it replaces any existing one
+    const newId = Date.now()
+    setToast({ message, type, isVisible: true, id: newId })
   }
 
   const hideToast = () => {

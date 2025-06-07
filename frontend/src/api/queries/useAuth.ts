@@ -83,6 +83,7 @@ async function getCurrentUser(): Promise<User | null> {
       email: data.Email || data.email,
       isAdmin: data.IsAdmin || data.isAdmin,
       image: data.Image || data.image,
+      tgTag: data.TgTag || data.tgTag,
       success: true,
     }
   } catch (error) {

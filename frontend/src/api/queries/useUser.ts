@@ -8,6 +8,7 @@ export type UpdateUserRequest = {
   name?: string
   email?: string
   image?: string
+  tgTag?: string
   imageFile?: File
 }
 
@@ -15,7 +16,7 @@ export type UpdateUserResponse = {
   success: boolean
   user?: User
   error?: string
-  errors?: string[]
+  errors?: Array<string>
   message?: string
 }
 
@@ -35,19 +36,23 @@ async function updateUser(
     }
 
     const formData = new FormData()
-    
+
     if (userData.name) {
       formData.append('Name', userData.name)
     }
-    
+
     if (userData.email) {
       formData.append('Email', userData.email)
     }
-    
+
+    if (userData.tgTag) {
+      formData.append('TgTag', userData.tgTag)
+    }
+
     if (userData.image) {
       formData.append('Image', userData.image)
     }
-    
+
     if (userData.imageFile) {
       formData.append('imageFile', userData.imageFile)
     }
@@ -56,7 +61,7 @@ async function updateUser(
       name: userData.name,
       email: userData.email,
       image: userData.image,
-      hasFile: !!userData.imageFile
+      hasFile: !!userData.imageFile,
     })
 
     const { data } = await axiosInstance.put('/user', formData, {
@@ -66,6 +71,8 @@ async function updateUser(
       },
     })
 
+    console.log('Received data:', data)
+
     return {
       success: true,
       user: {
@@ -74,6 +81,7 @@ async function updateUser(
         email: data.Email || data.email,
         isAdmin: data.IsAdmin || data.isAdmin,
         image: data.Image || data.image,
+        tgTag: data.TgTag || data.tgTag,
       },
     }
   } catch (error: any) {
@@ -83,7 +91,7 @@ async function updateUser(
       console.error('Response status:', error.response.status)
       console.error('Response data:', error.response.data)
       console.error('Response headers:', error.response.headers)
-      
+
       const responseData = error.response.data
       return {
         success: false,

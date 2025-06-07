@@ -96,12 +96,12 @@ export function ProductForm({
 
   return (
     <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-md">
         <div className="flex items-center justify-between p-6 border-b">
           <h2 className="text-2xl font-bold">{title}</h2>
           <button
             onClick={onClose}
-            className="p-1 cursor-pointer hover:scale-105 transition-all duration-300"
+            className="p-1 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
           >
             <MdClose size={24} />
           </button>
@@ -119,7 +119,7 @@ export function ProductForm({
                 value={formData.uaName}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               />
             </div>
 
@@ -133,7 +133,7 @@ export function ProductForm({
                 value={formData.enName}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ export function ProductForm({
               onChange={handleInputChange}
               required
               rows={3}
-              className="w-full p-2 border border-gray-300 outline-none focus:border-black resize-none"
+              className="w-full p-2 border border-gray-300 outline-none focus:border-black resize-none rounded-md"
             />
           </div>
 
@@ -163,7 +163,7 @@ export function ProductForm({
                 required
                 min="0"
                 step="0.01"
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               />
             </div>
 
@@ -176,7 +176,7 @@ export function ProductForm({
                 onChange={handleInputChange}
                 required
                 min="0"
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               />
             </div>
           </div>
@@ -191,7 +191,7 @@ export function ProductForm({
                 value={formData.category}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               >
                 <option value="">Select category</option>
                 {categories.map((category) => (
@@ -209,7 +209,7 @@ export function ProductForm({
                 value={formData.size}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               >
                 <option value="">Select size</option>
                 {sizes.map((size) => (
@@ -227,7 +227,7 @@ export function ProductForm({
                 value={formData.color}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+                className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
               >
                 <option value="">Select color</option>
                 {colors.map((color) => (
@@ -247,7 +247,7 @@ export function ProductForm({
               value={formData.likes}
               onChange={handleInputChange}
               min="0"
-              className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+              className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
             />
           </div>
 
@@ -260,7 +260,7 @@ export function ProductForm({
               accept="image/*"
               onChange={handleFileChange}
               required={!product}
-              className="w-full p-2 border border-gray-300 outline-none focus:border-black"
+              className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded"
             />
             {product?.image && !imageFile && (
               <p className="text-sm text-gray-600 mt-1">
@@ -273,7 +273,7 @@ export function ProductForm({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 hover:scale-105 transition-all duration-300 cursor-pointer rounded-md"
               disabled={isLoading}
             >
               Cancel
@@ -281,7 +281,7 @@ export function ProductForm({
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 px-4 py-2 bg-black text-white cursor-pointer hover:scale-105 transition-all duration-300"
+              className="flex-1 px-4 py-2 bg-black text-white cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
             >
               {isLoading
                 ? 'Saving...'

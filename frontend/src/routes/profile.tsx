@@ -1,10 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { MdClose } from 'react-icons/md'
-import Footer from '@/components/Footer'
+import { ChevronDown, ChevronRight } from 'lucide-react'
 import { useCurrentUser, useLogout } from '@/api/queries/useAuth'
 import { useDeleteUser, useUpdateUser } from '@/api/queries/useUser'
+import { useOrdersByUserId } from '@/api/queries/useOrder'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { requireAuth } from '@/lib/auth'
+import { EditProfileModal } from '@/components/modals/EditProfileModal'
+import { DeleteAccountModal } from '@/components/modals/DeleteAccountModal'
 
 export const Route = createFileRoute('/profile')({
   beforeLoad: () => {
@@ -19,25 +29,25 @@ function RouteComponent() {
   const { mutate: logout, isPending: isLoggingOut } = useLogout()
   const { mutate: updateUser, isPending: isUpdating } = useUpdateUser()
   const { mutate: deleteUser, isPending: isDeleting } = useDeleteUser()
+  const { data: orders, isLoading: isOrdersLoading } = useOrdersByUserId(
+    user?.id || '',
+  )
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-  })
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [previewImage, setPreviewImage] = useState<string | null>(null)
-  const [fileError, setFileError] = useState<string>('')
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
 
-  useEffect(() => {
-    if (user) {
-      setFormData({
-        name: user.name || '',
-        email: user.email || '',
-      })
-    }
-  }, [user])
+  const toggleRow = (orderId: string) => {
+    setExpandedRows((prev) => {
+      const newSet = new Set(prev)
+      if (newSet.has(orderId)) {
+        newSet.delete(orderId)
+      } else {
+        newSet.add(orderId)
+      }
+      return newSet
+    })
+  }
 
   function handleLogout() {
     logout(undefined, {
@@ -47,22 +57,16 @@ function RouteComponent() {
     })
   }
 
-  function handleEditSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    const userData: { name: string; email: string; imageFile?: File } = {
-      name: formData.name,
-      email: formData.email,
-    }
-    if (selectedFile) {
-      userData.imageFile = selectedFile
-    }
+  function handleUpdateUser(userData: {
+    name: string
+    email: string
+    tgTag: string
+    imageFile?: File
+  }) {
     updateUser(userData, {
       onSuccess: (data) => {
         if (data.success) {
           setIsEditModalOpen(false)
-          setSelectedFile(null)
-          setPreviewImage(null)
-          setFileError('')
         }
       },
     })
@@ -76,59 +80,6 @@ function RouteComponent() {
         }
       },
     })
-  }
-
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    setFileError('')
-    setPreviewImage(null)
-
-    if (!file) {
-      setSelectedFile(null)
-      return
-    }
-
-    // Validate file type
-    const allowedTypes = [
-      'image/jpeg',
-      'image/jpg',
-      'image/png',
-      'image/webp',
-      'image/gif',
-    ]
-    if (!allowedTypes.includes(file.type)) {
-      setFileError(
-        'Please select a valid image file (JPG, JPEG, PNG, WebP, or GIF)',
-      )
-      setSelectedFile(null)
-      return
-    }
-
-    // Validate file size (limit to 5MB)
-    const maxSize = 5 * 1024 * 1024 // 5MB
-    if (file.size > maxSize) {
-      setFileError('File size must be less than 5MB')
-      setSelectedFile(null)
-      return
-    }
-
-    setSelectedFile(file)
-
-    // Generate preview
-    const reader = new FileReader()
-    reader.onload = (event) => {
-      setPreviewImage(event.target?.result as string)
-    }
-    reader.onerror = () => {
-      setFileError('Error reading file')
-      setSelectedFile(null)
-    }
-    reader.readAsDataURL(file)
   }
 
   if (isLoading || isFetching) {
@@ -145,182 +96,161 @@ function RouteComponent() {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8 items-center h-[90vh] justify-center">
-        {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
-        <div className="relative flex items-center justify-center">
-          <img
-            src={`http://localhost:5077/${user.image}` || 'https://placehold.co/200x200'}
-            className="rounded-full w-[200px] h-[200px]"
-            alt="Profile"
-          />
+      <div className="flex flex-col lg:flex-row gap-8 p-4 md:p-6 lg:p-8 min-h-[90vh]">
+        <div className="flex flex-col gap-4 items-center justify-center lg:w-1/3 lg:min-w-[400px]">
+          {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
+          <div className="relative flex items-center justify-center">
+            <img
+              src={
+                user.image
+                  ? `http://localhost:5077/${user.image}`
+                  : 'https://placehold.co/200x200'
+              }
+              className="rounded-full w-[200px] h-[200px]"
+              alt="Profile"
+            />
+          </div>
+          <div className="flex flex-col gap-2 text-center">
+            <p className="text-2xl font-bold">{user.name}</p>
+            <p className="text-lg">{user.email}</p>
+            <p className="text-lg">{user.tgTag}</p>
+          </div>
+          <div className="w-[300px] flex flex-col gap-2">
+            <button
+              onClick={() => setIsEditModalOpen(true)}
+              className="bg-black w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
+            >
+              Edit user
+            </button>
+            <button
+              onClick={handleLogout}
+              disabled={isLoggingOut}
+              className="bg-black w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 rounded-md"
+            >
+              {isLoggingOut ? 'Logging out...' : 'Logout'}
+            </button>
+            <button
+              onClick={() => setIsDeleteModalOpen(true)}
+              className="bg-red-500 w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
+            >
+              Delete account
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col gap-2 text-center">
-          <p className="text-2xl font-bold">{user.name}</p>
-          <p className="text-lg">{user.email}</p>
-        </div>
-        <div className="w-[300px] flex flex-col gap-2">
-          <button
-            onClick={() => setIsEditModalOpen(true)}
-            className="bg-black w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
-          >
-            Edit user
-          </button>
-          <button
-            onClick={handleLogout}
-            disabled={isLoggingOut}
-            className="bg-black w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50"
-          >
-            {isLoggingOut ? 'Logging out...' : 'Logout'}
-          </button>
-          <button
-            onClick={() => setIsDeleteModalOpen(true)}
-            className="bg-red-500 w-full text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
-          >
-            Delete account
-          </button>
+
+        <div className="lg:w-2/3 flex flex-col">
+          <h2 className="text-2xl font-bold mb-4">Your Orders</h2>
+          <div className="h-[700px] border border-gray-200 rounded-lg overflow-hidden">
+            {isOrdersLoading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="w-8 h-8 border-2 border-t-black border-gray-300 rounded-full animate-spin"></div>
+              </div>
+            ) : !orders || orders.length === 0 ? (
+              <div className="flex items-center justify-center h-full text-gray-500">
+                <p>No orders found</p>
+              </div>
+            ) : (
+              <div className="h-full overflow-auto">
+                <Table>
+                  <TableHeader className="sticky top-0 bg-white z-10">
+                    <TableRow>
+                      <TableHead className="w-8"></TableHead>
+                      <TableHead>Order ID</TableHead>
+                      <TableHead>Total Price</TableHead>
+                      <TableHead>Created At</TableHead>
+                      <TableHead>Products Count</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {orders.map((order) => (
+                      <>
+                        <TableRow
+                          key={order.id}
+                          className="cursor-pointer"
+                          onClick={() => toggleRow(order.id)}
+                        >
+                          <TableCell>
+                            {expandedRows.has(order.id) ? (
+                              <ChevronDown className="w-4 h-4" />
+                            ) : (
+                              <ChevronRight className="w-4 h-4" />
+                            )}
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            {order.id}
+                          </TableCell>
+                          <TableCell>${order.price.toFixed(2)}</TableCell>
+                          <TableCell>
+                            {new Date(order.createdAt).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>{order.orderProducts.length}</TableCell>
+                        </TableRow>
+                        {expandedRows.has(order.id) && (
+                          <TableRow key={`${order.id}-details`}>
+                            <TableCell></TableCell>
+                            <TableCell colSpan={4}>
+                              <div className="py-2 pl-4 border-l-2 border-muted">
+                                <h4 className="font-semibold mb-2 text-sm">
+                                  Order Products:
+                                </h4>
+                                <div className="space-y-2">
+                                  {order.orderProducts.map((product, index) => (
+                                    <div
+                                      key={`${order.id}-${product.productId}-${index}`}
+                                      className="flex justify-between items-center p-2 bg-muted/30 rounded"
+                                    >
+                                      <div>
+                                        <div className="font-medium text-sm">
+                                          {product.productName}
+                                        </div>
+                                        <div className="text-xs text-muted-foreground">
+                                          Product ID: {product.productId}
+                                        </div>
+                                      </div>
+                                      <div className="text-right">
+                                        <div className="font-medium text-sm">
+                                          {product.quantity} × $
+                                          {product.priceAtTime.toFixed(2)}
+                                        </div>
+                                        <div className="text-xs text-muted-foreground">
+                                          = $
+                                          {(
+                                            product.quantity *
+                                            product.priceAtTime
+                                          ).toFixed(2)}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white p-6 w-full max-w-md">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Edit Profile</h2>
-              <button
-                onClick={() => setIsEditModalOpen(false)}
-                className="p-1 cursor-pointer transition-all duration-200 hover:scale-110"
-              >
-                <MdClose />
-              </button>
-            </div>
-            <form onSubmit={handleEditSubmit} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-1"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="px-3 py-2 border-1 border-black focus:outline-none w-full"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="px-3 py-2 border-1 border-black focus:outline-none w-full"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="image"
-                  className="block text-sm font-medium mb-1"
-                >
-                  Profile Image
-                </label>
-                <input
-                  id="image"
-                  type="file"
-                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                  onChange={handleFileChange}
-                  className="px-3 py-2 border-1 border-black focus:outline-none w-full"
-                />
-                {fileError && (
-                  <p className="text-red-500 text-sm mt-1">{fileError}</p>
-                )}
-                {previewImage ? (
-                  <img
-                    src={previewImage}
-                    alt="Preview"
-                    className="w-16 h-16 rounded-full object-cover mt-2"
-                  />
-                ) : user.image ? (
-                  <img
-                    src={`http://localhost:5077/${user?.image}` || 'https://placehold.co/40x40'}
-                    alt="Current profile"
-                    className="w-16 h-16 rounded-full object-cover mt-2"
-                  />
-                ) : null}
-              </div>
-              <div className="flex gap-2 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsEditModalOpen(false)}
-                  className="flex-1 bg-white text-black border-1 border-black px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isUpdating}
-                  className="flex-1 bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
-                >
-                  {isUpdating ? 'Updating...' : 'Update'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <EditProfileModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        user={user}
+        onUpdate={handleUpdateUser}
+        isUpdating={isUpdating}
+      />
 
-      {isDeleteModalOpen && (
-        <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white p-6 w-full max-w-md">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-red-600">Delete Account</h2>
-              <button
-                onClick={() => setIsDeleteModalOpen(false)}
-                className="transition-all duration-200 hover:scale-110 p-1 cursor-pointer"
-              >
-                <MdClose />
-              </button>
-            </div>
-            <div className="mb-6">
-              <p className="text-gray-700 mb-2">
-                Are you sure you want to delete your account?
-              </p>
-              <p className="text-sm text-red-600">
-                This action cannot be undone. All your data will be permanently
-                deleted.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setIsDeleteModalOpen(false)}
-                className="flex-1 px-4 py-2 border border-black hover:scale-105 transition-all duration-300 cursor-pointer"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleDeleteAccount}
-                disabled={isDeleting}
-                className="flex-1 px-4 py-2 bg-red-500 text-white hover:scale-105 transition-all duration-300 disabled:opacity-50 cursor-pointer"
-              >
-                {isDeleting ? 'Deleting...' : 'Delete Account'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <Footer />
+      <DeleteAccountModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onDelete={handleDeleteAccount}
+        isDeleting={isDeleting}
+      />
     </div>
   )
 }

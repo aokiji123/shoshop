@@ -5,8 +5,8 @@ import {
   MdOutlineEdit,
 } from 'react-icons/md'
 import { useNavigate } from '@tanstack/react-router'
-import { ProductForm } from './ProductForm'
-import { ConfirmDialog } from './ConfirmDialog'
+import { ProductForm } from './modals/ProductForm'
+import { ConfirmDialog } from './modals/ConfirmDialog'
 import { Toast, useToast } from './Toast'
 import type { Product } from '@/api/types/product'
 import { convertTextToColor } from '@/lib/utils'
@@ -97,7 +97,7 @@ export const Item = ({ shortened, product }: ItemProps) => {
 
   return (
     <>
-      <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative">
+      <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative rounded-md">
         <div className="absolute top-2 right-2 flex items-center gap-2">
           {!shortened && (
             <div
@@ -158,7 +158,7 @@ export const Item = ({ shortened, product }: ItemProps) => {
                 </div>
                 <button
                   onClick={handleAddToCart}
-                  className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
+                  className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
                 >
                   Add to Cart
                 </button>

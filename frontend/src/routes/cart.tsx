@@ -1,10 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { IoMdClose } from 'react-icons/io'
-import Footer from '@/components/Footer'
+import type { CreateOrderRequest } from '@/api/types/order'
+import { useCreateOrder } from '@/api/queries/useOrder'
+import { useCurrentUser } from '@/api/queries/useAuth'
+import { Toast, useToast } from '@/components/Toast'
+import { useCart } from '@/contexts/CartContext'
 import { convertTextToColor } from '@/lib/utils'
 import { requireAuth } from '@/lib/auth'
-import { useCart } from '@/contexts/CartContext'
-import { Toast, useToast } from '@/components/Toast'
 
 export const Route = createFileRoute('/cart')({
   beforeLoad: () => {
@@ -14,8 +16,12 @@ export const Route = createFileRoute('/cart')({
 })
 
 function RouteComponent() {
-  const { cart, updateQuantity, removeFromCart, getRemainingStock } = useCart()
+  const navigate = useNavigate()
+  const { cart, updateQuantity, removeFromCart, getRemainingStock, clearCart } =
+    useCart()
   const { toast, showToast, hideToast } = useToast()
+  const createOrderMutation = useCreateOrder()
+  const { data: currentUser } = useCurrentUser()
 
   const subtotal = cart.items.reduce(
     (total, item) => total + item.product.price * item.quantity,
@@ -30,25 +36,60 @@ function RouteComponent() {
     selectedSize: string,
     newQuantity: number,
   ) => {
-    const success = updateQuantity(
-      productId,
-      selectedSize,
-      newQuantity,
-      (message) => {
-        showToast(message, 'error')
+    updateQuantity(productId, selectedSize, newQuantity, (message) => {
+      showToast(message, 'error')
+    })
+  }
+
+  const handleGoToPayment = () => {
+    if (!currentUser?.tgTag) {
+      showToast(
+        'Please set your Telegram tag in your profile to place an order',
+        'error',
+      )
+      return
+    }
+
+    if (cart.items.length === 0) {
+      showToast('Your cart is empty', 'error')
+      return
+    }
+
+    const orderData: CreateOrderRequest = {
+      tgTag: currentUser.tgTag,
+      price: total,
+      products: cart.items.map((item) => ({
+        productId: item.product.id,
+        quantity: item.quantity,
+      })),
+    }
+
+    createOrderMutation.mutate(orderData, {
+      onSuccess: () => {
+        showToast(
+          'Thanks for the order! Admin will connect with you ASAP.',
+          'success',
+        )
+        clearCart() // Clear the cart after successful order
+        navigate({ to: '/' })
       },
-    )
+      onError: (error: any) => {
+        showToast(
+          error.message || 'Failed to create order. Please try again.',
+          'error',
+        )
+      },
+    })
   }
 
   if (cart.items.length === 0) {
     return (
       <>
         <div>
-          <div className="flex flex-col items-center justify-center h-[70vh] gap-4">
+          <div className="flex flex-col items-center justify-center min-h-[90vh] gap-4">
             <h2 className="text-2xl font-bold">Your cart is empty</h2>
             <p className="text-gray-600">Add some products to get started!</p>
           </div>
-          <Footer />
         </div>
 
         <Toast
@@ -64,8 +105,8 @@ function RouteComponent() {
   return (
     <>
       <div>
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8 h-[90vh]">
+        <div className="flex justify-between min-h-[90vh]">
+          <div className="flex flex-col gap-4 p-4 md:p-6 lg:p-8">
             <h2 className="text-2xl font-bold mb-[24px]">Cart</h2>
             {cart.items.map((item, index) => {
               const remainingStock = getRemainingStock(
@@ -79,14 +120,14 @@ function RouteComponent() {
                   key={`${item.product.id}-${item.selectedSize}-${index}`}
                   className="flex flex-col gap-4 mb-[12px]"
                 >
-                  <div className="w-[600px] flex items-center justify-between">
+                  <div className="w-[800px] flex items-center justify-between">
                     <div className="flex flex-row gap-4">
                       <img
                         src={`http://localhost:5077/${item.product.image}`}
                         alt={item.product.enName}
                         className="w-[100px] h-[100px] object-cover"
                       />
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-[400px]">
                         <p className="text-lg font-bold">
                           {item.product.enName}
                         </p>
@@ -130,7 +171,7 @@ function RouteComponent() {
                             item.quantity - 1,
                           )
                         }
-                        className="bg-black text-white size-6 cursor-pointer hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                        className="bg-black text-white size-6 cursor-pointer hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md"
                       >
                         -
                       </button>
@@ -144,7 +185,7 @@ function RouteComponent() {
                           )
                         }
                         disabled={isMaxQuantity}
-                        className={`size-6 cursor-pointer hover:scale-105 transition-all duration-300 flex items-center justify-center ${
+                        className={`size-6 cursor-pointer hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md ${
                           isMaxQuantity
                             ? 'bg-gray-400 text-gray-600 cursor-not-allowed hover:scale-100'
                             : 'bg-black text-white'
@@ -154,7 +195,7 @@ function RouteComponent() {
                       </button>
                     </div>
                     <div
-                      className="cursor-pointer"
+                      className="cursor-pointer transition-all duration-300 hover:scale-110"
                       onClick={() =>
                         removeFromCart(item.product.id, item.selectedSize)
                       }
@@ -186,13 +227,18 @@ function RouteComponent() {
               <p className="text-3xl font-bold">${total.toFixed(2)}</p>
             </div>
             <div className="flex flex-col gap-2">
-              <button className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
-                Go to payment
+              <button
+                className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 rounded-md"
+                onClick={handleGoToPayment}
+                disabled={createOrderMutation.isPending}
+              >
+                {createOrderMutation.isPending
+                  ? 'Processing...'
+                  : 'Go to payment'}
               </button>
             </div>
           </div>
         </div>
-        <Footer />
       </div>
 
       <Toast

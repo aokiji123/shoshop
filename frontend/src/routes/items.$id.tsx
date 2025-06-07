@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { MdFavorite } from 'react-icons/md'
-import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
 import { Toast, useToast } from '@/components/Toast'
 import { convertTextToColor } from '@/lib/utils'
@@ -102,7 +101,7 @@ function RouteComponent() {
                   <li
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white transition-all duration-300 ${
+                    className={`p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white transition-all duration-300 rounded-md ${
                       selectedSize === size ? 'bg-black text-white' : ''
                     }`}
                   >
@@ -134,9 +133,9 @@ function RouteComponent() {
               <button
                 onClick={handleAddToCart}
                 disabled={!canAdd || product.count === 0}
-                className={`text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 ${
+                className={`text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md ${
                   !canAdd || product.count === 0
-                    ? 'bg-gray-400 text-gray-600 cursor-not-allowed hover:scale-100'
+                    ? 'bg-gray-400 text-gray-600 cursor-not-allowed hover:scale-100 rounded-md'
                     : 'bg-black text-white'
                 }`}
               >
@@ -146,7 +145,7 @@ function RouteComponent() {
                     ? 'Max Quantity in Cart'
                     : 'Add to Cart'}
               </button>
-              <button className="bg-black text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300">
+              <button className="bg-black text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md">
                 <MdFavorite />
               </button>
             </div>
@@ -177,7 +176,6 @@ function RouteComponent() {
             )}
           </div>
         </div>
-        <Footer />
       </div>
 
       <Toast

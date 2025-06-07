@@ -9,9 +9,8 @@ import {
   useSizes,
 } from '@/api/queries/useProduct'
 import { useCurrentUser } from '@/api/queries/useAuth'
-import Footer from '@/components/Footer'
 import { Item } from '@/components/Item'
-import { ProductForm } from '@/components/ProductForm'
+import { ProductForm } from '@/components/modals/ProductForm'
 import { Toast, useToast } from '@/components/Toast'
 import { requireAuth } from '@/lib/auth'
 
@@ -189,7 +188,7 @@ function RouteComponent() {
           {user?.isAdmin && (
             <button
               onClick={() => setIsCreateModalOpen(true)}
-              className="bg-black text-white text-md px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300"
+              className="bg-black text-white text-md px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
             >
               Create product
             </button>
@@ -202,7 +201,7 @@ function RouteComponent() {
             placeholder="Search products..."
             value={searchTerm}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="w-[70%] p-2 border-1 border-black outline-none"
+            className="w-[70%] p-2 border-1 border-black outline-none rounded-md"
           />
           <div className="flex flex-row gap-4">
             <select
@@ -210,7 +209,7 @@ function RouteComponent() {
               onChange={(e) =>
                 handleCategoryChange(e.target.value as Category | 'all')
               }
-              className="p-2 border-1 border-black"
+              className="p-2 border-1 border-black rounded-md"
             >
               <option value="all">All Categories</option>
               {categories.map((category) => (
@@ -222,7 +221,7 @@ function RouteComponent() {
             <select
               value={selectedSize}
               onChange={(e) => handleSizeChange(e.target.value as Size | 'all')}
-              className="p-2 border-1 border-black"
+              className="p-2 border-1 border-black rounded-md"
             >
               <option value="all">All Sizes</option>
               {sizes.map((size) => (
@@ -236,7 +235,7 @@ function RouteComponent() {
               onChange={(e) =>
                 handleColorChange(e.target.value as Color | 'all')
               }
-              className="p-2 border-1 border-black"
+              className="p-2 border-1 border-black rounded-md"
             >
               <option value="all">All Colors</option>
               {colors.map((color) => (
@@ -252,7 +251,7 @@ function RouteComponent() {
                 setSortBy(field)
                 setSortDirection(direction as 'Ascending' | 'Descending')
               }}
-              className="p-2 border-1 border-black"
+              className="p-2 border-1 border-black rounded-md"
             >
               <option value="enName-Ascending">Name A-Z</option>
               <option value="enName-Descending">Name Z-A</option>
@@ -290,7 +289,7 @@ function RouteComponent() {
               {getPaginationNumbers().map((page, index) => (
                 <li
                   key={index}
-                  className={`text-lg cursor-pointer px-2 py-1 ${
+                  className={`text-lg cursor-pointer px-2 py-1 rounded-md ${
                     page === currentPage
                       ? 'font-bold bg-black text-white'
                       : page === '...'
@@ -327,8 +326,6 @@ function RouteComponent() {
         isLoading={createProductMutation.isPending}
         title="Create New Product"
       />
-
-      <Footer />
 
       <Toast
         message={toast.message}

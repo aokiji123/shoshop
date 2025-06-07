@@ -81,13 +81,14 @@ public class TelegramBotService
             .Include(op => op.Product)
             .ToListAsync(cancellationToken: CancellationToken.None);
 
-        var message = $"*New Order Received!*\n" +
-                      $"Order ID: {order.Id}\n" +
-                      $"User: {order.TgTag}\n" +
-                      $"Total Price: {order.Price:C}\n" +
-                      $"Created At: {order.CreatedAt:yyyy-MM-dd HH:mm:ss UTC}\n" +
-                      $"Products:\n" +
-                      string.Join("\n", orderProducts.Select(op => $"- {op.Product.EnName} (Qty: {op.Quantity})"));
+        var message = $"🛍️ *New Order Received\\!*\n\n" +
+                      $"*Order ID:* `{order.Id}`\n" +
+                      $"*User:* {EscapeMarkdownV2(order.TgTag)}\n" +
+                      $"*Total Price:* ${order.Price:F2}\n" +
+                      $"*Created At:* {order.CreatedAt:yyyy\\-MM\\-dd HH:mm:ss} UTC\n\n" +
+                      $"*Products:*\n" +
+                      string.Join("\n", orderProducts.Select(op => 
+                          $"• {EscapeMarkdownV2(op.Product.EnName)} \\(Qty: {op.Quantity}\\)"));
 
         foreach (var admin in admins)
         {
@@ -98,11 +99,37 @@ public class TelegramBotService
                 await _botClient.SendMessage(
                     chatId: chatId,
                     text: message,
-                    parseMode: ParseMode.Markdown,
+                    parseMode: ParseMode.MarkdownV2,
                     cancellationToken: CancellationToken.None);
                 _logger.LogInformation($"Order notification sent to {admin.TgTag}");
             }
-            catch (Exception ex) { _logger.LogError(ex, $"Failed to send message to {admin.TgTag}"); }
+            catch (Exception ex) 
+            { 
+                _logger.LogError(ex, $"Failed to send message to {admin.TgTag}");
+                
+                // Fallback: send without formatting if markdown fails
+                try
+                {
+                    var plainMessage = $"🛍️ New Order Received!\n\n" +
+                                     $"Order ID: {order.Id}\n" +
+                                     $"User: {order.TgTag}\n" +
+                                     $"Total Price: ${order.Price:F2}\n" +
+                                     $"Created At: {order.CreatedAt:yyyy-MM-dd HH:mm:ss} UTC\n\n" +
+                                     $"Products:\n" +
+                                     string.Join("\n", orderProducts.Select(op => 
+                                         $"• {op.Product.EnName} (Qty: {op.Quantity})"));
+                    
+                    await _botClient.SendMessage(
+                        chatId: chatId,
+                        text: plainMessage,
+                        cancellationToken: CancellationToken.None);
+                    _logger.LogInformation($"Order notification sent to {admin.TgTag} (fallback plain text)");
+                }
+                catch (Exception fallbackEx)
+                {
+                    _logger.LogError(fallbackEx, $"Failed to send fallback message to {admin.TgTag}");
+                }
+            }
         }
     }
 
@@ -148,5 +175,19 @@ public class TelegramBotService
     {
         _logger.LogError(exception, "Telegram polling error.");
         return Task.CompletedTask;
+    }
+
+    private static string EscapeMarkdownV2(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return string.Empty;
+
+        // Escape special characters for MarkdownV2
+        var specialChars = new[] { '_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!' };
+        foreach (var ch in specialChars)
+        {
+            text = text.Replace(ch.ToString(), $"\\{ch}");
+        }
+        return text;
     }
 }

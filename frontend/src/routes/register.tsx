@@ -1,6 +1,5 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
-import Footer from '@/components/Footer'
 import { useRegister } from '@/api/queries/useAuth'
 import { requireNoAuth } from '@/lib/auth'
 
@@ -94,7 +93,7 @@ function RouteComponent() {
                 Name
               </label>
               <input
-                className={`px-3 py-2 border-1 ${
+                className={`px-3 py-2 border-1 rounded-md ${
                   errors.name ? 'border-red-500' : 'border-black'
                 } focus:outline-none`}
                 type="text"
@@ -114,7 +113,7 @@ function RouteComponent() {
                 Email
               </label>
               <input
-                className={`px-3 py-2 border-1 ${
+                className={`px-3 py-2 border-1 rounded-md ${
                   errors.email ? 'border-red-500' : 'border-black'
                 } focus:outline-none`}
                 type="email"
@@ -134,7 +133,7 @@ function RouteComponent() {
             <div className="flex flex-col">
               <label htmlFor="password">Password</label>
               <input
-                className={`px-3 py-2 border-1 ${
+                className={`px-3 py-2 border-1 rounded-md ${
                   errors.password ? 'border-red-500' : 'border-black'
                 } focus:outline-none`}
                 type="password"
@@ -152,7 +151,7 @@ function RouteComponent() {
             </div>
 
             <button
-              className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-black text-white px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-md"
               type="submit"
               disabled={isPending}
             >
@@ -160,7 +159,7 @@ function RouteComponent() {
             </button>
 
             {errors.general && (
-              <div className="text-red-500 text-sm text-center">
+              <div className="text-red-500 text-sm text-center rounded-md">
                 {errors.general}
               </div>
             )}
@@ -174,7 +173,6 @@ function RouteComponent() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

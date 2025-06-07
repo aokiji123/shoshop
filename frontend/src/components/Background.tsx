@@ -126,6 +126,8 @@ export function Background() {
     let vertices: Array<number> = []
 
     function resize() {
+      if (!canvas || !gl) return
+
       const { innerWidth: width, innerHeight: height } = window
 
       canvas.width = width * dpr
@@ -135,6 +137,8 @@ export function Background() {
     }
 
     function compile(shader: WebGLShader, source: string) {
+      if (!gl) return
+
       gl.shaderSource(shader, source)
       gl.compileShader(shader)
 
@@ -144,13 +148,14 @@ export function Background() {
     }
 
     function setup() {
+      if (!gl) return
+
       const vs = gl.createShader(gl.VERTEX_SHADER)
       const fs = gl.createShader(gl.FRAGMENT_SHADER)
 
       if (!vs || !fs) return
 
       program = gl.createProgram()
-      if (!program) return
 
       compile(vs, vertexSource)
       compile(fs, fragmentSource)
@@ -182,6 +187,8 @@ export function Background() {
     }
 
     function draw(now: number) {
+      if (!gl || !canvas) return
+
       gl.clearColor(0, 0, 0, 1)
       gl.clear(gl.COLOR_BUFFER_BIT)
 
@@ -242,7 +249,7 @@ export function Background() {
           width: '100%',
           height: '100%',
           zIndex: -1,
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
           backdropFilter: 'blur(4px)',
         }}
       />

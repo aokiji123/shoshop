@@ -41,6 +41,7 @@ export type LoginResponse = {
 
 export type User = {
   id?: string
+  tgTag?: string
   name?: string
   email?: string
   isAdmin?: boolean

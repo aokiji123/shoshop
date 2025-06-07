@@ -2,6 +2,7 @@ import { Outlet, createRootRoute, useLocation } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 function RootComponent() {
   const location = useLocation()
@@ -9,11 +10,14 @@ function RootComponent() {
     location.pathname === '/login' || location.pathname === '/register'
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       {!isAuthPage && <Header />}
-      <Outlet />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
       <TanStackRouterDevtools />
-    </>
+    </div>
   )
 }
 

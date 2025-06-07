@@ -16,6 +16,9 @@ public class UserMappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.IsAdmin, opt => opt.Ignore())
             .ForMember(dest => dest.Password, opt => opt.Ignore())
-            .ForMember(dest => dest.Orders, opt => opt.Ignore());
+            .ForMember(dest => dest.Orders, opt => opt.Ignore())
+            .ForMember(dest => dest.TgTag, opt => opt.MapFrom(src => src.TgTag))
+            .ForMember(dest => dest.Image, opt => opt.Ignore());
+            
     }
 }
