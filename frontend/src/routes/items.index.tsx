@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
+import { MdClear } from 'react-icons/md'
 import type { Category, Color, ProductFilters, Size } from '@/api/types/product'
 import {
   useCategories,
@@ -131,6 +132,35 @@ function RouteComponent() {
     setCurrentPage(page)
   }
 
+  const clearFilters = () => {
+    setSearchTerm('')
+    setDebouncedSearchTerm('')
+    setSelectedCategory('all')
+    setSelectedSize('all')
+    setSelectedColor('all')
+    setCurrentPage(1)
+    setSortBy('enName')
+    setSortDirection('Ascending')
+  }
+
+  const hasActiveFilters = useMemo(() => {
+    return (
+      searchTerm.trim() !== '' ||
+      selectedCategory !== 'all' ||
+      selectedSize !== 'all' ||
+      selectedColor !== 'all' ||
+      sortBy !== 'enName' ||
+      sortDirection !== 'Ascending'
+    )
+  }, [
+    searchTerm,
+    selectedCategory,
+    selectedSize,
+    selectedColor,
+    sortBy,
+    sortDirection,
+  ])
+
   const getPaginationNumbers = () => {
     const delta = 2
     const range = []
@@ -259,6 +289,14 @@ function RouteComponent() {
               <option value="price-Descending">Price High-Low</option>
               <option value="likes-Descending">Most Popular</option>
             </select>
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="p-2 border-1 border-black rounded-md hover:bg-gray-100 cursor-pointer hover:scale-105 transition-all duration-300"
+              >
+                <MdClear size={20} />
+              </button>
+            )}
           </div>
         </div>
 
