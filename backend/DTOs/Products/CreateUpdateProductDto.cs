@@ -23,9 +23,6 @@ public class CreateUpdateProductDto
     [Required, Range(0, int.MaxValue)]
     public int Count { get; set; }
 
-    [Range(0, int.MaxValue)]
-    public int Likes { get; set; } = 0;
-
     [MaxLength(3000)]
     public string? Image { get; set; }
         

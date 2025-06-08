@@ -329,29 +329,6 @@ public class ProductController : BaseController
             {
                 try
                 {
-                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
-                    var fileExtension = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
-                    
-                    if (!allowedExtensions.Contains(fileExtension))
-                    {
-                        return BadRequest(new
-                        {
-                            success = false,
-                            message = "Invalid file type",
-                            errors = new[] { "Only image files (jpg, jpeg, png, gif, webp) are allowed" }
-                        });
-                    }
-                    
-                    if (imageFile.Length > 5 * 1024 * 1024)
-                    {
-                        return BadRequest(new
-                        {
-                            success = false,
-                            message = "File too large",
-                            errors = new[] { "Image file size must be less than 5MB" }
-                        });
-                    }
-
                     finalImagePath = await _imageService.SaveImageAsync(imageFile, "products");
                     _logger.LogInformation("Image uploaded successfully: {ImagePath}", finalImagePath);
                 }
@@ -396,11 +373,21 @@ public class ProductController : BaseController
             
             var product = _mapper.Map<Product>(createDto);
             product.Image = finalImagePath;
+            product.Likes = 0;
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             
-            var productDto = _mapper.Map<ProductResponseDto>(product);
+            var savedProduct = await _context.Products
+                .Include(p => p.UserLikes)
+                .FirstOrDefaultAsync(p => p.Id == product.Id);
+                
+            var currentUserId = GetCurrentUserId();
+            var productDto = _mapper.Map<ProductResponseDto>(savedProduct, opt => 
+            {
+                if (currentUserId.HasValue)
+                    opt.Items["CurrentUserId"] = currentUserId.Value;
+            });
 
             _logger.LogInformation("Product {ProductId} ({ProductName}) created successfully by admin", 
                 product.Id, product.EnName);
@@ -454,8 +441,11 @@ public class ProductController : BaseController
             }
 
             _logger.LogInformation("Admin attempting to update product {ProductId}", id);
-
-            var product = await _context.Products.FindAsync(id);
+            
+            var product = await _context.Products
+                .Include(p => p.UserLikes)
+                .FirstOrDefaultAsync(p => p.Id == id);
+                
             if (product == null)
             {
                 _logger.LogWarning("Product {ProductId} not found for update", id);
@@ -477,26 +467,15 @@ public class ProductController : BaseController
                     errors = new[] { "Product with this name already exists" }
                 });
             }
-
+            
+            var currentLikes = product.Likes;
             string? oldImagePath = product.Image;
+            string finalImagePath = oldImagePath;
             
             if (imageFile != null)
             {
                 try
                 {
-                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
-                    var fileExtension = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
-                    
-                    if (!allowedExtensions.Contains(fileExtension))
-                    {
-                        return BadRequest(new
-                        {
-                            success = false,
-                            message = "Invalid file type",
-                            errors = new[] { "Only image files (jpg, jpeg, png, gif, webp) are allowed" }
-                        });
-                    }
-
                     var newImagePath = await _imageService.SaveImageAsync(imageFile, "products");
                     _logger.LogInformation("New image uploaded for product {ProductId}: {ImagePath}", id, newImagePath);
                     
@@ -506,7 +485,7 @@ public class ProductController : BaseController
                         _logger.LogInformation("Old image deleted for product {ProductId}: {ImagePath}", id, oldImagePath);
                     }
                     
-                    product.Image = newImagePath;
+                    finalImagePath = newImagePath;
                 }
                 catch (Exception ex)
                 {
@@ -538,17 +517,25 @@ public class ProductController : BaseController
                     _logger.LogInformation("Old image deleted for product {ProductId}: {ImagePath}", id, oldImagePath);
                 }
                 
-                product.Image = updateDto.Image;
+                finalImagePath = updateDto.Image;
             }
             
             _mapper.Map(updateDto, product);
+            
+            product.Likes = currentLikes;
+            product.Image = finalImagePath;
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Product {ProductId} updated successfully", id);
             
-            var productDto = _mapper.Map<ProductResponseDto>(product);
+            var currentUserId = GetCurrentUserId();
+            var productDto = _mapper.Map<ProductResponseDto>(product, opt => 
+            {
+                if (currentUserId.HasValue)
+                    opt.Items["CurrentUserId"] = currentUserId.Value;
+            });
 
             return Ok(productDto);
         }
