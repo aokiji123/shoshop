@@ -33,11 +33,15 @@ public class UserController : BaseController
     /// Get current user profile
     /// </summary>
     /// <returns>Current user data</returns>
+    /// <response code="200">Returns the current user data</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the user is not found</response>
     [HttpGet]
     [Authorize]
     [ProducesResponseType(typeof(UserDto), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
         try
@@ -75,13 +79,19 @@ public class UserController : BaseController
     /// Update current user profile
     /// </summary>
     /// <param name="updateDto">Data to update</param>
+    /// <param name="imageFile">Optional image file</param>
     /// <returns>Updated user data</returns>
+    /// <response code="200">Returns the updated user data</response>
+    /// <response code="400">If the input is invalid</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the user is not found</response>
     [HttpPut]
     [Authorize]
     [ProducesResponseType(typeof(UserDto), 200)]
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<UserDto>> UpdateCurrentUser([FromForm] UpdateUserDto updateDto, IFormFile? imageFile)
     {
         try
@@ -197,11 +207,15 @@ public class UserController : BaseController
     /// Delete current user account
     /// </summary>
     /// <returns>Deletion confirmation</returns>
+    /// <response code="200">User account deleted successfully</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the user is not found</response>
     [HttpDelete]
     [Authorize]
     [ProducesResponseType(typeof(object), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<object>> DeleteCurrentUser()
     {
         try

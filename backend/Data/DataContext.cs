@@ -14,6 +14,8 @@ public class DataContext : DbContext
     
     public DbSet<AdminsChats> AdminsChats { get; set; }
     
+    public DbSet<UserProductLike> UserProductLikes { get; set; }
+    
     public DataContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -79,6 +81,23 @@ public class DataContext : DbContext
             .WithMany(p => p.OrderProducts)
             .HasForeignKey(op => op.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
+        
+        modelBuilder.Entity<UserProductLike>()
+            .HasOne(upl => upl.User)
+            .WithMany(u => u.LikedProducts)
+            .HasForeignKey(upl => upl.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    
+        modelBuilder.Entity<UserProductLike>()
+            .HasOne(upl => upl.Product)
+            .WithMany(p => p.UserLikes)
+            .HasForeignKey(upl => upl.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        // Prevent duplicate likes
+        modelBuilder.Entity<UserProductLike>()
+            .HasIndex(upl => new { upl.UserId, upl.ProductId })
+            .IsUnique();
 
         // Configure indexes
         modelBuilder.Entity<Product>()

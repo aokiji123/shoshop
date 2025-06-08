@@ -36,10 +36,10 @@ public class ProductController : BaseController
     /// <response code="401">If the user is not authenticated</response>
     [HttpGet]
     [Authorize]
-    [ProducesResponseType(typeof(PagedResult<ProductDto>), 200)]
+    [ProducesResponseType(typeof(PagedResult<ProductResponseDto>), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<PagedResult<ProductDto>>> GetProducts(
+    public async Task<ActionResult<PagedResult<ProductResponseDto>>> GetProducts(
         [FromQuery] ProductFilter productFilter, 
         [FromQuery] SortParams sortParams,
         [FromQuery] PageParams pageParams)
@@ -47,14 +47,21 @@ public class ProductController : BaseController
         try
         {
             _logger.LogInformation("Request to get all products");
-
+            
+            var currentUserId = GetCurrentUserId();
+            
             var pagedProducts = await _context.Products
-                .Filter(productFilter)
+                .Include(p => p.UserLikes)
+                .Filter(productFilter, currentUserId)
                 .Sort(sortParams)
                 .ToPagedAsync(pageParams);
 
-            var productDtos = _mapper.Map<ProductDto[]>(pagedProducts.Data);
-            var result = new PagedResult<ProductDto>(productDtos, pagedProducts.TotalCount);
+            var productDtos = _mapper.Map<ProductResponseDto[]>(pagedProducts.Data, opt => 
+            {
+                if (currentUserId.HasValue)
+                    opt.Items["CurrentUserId"] = currentUserId.Value;
+            });
+            var result = new PagedResult<ProductResponseDto>(productDtos, pagedProducts.TotalCount);
 
             _logger.LogInformation("Successfully retrieved {Count} products out of {TotalCount} total", 
                 productDtos.Length, pagedProducts.TotalCount);
@@ -63,7 +70,7 @@ public class ProductController : BaseController
         }
         catch (Exception ex)
         {
-            return HandleException<PagedResult<ProductDto>>(ex, _logger, "GetProducts");
+            return HandleException<PagedResult<ProductResponseDto>>(ex, _logger, "GetProducts");
         }
     }
 
@@ -77,17 +84,21 @@ public class ProductController : BaseController
     /// <response code="404">If the product is not found</response>
     [HttpGet("{id}")]
     [Authorize]
-    [ProducesResponseType(typeof(ProductDto), 200)]
+    [ProducesResponseType(typeof(ProductResponseDto), 200)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 404)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<ProductDto>> GetProduct(Guid id)
+    public async Task<ActionResult<ProductResponseDto>> GetProduct(Guid id)
     {
         try
         {
             _logger.LogInformation("Request to get product {ProductId}", id);
-
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            
+            var currentUserId = GetCurrentUserId();
+            
+            var product = await _context.Products
+                .Include(p => p.UserLikes)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
@@ -95,21 +106,123 @@ public class ProductController : BaseController
                 return NotFound("Product not found");
             }
             
-            var productDto = _mapper.Map<ProductDto>(product);
+            var productDto = _mapper.Map<ProductResponseDto>(product, opt => 
+            {
+                if (currentUserId.HasValue)
+                    opt.Items["CurrentUserId"] = currentUserId.Value;
+            });
 
             _logger.LogInformation("Successfully retrieved product {ProductId}", id);
             return Ok(productDto);
         }
         catch (Exception ex)
         {
-            return HandleException<ProductDto>(ex, _logger, "GetProduct");
+            return HandleException<ProductResponseDto>(ex, _logger, "GetProduct");
+        }
+    }
+    
+    /// <summary>
+    /// Likes a product
+    /// </summary>
+    /// <param name="id">The ID of the product to like</param>
+    /// <returns>Like confirmation</returns>
+    /// <response code="200">Product liked successfully</response>
+    /// <response code="400">If the product is already liked</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the product is not found</response>
+    [HttpPost("{id}/like")]
+    [Authorize]
+    [ProducesResponseType(typeof(object), 200)]
+    [ProducesResponseType(typeof(object), 400)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
+    public async Task<ActionResult<object>> LikeProduct(Guid id)
+    {
+        try
+        {
+            var currentUserId = GetCurrentUserId();
+            if (!currentUserId.HasValue) return Unauthorized();
+
+            var existingLike = await _context.UserProductLikes
+                .FirstOrDefaultAsync(ul => ul.UserId == currentUserId.Value && ul.ProductId == id);
+
+            if (existingLike != null)
+                return BadRequest(new { success = false, message = "Product already liked" });
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound("Product not found");
+
+            _context.UserProductLikes.Add(new UserProductLike
+            {
+                UserId = currentUserId.Value,
+                ProductId = id
+            });
+            
+            product.Likes++;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true, message = "Product liked successfully", likes = product.Likes });
+        }
+        catch (Exception ex)
+        {
+            return HandleException<object>(ex, _logger, "LikeProduct");
+        }
+    }
+
+    /// <summary>
+    /// Unlikes a product
+    /// </summary>
+    /// <param name="id">The ID of the product to unlike</param>
+    /// <returns>Unlike confirmation</returns>
+    /// <response code="200">Product unliked successfully</response>
+    /// <response code="400">If the product is not liked</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the product is not found</response>
+    [HttpDelete("{id}/like")]
+    [Authorize]
+    [ProducesResponseType(typeof(object), 200)]
+    [ProducesResponseType(typeof(object), 400)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
+    public async Task<ActionResult<object>> UnlikeProduct(Guid id)
+    {
+        try
+        {
+            var currentUserId = GetCurrentUserId();
+            if (!currentUserId.HasValue) return Unauthorized();
+
+            var existingLike = await _context.UserProductLikes
+                .FirstOrDefaultAsync(ul => ul.UserId == currentUserId.Value && ul.ProductId == id);
+
+            if (existingLike == null)
+                return BadRequest(new { success = false, message = "Product not liked" });
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound("Product not found");
+
+            _context.UserProductLikes.Remove(existingLike);
+            product.Likes = Math.Max(0, product.Likes - 1);
+            
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true, message = "Product unliked successfully", likes = product.Likes });
+        }
+        catch (Exception ex)
+        {
+            return HandleException<object>(ex, _logger, "UnlikeProduct");
         }
     }
 
     /// <summary>
     /// Get all available categories
     /// </summary>
+    /// <returns>List of product categories</returns>
+    /// <response code="200">Returns the list of categories</response>
     [HttpGet("categories")]
+    [ProducesResponseType(typeof(object), 200)]
+    [ProducesResponseType(typeof(string), 500)]
     public IActionResult GetCategories()
     {
         var categories = Enum.GetValues<ProductCategory>()
@@ -123,7 +236,11 @@ public class ProductController : BaseController
     /// <summary>
     /// Get all available sizes
     /// </summary>
+    /// <returns>List of product sizes</returns>
+    /// <response code="200">Returns the list of sizes</response>
     [HttpGet("sizes")]
+    [ProducesResponseType(typeof(object), 200)]
+    [ProducesResponseType(typeof(string), 500)]
     public IActionResult GetSizes()
     {
         var sizes = Enum.GetValues<ProductSize>()
@@ -137,7 +254,11 @@ public class ProductController : BaseController
     /// <summary>
     /// Get all available colors
     /// </summary>
+    /// <returns>List of product colors</returns>
+    /// <response code="200">Returns the list of colors</response>
     [HttpGet("colors")]
+    [ProducesResponseType(typeof(object), 200)]
+    [ProducesResponseType(typeof(string), 500)]
     public IActionResult GetColors()
     {
         var colors = Enum.GetValues<ProductColor>()
@@ -160,12 +281,12 @@ public class ProductController : BaseController
     /// <response code="403">If the user is not an admin</response>
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    [ProducesResponseType(typeof(ProductDto), 201)]
+    [ProducesResponseType(typeof(ProductResponseDto), 201)]
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 403)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<ProductDto>> CreateProduct([FromForm] CreateUpdateProductDto createDto, IFormFile? imageFile)
+    public async Task<ActionResult<ProductResponseDto>> CreateProduct([FromForm] CreateUpdateProductDto createDto, IFormFile? imageFile)
     {
         try
         {
@@ -279,7 +400,7 @@ public class ProductController : BaseController
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             
-            var productDto = _mapper.Map<ProductDto>(product);
+            var productDto = _mapper.Map<ProductResponseDto>(product);
 
             _logger.LogInformation("Product {ProductId} ({ProductName}) created successfully by admin", 
                 product.Id, product.EnName);
@@ -288,7 +409,7 @@ public class ProductController : BaseController
         }
         catch (Exception ex)
         {
-            return HandleException<ProductDto>(ex, _logger, "CreateProduct");
+            return HandleException<ProductResponseDto>(ex, _logger, "CreateProduct");
         }
     }
 
@@ -306,13 +427,13 @@ public class ProductController : BaseController
     /// <response code="404">If the product is not found</response>
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    [ProducesResponseType(typeof(ProductDto), 200)]
+    [ProducesResponseType(typeof(ProductResponseDto), 200)]
     [ProducesResponseType(typeof(object), 400)]
     [ProducesResponseType(typeof(string), 401)]
     [ProducesResponseType(typeof(string), 403)]
     [ProducesResponseType(typeof(string), 404)]
     [ProducesResponseType(typeof(string), 500)]
-    public async Task<ActionResult<ProductDto>> UpdateProduct(Guid id, [FromForm] CreateUpdateProductDto updateDto, IFormFile? imageFile)
+    public async Task<ActionResult<ProductResponseDto>> UpdateProduct(Guid id, [FromForm] CreateUpdateProductDto updateDto, IFormFile? imageFile)
     {
         try
         {
@@ -427,13 +548,13 @@ public class ProductController : BaseController
 
             _logger.LogInformation("Product {ProductId} updated successfully", id);
             
-            var productDto = _mapper.Map<ProductDto>(product);
+            var productDto = _mapper.Map<ProductResponseDto>(product);
 
             return Ok(productDto);
         }
         catch (Exception ex)
         {
-            return HandleException<ProductDto>(ex, _logger, "UpdateProduct");
+            return HandleException<ProductResponseDto>(ex, _logger, "UpdateProduct");
         }
     }
 

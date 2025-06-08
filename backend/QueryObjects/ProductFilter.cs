@@ -11,7 +11,9 @@ public class ProductFilter
     public decimal? MaxPrice { get; set; }
     public ProductCategory? Category { get; set; }
     public int? Count { get; set; }
-    public int? Likes { get; set; }
     public ProductSize? Size { get; set; }
     public ProductColor? Color { get; set; }
+    public bool? IsLiked { get; set; }
+    public int? MinLikes { get; set; }
+    public int? MaxLikes { get; set; }
 }

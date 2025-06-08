@@ -38,6 +38,43 @@
             </summary>
             <returns>User ID or null if token is invalid</returns>
         </member>
+        <member name="M:backend.Controllers.OrderController.GetOrders">
+            <summary>
+            Retrieves a list of all orders
+            </summary>
+            <returns>A list of orders</returns>
+            <response code="200">Returns the list of orders</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:backend.Controllers.OrderController.GetOrder(System.Guid)">
+            <summary>
+            Retrieves a specific order by ID
+            </summary>
+            <param name="id">The ID of the order</param>
+            <returns>The order details</returns>
+            <response code="200">Returns the order</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the order is not found</response>
+        </member>
+        <member name="M:backend.Controllers.OrderController.GetOrdersByUser(System.Guid)">
+            <summary>
+            Retrieves orders for a specific user
+            </summary>
+            <param name="userId">The ID of the user</param>
+            <returns>A list of user's orders</returns>
+            <response code="200">Returns the list of user's orders</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:backend.Controllers.OrderController.CreateOrder(backend.DTOs.Orders.CreateOrderDto)">
+            <summary>
+            Creates a new order
+            </summary>
+            <param name="newOrderDto">The order details to create</param>
+            <returns>The created order</returns>
+            <response code="201">Returns the created order</response>
+            <response code="400">If the input is invalid</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
         <member name="M:backend.Controllers.ProductController.GetProducts(backend.QueryObjects.ProductFilter,backend.QueryObjects.SortParams,backend.QueryObjects.PageParams)">
             <summary>
             Retrieves a list of all products
@@ -56,20 +93,48 @@
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the product is not found</response>
         </member>
+        <member name="M:backend.Controllers.ProductController.LikeProduct(System.Guid)">
+            <summary>
+            Likes a product
+            </summary>
+            <param name="id">The ID of the product to like</param>
+            <returns>Like confirmation</returns>
+            <response code="200">Product liked successfully</response>
+            <response code="400">If the product is already liked</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the product is not found</response>
+        </member>
+        <member name="M:backend.Controllers.ProductController.UnlikeProduct(System.Guid)">
+            <summary>
+            Unlikes a product
+            </summary>
+            <param name="id">The ID of the product to unlike</param>
+            <returns>Unlike confirmation</returns>
+            <response code="200">Product unliked successfully</response>
+            <response code="400">If the product is not liked</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the product is not found</response>
+        </member>
         <member name="M:backend.Controllers.ProductController.GetCategories">
             <summary>
             Get all available categories
             </summary>
+            <returns>List of product categories</returns>
+            <response code="200">Returns the list of categories</response>
         </member>
         <member name="M:backend.Controllers.ProductController.GetSizes">
             <summary>
             Get all available sizes
             </summary>
+            <returns>List of product sizes</returns>
+            <response code="200">Returns the list of sizes</response>
         </member>
         <member name="M:backend.Controllers.ProductController.GetColors">
             <summary>
             Get all available colors
             </summary>
+            <returns>List of product colors</returns>
+            <response code="200">Returns the list of colors</response>
         </member>
         <member name="M:backend.Controllers.ProductController.CreateProduct(backend.DTOs.Products.CreateUpdateProductDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
@@ -113,19 +178,30 @@
             Get current user profile
             </summary>
             <returns>Current user data</returns>
+            <response code="200">Returns the current user data</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the user is not found</response>
         </member>
         <member name="M:backend.Controllers.UserController.UpdateCurrentUser(backend.DTOs.Users.UpdateUserDto,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Update current user profile
             </summary>
             <param name="updateDto">Data to update</param>
+            <param name="imageFile">Optional image file</param>
             <returns>Updated user data</returns>
+            <response code="200">Returns the updated user data</response>
+            <response code="400">If the input is invalid</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the user is not found</response>
         </member>
         <member name="M:backend.Controllers.UserController.DeleteCurrentUser">
             <summary>
             Delete current user account
             </summary>
             <returns>Deletion confirmation</returns>
+            <response code="200">User account deleted successfully</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the user is not found</response>
         </member>
         <member name="T:backend.Migrations.InitialCreate">
             <inheritdoc />
@@ -185,6 +261,18 @@
             <inheritdoc />
         </member>
         <member name="M:backend.Migrations.AddAdminsChatsTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddUserLikes">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddUserLikes.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddUserLikes.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddUserLikes.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

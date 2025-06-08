@@ -28,7 +28,17 @@ public class OrderController : BaseController
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Retrieves a list of all orders
+    /// </summary>
+    /// <returns>A list of orders</returns>
+    /// <response code="200">Returns the list of orders</response>
+    /// <response code="401">If the user is not authenticated</response>
     [HttpGet]
+    [Authorize]
+    [ProducesResponseType(typeof(IEnumerable<OrderResponseDto>), 200)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<IEnumerable<OrderResponseDto>>> GetOrders()
     {
         var orders = await _context.Orders
@@ -40,7 +50,20 @@ public class OrderController : BaseController
         return Ok(orderDtos);
     }
 
+    /// <summary>
+    /// Retrieves a specific order by ID
+    /// </summary>
+    /// <param name="id">The ID of the order</param>
+    /// <returns>The order details</returns>
+    /// <response code="200">Returns the order</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <response code="404">If the order is not found</response>
     [HttpGet("{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(OrderResponseDto), 200)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 404)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<OrderResponseDto>> GetOrder(Guid id)
     {
         var order = await _context.Orders
@@ -55,7 +78,18 @@ public class OrderController : BaseController
         return Ok(orderDto);
     }
 
+    /// <summary>
+    /// Retrieves orders for a specific user
+    /// </summary>
+    /// <param name="userId">The ID of the user</param>
+    /// <returns>A list of user's orders</returns>
+    /// <response code="200">Returns the list of user's orders</response>
+    /// <response code="401">If the user is not authenticated</response>
     [HttpGet("user/{userId}")]
+    [Authorize]
+    [ProducesResponseType(typeof(IEnumerable<OrderResponseDto>), 200)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<IEnumerable<OrderResponseDto>>> GetOrdersByUser(Guid userId)
     {
         var orders = await _context.Orders
@@ -70,8 +104,20 @@ public class OrderController : BaseController
         return Ok(orderDtos);
     }
 
+    /// <summary>
+    /// Creates a new order
+    /// </summary>
+    /// <param name="newOrderDto">The order details to create</param>
+    /// <returns>The created order</returns>
+    /// <response code="201">Returns the created order</response>
+    /// <response code="400">If the input is invalid</response>
+    /// <response code="401">If the user is not authenticated</response>
     [HttpPost]
     [Authorize]
+    [ProducesResponseType(typeof(OrderResponseDto), 201)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 401)]
+    [ProducesResponseType(typeof(string), 500)]
     public async Task<ActionResult<OrderResponseDto>> CreateOrder(CreateOrderDto newOrderDto)
     {
         try

@@ -7,7 +7,7 @@ namespace backend.Data;
 
 public static class ProductQueryExtensions
 {
-    public static IQueryable<Product> Filter(this IQueryable<Product> query, ProductFilter filter)
+    public static IQueryable<Product> Filter(this IQueryable<Product> query, ProductFilter filter, Guid? currentUserId = null)
     {
         if (!string.IsNullOrEmpty(filter.UaName))
             query = query.Where(p => p.UaName.ToLower().Contains(filter.UaName.ToLower()));
@@ -30,8 +30,19 @@ public static class ProductQueryExtensions
         if (filter.Count.HasValue)
             query = query.Where(p => p.Count >= filter.Count.Value);
         
-        if (filter.Likes.HasValue)
-            query = query.Where(p => p.Likes >= filter.Likes.Value);
+        if (filter.MinLikes.HasValue)
+            query = query.Where(p => p.Likes >= filter.MinLikes.Value);
+        
+        if (filter.MaxLikes.HasValue)
+            query = query.Where(p => p.Likes <= filter.MaxLikes.Value);
+        
+        if (filter.IsLiked.HasValue && currentUserId.HasValue)
+        {
+            if (filter.IsLiked.Value)
+                query = query.Where(p => p.UserLikes.Any(ul => ul.UserId == currentUserId.Value));
+            else
+                query = query.Where(p => !p.UserLikes.Any(ul => ul.UserId == currentUserId.Value));
+        }
         
         if (filter.Size.HasValue)
             query = query.Where(p => p.Size == filter.Size.Value);

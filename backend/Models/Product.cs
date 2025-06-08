@@ -43,4 +43,8 @@ public class Product
     // TgTag and Orders db update
     
     public ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+    
+    // Likes db update
+    
+    public ICollection<UserProductLike> UserLikes { get; set; } = new List<UserProductLike>();
 }

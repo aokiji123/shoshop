@@ -28,4 +28,8 @@ public class User
     public string? TgTag { get; set; }
     
     public ICollection<Order> Orders { get; set; } = new List<Order>();
+    
+    // Likes db update
+    
+    public ICollection<UserProductLike> LikedProducts { get; set; } = new List<UserProductLike>();
 }

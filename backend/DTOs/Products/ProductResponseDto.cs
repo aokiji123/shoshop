@@ -2,7 +2,7 @@ using backend.Models.Enums;
 
 namespace backend.DTOs.Products;
 
-public class ProductDto
+public class ProductResponseDto
 {
     public Guid Id { get; set; }
     public string UaName { get; set; }
@@ -15,4 +15,5 @@ public class ProductDto
     public string Image { get; set; }
     public ProductSize Size { get; set; } 
     public ProductColor Color { get; set; }
+    public bool IsLiked { get; set; }
 }
