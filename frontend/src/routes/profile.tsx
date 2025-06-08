@@ -101,12 +101,8 @@ function RouteComponent() {
           {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
           <div className="relative flex items-center justify-center">
             <img
-              src={
-                user.image
-                  ? `http://localhost:5077/${user.image}`
-                  : 'https://placehold.co/200x200'
-              }
-              className="rounded-full w-[200px] h-[200px]"
+              src={`http://localhost:5077/${user.image}`}
+              className="rounded-full w-[200px] h-[200px] border-1 border-black bg-white"
               alt="Profile"
             />
           </div>
