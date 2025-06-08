@@ -96,8 +96,8 @@ function RouteComponent() {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row gap-8 p-4 md:p-6 lg:p-8 min-h-[90vh]">
-        <div className="flex flex-col gap-4 items-center justify-center lg:w-1/3 lg:min-w-[400px]">
+      <div className="flex flex-col gap-8 p-4 md:p-6 lg:p-8 min-h-[90vh]">
+        <div className="flex flex-col gap-4 items-center justify-center">
           {user.isAdmin && <p className="text-xl px-2 py-1">Admin</p>}
           <div className="relative flex items-center justify-center">
             <img
@@ -138,9 +138,9 @@ function RouteComponent() {
           </div>
         </div>
 
-        <div className="lg:w-2/3 flex flex-col">
-          <h2 className="text-2xl font-bold mb-4">Your Orders</h2>
-          <div className="min-h-[200px] lg:h-[700px] border border-gray-200 rounded-lg overflow-hidden">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-4">Orders History</h2>
+          <div className="min-h-[200px] border border-gray-200 rounded-lg overflow-scroll">
             {isOrdersLoading ? (
               <div className="flex items-center justify-center h-full">
                 <div className="w-8 h-8 border-2 border-t-black border-gray-300 rounded-full animate-spin"></div>
@@ -150,15 +150,15 @@ function RouteComponent() {
                 <p>No orders found</p>
               </div>
             ) : (
-              <div className="h-full overflow-auto">
+              <div className="h-full overflow-scroll">
                 <Table>
                   <TableHeader className="sticky top-0 bg-white z-10">
                     <TableRow>
                       <TableHead className="w-8"></TableHead>
                       <TableHead>Order ID</TableHead>
                       <TableHead>Total Price</TableHead>
-                      <TableHead>Created At</TableHead>
                       <TableHead>Products Count</TableHead>
+                      <TableHead>Created At</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -180,10 +180,10 @@ function RouteComponent() {
                             {order.id}
                           </TableCell>
                           <TableCell>${order.price.toFixed(2)}</TableCell>
-                          <TableCell>
-                            {new Date(order.createdAt).toLocaleDateString()}
-                          </TableCell>
                           <TableCell>{order.orderProducts.length}</TableCell>
+                          <TableCell>
+                            {new Date(order.createdAt).toLocaleString()}
+                          </TableCell>
                         </TableRow>
                         {expandedRows.has(order.id) && (
                           <TableRow key={`${order.id}-details`}>

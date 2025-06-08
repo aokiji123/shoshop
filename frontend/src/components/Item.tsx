@@ -119,7 +119,7 @@ export const Item = ({ shortened, product }: ItemProps) => {
 
   return (
     <>
-      <div className="bg-white w-full sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative rounded-md">
+      <div className="bg-white w-[280px] md:w-[300px] lg:w-[280px] xl:w-[250px] 2xl:w-[280px] border-1 border-black cursor-pointer relative rounded-md">
         <div className="absolute top-2 right-2 flex items-center gap-2">
           {!shortened && (
             <div

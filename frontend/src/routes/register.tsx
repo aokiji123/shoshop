@@ -86,7 +86,7 @@ function RouteComponent() {
           <h2 className="text-3xl font-bold">Register</h2>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 w-[400px]"
+            className="flex flex-col gap-4 w-[350px] md:w-[400px]"
           >
             <div className="flex flex-col">
               <label htmlFor="name" className="text-sm">

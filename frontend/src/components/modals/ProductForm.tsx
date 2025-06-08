@@ -240,18 +240,6 @@ export function ProductForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Likes</label>
-            <input
-              type="number"
-              name="likes"
-              value={formData.likes}
-              onChange={handleInputChange}
-              min="0"
-              className="w-full p-2 border border-gray-300 outline-none focus:border-black rounded-md"
-            />
-          </div>
-
-          <div>
             <label className="block text-sm font-medium mb-1">
               Product Image {!product && '*'}
             </label>

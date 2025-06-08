@@ -19,7 +19,6 @@ async function getAllProducts(
       throw new Error('No authentication token found')
     }
 
-    // Build query parameters
     const params = new URLSearchParams()
 
     if (filters.uaName) params.append('UaName', filters.uaName)
@@ -118,7 +117,6 @@ async function getProductById(id: string): Promise<Product> {
 
 async function getPopularProducts(limit = 10): Promise<ProductsResponse> {
   try {
-    // Use the main getAllProducts function with sorting by likes
     return getAllProducts({
       orderBy: 'likes',
       sortDirection: 'Descending',
@@ -135,7 +133,6 @@ async function getPopularProducts(limit = 10): Promise<ProductsResponse> {
   }
 }
 
-// Product creation/update/delete functions
 async function createProduct(productData: FormData): Promise<Product> {
   try {
     const token = getAuthToken()
@@ -277,7 +274,6 @@ async function getColors(): Promise<Array<Color>> {
   }
 }
 
-// React Query hooks
 export function useProducts(filters: ProductFilters = {}) {
   return useQuery({
     queryKey: ['products', filters],

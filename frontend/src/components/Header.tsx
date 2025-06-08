@@ -13,20 +13,20 @@ export default function Header() {
   return (
     <header className="h-[55px] flex px-4 gap-2 items-center justify-between border-b-1 border-b-black bg-black text-white">
       <nav className="flex flex-row items-center justify-between w-full">
-        <div className="flex flex-row gap-8 items-center">
+        <div className="flex flex-row gap-4 sm:gap-8 items-center">
           <Link to="/">
-            <h1 className="text-2xl font-bold transition-all duration-200 hover:scale-110">
+            <h1 className="text-xl sm:text-2xl font-bold transition-all duration-200 hover:scale-110">
               ShoShop
             </h1>
           </Link>
           <Link to="/items">
-            <h1 className="text-lg font-bold transition-all duration-200 hover:scale-110">
+            <h1 className="text-md sm:text-lg font-bold transition-all duration-200 hover:scale-110">
               Products
             </h1>
           </Link>
           {user?.isAdmin && (
             <Link to="/orders">
-              <h1 className="text-lg font-bold transition-all duration-200 hover:scale-110">
+              <h1 className="text-md sm:text-lg font-bold transition-all duration-200 hover:scale-110">
                 Orders
               </h1>
             </Link>

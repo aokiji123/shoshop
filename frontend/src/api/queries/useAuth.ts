@@ -92,7 +92,6 @@ async function getCurrentUser(): Promise<User | null> {
   }
 }
 
-// React Query hooks
 export function useRegister() {
   const queryClient = useQueryClient()
 
@@ -130,8 +129,6 @@ export function useLogin() {
 }
 
 export function useCurrentUser() {
-  const queryClient = useQueryClient()
-  
   return useQuery({
     queryKey: ['currentUser'],
     queryFn: getCurrentUser,
@@ -148,15 +145,14 @@ export function useLogout() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: () => {
       clearAuthToken()
-      return true
+      return Promise.resolve(true)
     },
     onSuccess: () => {
       queryClient.setQueryData(['currentUser'], null)
       queryClient.invalidateQueries({ queryKey: ['currentUser'] })
 
-      // Clear cart on logout with immediate UI update
       clearCartFromStorage()
     },
   })

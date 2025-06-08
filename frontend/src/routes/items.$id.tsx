@@ -93,11 +93,11 @@ function RouteComponent() {
   return (
     <>
       <div>
-        <div className="flex flex-row items-center gap-8 container mx-auto p-4 md:p-6 lg:p-8">
+        <div className="flex flex-col md:flex-row items-center gap-8 container mx-auto p-4 md:p-6 lg:p-8">
           <img
             src={`http://localhost:5077/${product.image}`}
             alt={product.enName}
-            className="w-[200px] h-[200px] md:w-[400px] md:h-[400px] object-cover"
+            className="w-[400px] h-[400px] object-cover"
           />
           <div className="flex flex-col gap-4 w-full">
             <div className="flex flex-col gap-4">
@@ -126,7 +126,7 @@ function RouteComponent() {
                   <li
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`p-2 min-w-[40px] h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white transition-all duration-300 rounded-md ${
+                    className={`p-2 min-w-[30px] h-[30px] md:min-w-[40px] md:h-[40px] flex items-center justify-center border-1 border-black cursor-pointer hover:bg-black hover:text-white transition-all duration-300 rounded-md ${
                       selectedSize === size ? 'bg-black text-white' : ''
                     }`}
                   >

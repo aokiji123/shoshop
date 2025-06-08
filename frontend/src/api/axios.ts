@@ -15,13 +15,14 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       clearAuthToken()
-      
+
       if (window.location.pathname !== '/login') {
-        window.location.href = '/login?message=Your session has expired. Please log in again.'
+        window.location.href =
+          '/login?message=Your session has expired. Please log in again.'
       }
     }
     return Promise.reject(error)
-  }
+  },
 )
 
 export default axiosInstance

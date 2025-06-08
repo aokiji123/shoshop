@@ -225,15 +225,15 @@ function RouteComponent() {
           )}
         </div>
 
-        <div className="flex flex-row items-center justify-between gap-4 mb-4">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
           <input
             type="text"
             placeholder="Search products..."
             value={searchTerm}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="w-[70%] p-2 border-1 border-black outline-none rounded-md"
+            className="w-full lg:w-[70%] p-2 border-1 border-black outline-none rounded-md"
           />
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row flex-wrap lg:flex-nowrap gap-4">
             <select
               value={selectedCategory}
               onChange={(e) =>
@@ -300,7 +300,7 @@ function RouteComponent() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-4 flex-wrap">
+        <div className="flex flex-row gap-4 flex-wrap justify-center md:justify-start">
           {products.length > 0 ? (
             products.map((product) => (
               <div key={product.id}>
