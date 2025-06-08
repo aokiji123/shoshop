@@ -140,7 +140,7 @@ function RouteComponent() {
 
         <div className="lg:w-2/3 flex flex-col">
           <h2 className="text-2xl font-bold mb-4">Your Orders</h2>
-          <div className="h-[700px] border border-gray-200 rounded-lg overflow-hidden">
+          <div className="min-h-[200px] lg:h-[700px] border border-gray-200 rounded-lg overflow-hidden">
             {isOrdersLoading ? (
               <div className="flex items-center justify-center h-full">
                 <div className="w-8 h-8 border-2 border-t-black border-gray-300 rounded-full animate-spin"></div>

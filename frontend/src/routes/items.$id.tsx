@@ -1,11 +1,16 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
-import { MdFavorite } from 'react-icons/md'
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 import { Item } from '@/components/Item'
 import { Toast, useToast } from '@/components/Toast'
 import { convertTextToColor } from '@/lib/utils'
 import { requireAuth } from '@/lib/auth'
-import { usePopularProducts, useProduct } from '@/api/queries/useProduct'
+import {
+  useLikeProduct,
+  usePopularProducts,
+  useProduct,
+  useUnlikeProduct,
+} from '@/api/queries/useProduct'
 import { useCart } from '@/contexts/CartContext'
 
 export const Route = createFileRoute('/items/$id')({
@@ -20,6 +25,8 @@ function RouteComponent() {
   const { id } = Route.useParams()
   const { addToCart, canAddToCart, getRemainingStock } = useCart()
   const { toast, showToast, hideToast } = useToast()
+  const likeProductMutation = useLikeProduct()
+  const unlikeProductMutation = useUnlikeProduct()
 
   const [selectedSize, setSelectedSize] = useState('M')
 
@@ -39,6 +46,24 @@ function RouteComponent() {
         `${product.enName} (Size ${selectedSize}) added to cart!`,
         'success',
       )
+    }
+  }
+
+  const handleLike = () => {
+    if (!product?.id) return
+
+    if (product.isLiked) {
+      unlikeProductMutation.mutate(product.id, {
+        onError: (error) => {
+          showToast(`Failed to unlike product: ${error.message}`, 'error')
+        },
+      })
+    } else {
+      likeProductMutation.mutate(product.id, {
+        onError: (error) => {
+          showToast(`Failed to like product: ${error.message}`, 'error')
+        },
+      })
     }
   }
 
@@ -145,8 +170,15 @@ function RouteComponent() {
                     ? 'Max Quantity in Cart'
                     : 'Add to Cart'}
               </button>
-              <button className="bg-black text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md">
-                <MdFavorite />
+              <button
+                onClick={handleLike}
+                className="bg-black text-white text-2xl px-4 py-2 cursor-pointer hover:scale-105 transition-all duration-300 rounded-md"
+              >
+                {product.isLiked ? (
+                  <MdFavorite className="text-white" />
+                ) : (
+                  <MdFavoriteBorder />
+                )}
               </button>
             </div>
           </div>

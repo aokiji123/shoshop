@@ -4,8 +4,13 @@ import { getAuthToken } from './useAuth'
 import type { CreateOrderRequest, Order } from '../types/order'
 
 async function getOrders(): Promise<Array<Order>> {
+  const token = getAuthToken()
   try {
-    const { data } = await axiosInstance.get('/order')
+    const { data } = await axiosInstance.get('/order', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return data
   } catch (error: any) {
     console.error('Error fetching orders:', error)
@@ -14,8 +19,13 @@ async function getOrders(): Promise<Array<Order>> {
 }
 
 async function getOrderByUserId(userId: string): Promise<Array<Order>> {
+  const token = getAuthToken()
   try {
-    const { data } = await axiosInstance.get(`/order/user/${userId}`)
+    const { data } = await axiosInstance.get(`/order/user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return data
   } catch (error: any) {
     console.error('Error fetching orders:', error)
@@ -28,7 +38,6 @@ async function createOrder(orderData: CreateOrderRequest): Promise<Order> {
   try {
     const { data } = await axiosInstance.post('/order', orderData, {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     })

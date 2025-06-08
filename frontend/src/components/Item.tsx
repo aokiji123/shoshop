@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {
+  MdFavorite,
   MdFavoriteBorder,
   MdOutlineDelete,
   MdOutlineEdit,
@@ -11,7 +12,12 @@ import { Toast, useToast } from './Toast'
 import type { Product } from '@/api/types/product'
 import { convertTextToColor } from '@/lib/utils'
 import { useCurrentUser } from '@/api/queries/useAuth'
-import { useDeleteProduct, useUpdateProduct } from '@/api/queries/useProduct'
+import {
+  useDeleteProduct,
+  useLikeProduct,
+  useUnlikeProduct,
+  useUpdateProduct,
+} from '@/api/queries/useProduct'
 import { useCart } from '@/contexts/CartContext'
 
 type ItemProps = {
@@ -24,6 +30,8 @@ export const Item = ({ shortened, product }: ItemProps) => {
   const { data: user } = useCurrentUser()
   const deleteProductMutation = useDeleteProduct()
   const updateProductMutation = useUpdateProduct()
+  const likeProductMutation = useLikeProduct()
+  const unlikeProductMutation = useUnlikeProduct()
   const { toast, showToast, hideToast } = useToast()
   const { addToCart } = useCart()
 
@@ -45,8 +53,22 @@ export const Item = ({ shortened, product }: ItemProps) => {
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation()
     e.preventDefault()
-    // TODO: Implement like functionality
-    console.log('Like clicked for product:', product?.id)
+
+    if (!product?.id) return
+
+    if (product.isLiked) {
+      unlikeProductMutation.mutate(product.id, {
+        onError: (error) => {
+          showToast(`Failed to unlike product: ${error.message}`, 'error')
+        },
+      })
+    } else {
+      likeProductMutation.mutate(product.id, {
+        onError: (error) => {
+          showToast(`Failed to like product: ${error.message}`, 'error')
+        },
+      })
+    }
   }
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -104,7 +126,11 @@ export const Item = ({ shortened, product }: ItemProps) => {
               onClick={handleLike}
               className="bg-white rounded-full p-1 cursor-pointer hover:scale-105 transition-all duration-300 z-10"
             >
-              <MdFavoriteBorder size={24} />
+              {product?.isLiked ? (
+                <MdFavorite size={24} className="text-black" />
+              ) : (
+                <MdFavoriteBorder size={24} />
+              )}
             </div>
           )}
           {user?.isAdmin && !shortened && (

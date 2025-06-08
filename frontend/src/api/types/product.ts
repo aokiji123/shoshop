@@ -10,6 +10,7 @@ export type Product = {
   image: string
   size: string
   color: string
+  isLiked: boolean
 }
 
 export type Category =
