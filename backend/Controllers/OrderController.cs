@@ -42,6 +42,7 @@ public class OrderController : BaseController
     public async Task<ActionResult<IEnumerable<OrderResponseDto>>> GetOrders()
     {
         var orders = await _context.Orders
+            .AsNoTracking()
             .Include(o => o.OrderProducts)
             .ThenInclude(op => op.Product)
             .ToListAsync();
@@ -67,6 +68,7 @@ public class OrderController : BaseController
     public async Task<ActionResult<OrderResponseDto>> GetOrder(Guid id)
     {
         var order = await _context.Orders
+            .AsNoTracking()
             .Include(o => o.OrderProducts)
             .ThenInclude(op => op.Product)
             .FirstOrDefaultAsync(o => o.Id == id);
@@ -93,6 +95,7 @@ public class OrderController : BaseController
     public async Task<ActionResult<IEnumerable<OrderResponseDto>>> GetOrdersByUser(Guid userId)
     {
         var orders = await _context.Orders
+            .AsNoTracking()
             .Where(o => o.UserId == userId)
             .Include(o => o.OrderProducts)
             .ThenInclude(op => op.Product)
@@ -133,6 +136,7 @@ public class OrderController : BaseController
                 {
                     var productIds = newOrderDto.Products.Select(p => p.ProductId).ToList();
                     var products = await _context.Products
+                        .AsNoTracking()
                         .Where(p => productIds.Contains(p.Id))
                         .ToDictionaryAsync(p => p.Id, p => p);
                     
@@ -176,9 +180,9 @@ public class OrderController : BaseController
                     throw;
                 }
             });
-
-            // Fetch the complete order outside the transaction
+            
             var order = await _context.Orders
+                .AsNoTracking()
                 .Include(o => o.OrderProducts)
                 .ThenInclude(op => op.Product)
                 .FirstAsync(o => o.Id == result);

@@ -124,6 +124,38 @@ public class DataContext : DbContext
         modelBuilder.Entity<OrderProduct>()
             .HasIndex(op => op.ProductId)
             .HasDatabaseName("idx_order_products_product_id");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.Price)
+            .HasDatabaseName("idx_products_price");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.Size)
+            .HasDatabaseName("idx_products_size");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.Color)
+            .HasDatabaseName("idx_products_color");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.Count)
+            .HasDatabaseName("idx_products_count");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.Likes)
+            .HasDatabaseName("idx_products_likes");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => new { p.Category, p.Price })
+            .HasDatabaseName("idx_products_category_price");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.UaName)
+            .HasDatabaseName("idx_products_ua_name");
+        
+        modelBuilder.Entity<Product>()
+            .HasIndex(p => p.EnName)
+            .HasDatabaseName("idx_products_en_name");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

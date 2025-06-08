@@ -63,7 +63,7 @@ public class AuthController : BaseController
                 });
             }
             
-            if (await _context.Users.AnyAsync(u => u.Email.ToLower() == registerDto.Email.ToLower()))
+            if (await _context.Users.AsNoTracking().AnyAsync(u => u.Email.ToLower() == registerDto.Email.ToLower()))
             {
                 _logger.LogWarning("Registration failed - email already exists: {Email}", registerDto.Email);
                 return BadRequest(new
@@ -132,6 +132,7 @@ public class AuthController : BaseController
             }
             
             var user = await _context.Users
+                .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Email.ToLower() == loginDto.Email.ToLower());
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
