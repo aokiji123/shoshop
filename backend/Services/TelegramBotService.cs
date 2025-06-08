@@ -107,7 +107,6 @@ public class TelegramBotService
             { 
                 _logger.LogError(ex, $"Failed to send message to {admin.TgTag}");
                 
-                // Fallback: send without formatting if markdown fails
                 try
                 {
                     var plainMessage = $"🛍️ New Order Received!\n\n" +
@@ -179,15 +178,10 @@ public class TelegramBotService
 
     private static string EscapeMarkdownV2(string text)
     {
-        if (string.IsNullOrEmpty(text))
-            return string.Empty;
-
-        // Escape special characters for MarkdownV2
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        
         var specialChars = new[] { '_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!' };
-        foreach (var ch in specialChars)
-        {
-            text = text.Replace(ch.ToString(), $"\\{ch}");
-        }
+        foreach (var ch in specialChars) text = text.Replace(ch.ToString(), $"\\{ch}");
         return text;
     }
 }
