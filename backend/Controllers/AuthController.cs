@@ -76,7 +76,12 @@ public class AuthController : BaseController
 
             var user = _mapper.Map<User>(registerDto);
             user.Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
-
+            
+            if (string.IsNullOrEmpty(user.Image))
+            {
+                user.Image = "/uploads/users/default_user_avatar.png";
+            }
+            
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             
