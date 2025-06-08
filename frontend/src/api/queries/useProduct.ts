@@ -65,6 +65,7 @@ async function getAllProducts(
         image: product.Image || product.image,
         size: product.Size || product.size,
         color: product.Color || product.color,
+        isLiked: product.IsLiked || product.isLiked || false,
       })),
       totalCount: data.totalCount,
     }
@@ -103,6 +104,7 @@ async function getProductById(id: string): Promise<Product> {
       image: data.Image || data.image,
       size: data.Size || data.size,
       color: data.Color || data.color,
+      isLiked: data.IsLiked || data.isLiked || false,
     }
   } catch (error: any) {
     console.error('Error fetching product:', error)
@@ -160,6 +162,7 @@ async function createProduct(productData: FormData): Promise<Product> {
       image: data.Image || data.image,
       size: data.Size || data.size,
       color: data.Color || data.color,
+      isLiked: data.IsLiked || data.isLiked || false,
     }
   } catch (error: any) {
     console.error('Error creating product:', error)
@@ -200,6 +203,7 @@ async function updateProduct(
       image: data.Image || data.image,
       size: data.Size || data.size,
       color: data.Color || data.color,
+      isLiked: data.IsLiked || data.isLiked || false,
     }
   } catch (error: any) {
     console.error('Error updating product:', error)
@@ -371,6 +375,89 @@ export function useDeleteProduct() {
     mutationFn: deleteProduct,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
+    },
+  })
+}
+
+// Like/Unlike functions
+async function likeProduct(
+  id: string,
+): Promise<{ success: boolean; message: string; likes: number }> {
+  try {
+    const token = getAuthToken()
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+
+    const { data } = await axiosInstance.post(
+      `/product/${id}/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    return data
+  } catch (error: any) {
+    console.error('Error liking product:', error)
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        'Failed to like product',
+    )
+  }
+}
+
+async function unlikeProduct(
+  id: string,
+): Promise<{ success: boolean; message: string; likes: number }> {
+  try {
+    const token = getAuthToken()
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+
+    const { data } = await axiosInstance.delete(`/product/${id}/like`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    return data
+  } catch (error: any) {
+    console.error('Error unliking product:', error)
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        'Failed to unlike product',
+    )
+  }
+}
+
+export function useLikeProduct() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: likeProduct,
+    onSuccess: (_, productId) => {
+      queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['product', productId] })
+      queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
+    },
+  })
+}
+
+export function useUnlikeProduct() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: unlikeProduct,
+    onSuccess: (_, productId) => {
+      queryClient.invalidateQueries({ queryKey: ['products'] })
+      queryClient.invalidateQueries({ queryKey: ['product', productId] })
       queryClient.invalidateQueries({ queryKey: ['products', 'popular'] })
     },
   })
