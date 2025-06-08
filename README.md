@@ -1,8 +1,9 @@
 # SETUP FOR FRONTEND
 - `cd frontend`
-- copy `.env.example` file into `.env`
+- `cp .env.example .env`
 - `npm i`
 - `npm run dev`
 
 # SETUP FOR BACKEND
 - `cd backend`
+- `dotnet run`
