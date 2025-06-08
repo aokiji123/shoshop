@@ -130,14 +130,17 @@ export function useLogin() {
 }
 
 export function useCurrentUser() {
+  const queryClient = useQueryClient()
+  
   return useQuery({
     queryKey: ['currentUser'],
     queryFn: getCurrentUser,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 5, // 5 minutes
     retry: false,
     enabled: typeof window !== 'undefined' && !!getAuthToken(),
     refetchOnWindowFocus: false,
     refetchOnMount: true,
+    gcTime: 0,
   })
 }
 
